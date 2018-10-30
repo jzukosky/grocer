@@ -2,7 +2,7 @@
 //  Purchase+CoreDataProperties.swift
 //  Grocer
 //
-//  Created by Qiwen Guo on 10/25/18.
+//  Created by linChunbin on 10/29/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -17,18 +17,49 @@ extension Purchase {
         return NSFetchRequest<Purchase>(entityName: "Purchase")
     }
 
-    @NSManaged public var receipt: NSData?
-    @NSManaged public var purchaser: Int16
-    @NSManaged public var purchasees: NSObject?
-    @NSManaged public var items: NSObject?
-    @NSManaged public var done: NSObject?
+    @NSManaged public var date: NSDate?
     @NSManaged public var paid: NSObject?
+    @NSManaged public var purchaseDescription: String?
+    @NSManaged public var receipt: NSData?
+    @NSManaged public var selected: NSObject?
     @NSManaged public var tax: Float
     @NSManaged public var title: String?
-    @NSManaged public var date: NSDate?
-    @NSManaged public var purchaseDescription: String?
-    @NSManaged public var id: Int16
-    @NSManaged public var purchaseToItem: Item?
-    @NSManaged public var purchaseToUser: User?
+    @NSManaged public var items: NSSet?
+    @NSManaged public var purchaser: User?
+    @NSManaged public var purchasees: NSSet?
+
+}
+
+// MARK: Generated accessors for items
+extension Purchase {
+
+    @objc(addItemsObject:)
+    @NSManaged public func addToItems(_ value: Item)
+
+    @objc(removeItemsObject:)
+    @NSManaged public func removeFromItems(_ value: Item)
+
+    @objc(addItems:)
+    @NSManaged public func addToItems(_ values: NSSet)
+
+    @objc(removeItems:)
+    @NSManaged public func removeFromItems(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for purchasees
+extension Purchase {
+
+    @objc(addPurchaseesObject:)
+    @NSManaged public func addToPurchasees(_ value: User)
+
+    @objc(removePurchaseesObject:)
+    @NSManaged public func removeFromPurchasees(_ value: User)
+
+    @objc(addPurchasees:)
+    @NSManaged public func addToPurchasees(_ values: NSSet)
+
+    @objc(removePurchasees:)
+    @NSManaged public func removeFromPurchasees(_ values: NSSet)
 
 }

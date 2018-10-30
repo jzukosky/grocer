@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5511D072187DB0A00FA9DBA /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D012187DB0A00FA9DBA /* User+CoreDataClass.swift */; };
+		B5511D082187DB0A00FA9DBA /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D022187DB0A00FA9DBA /* User+CoreDataProperties.swift */; };
+		B5511D092187DB0A00FA9DBA /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D032187DB0A00FA9DBA /* Item+CoreDataClass.swift */; };
+		B5511D0A2187DB0A00FA9DBA /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D042187DB0A00FA9DBA /* Item+CoreDataProperties.swift */; };
+		B5511D0B2187DB0A00FA9DBA /* Purchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D052187DB0A00FA9DBA /* Purchase+CoreDataClass.swift */; };
+		B5511D0C2187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D062187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift */; };
 		E28555BE21824B5800226D7E /* Model in Resources */ = {isa = PBXBuildFile; fileRef = E28555BD21824B5800226D7E /* Model */; };
 		E2DE6AAC217E87A9006F2EA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DE6AAB217E87A9006F2EA7 /* AppDelegate.swift */; };
 		E2DE6AB4217E87A9006F2EA7 /* Grocer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2DE6AB2217E87A9006F2EA7 /* Grocer.xcdatamodeld */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5511D012187DB0A00FA9DBA /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "Grocer/Model/User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5511D022187DB0A00FA9DBA /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Grocer/Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5511D032187DB0A00FA9DBA /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataClass.swift"; path = "Grocer/Model/Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5511D042187DB0A00FA9DBA /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "Grocer/Model/Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B5511D052187DB0A00FA9DBA /* Purchase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Purchase+CoreDataClass.swift"; path = "Grocer/Model/Purchase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B5511D062187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Purchase+CoreDataProperties.swift"; path = "Grocer/Model/Purchase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E28555BD21824B5800226D7E /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
 		E2DE6AA8217E87A9006F2EA7 /* Grocer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grocer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2DE6AAB217E87A9006F2EA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +52,12 @@
 		E2DE6A9F217E87A9006F2EA7 = {
 			isa = PBXGroup;
 			children = (
+				B5511D012187DB0A00FA9DBA /* User+CoreDataClass.swift */,
+				B5511D022187DB0A00FA9DBA /* User+CoreDataProperties.swift */,
+				B5511D032187DB0A00FA9DBA /* Item+CoreDataClass.swift */,
+				B5511D042187DB0A00FA9DBA /* Item+CoreDataProperties.swift */,
+				B5511D052187DB0A00FA9DBA /* Purchase+CoreDataClass.swift */,
+				B5511D062187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift */,
 				E2DE6AAA217E87A9006F2EA7 /* Grocer */,
 				E2DE6AA9217E87A9006F2EA7 /* Products */,
 			);
@@ -139,8 +157,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5511D0A2187DB0A00FA9DBA /* Item+CoreDataProperties.swift in Sources */,
+				B5511D092187DB0A00FA9DBA /* Item+CoreDataClass.swift in Sources */,
 				E2DE6AB4217E87A9006F2EA7 /* Grocer.xcdatamodeld in Sources */,
 				E2DE6AAC217E87A9006F2EA7 /* AppDelegate.swift in Sources */,
+				B5511D082187DB0A00FA9DBA /* User+CoreDataProperties.swift in Sources */,
+				B5511D0B2187DB0A00FA9DBA /* Purchase+CoreDataClass.swift in Sources */,
+				B5511D0C2187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift in Sources */,
+				B5511D072187DB0A00FA9DBA /* User+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

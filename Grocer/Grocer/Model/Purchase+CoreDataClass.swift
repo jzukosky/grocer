@@ -2,7 +2,7 @@
 //  Purchase+CoreDataClass.swift
 //  Grocer
 //
-//  Created by Qiwen Guo on 10/25/18.
+//  Created by linChunbin on 10/29/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //

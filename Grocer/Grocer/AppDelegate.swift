@@ -14,9 +14,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    static var main: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let homeViewController = UIViewController()
+        homeViewController.view.backgroundColor = UIColor.red
+        window!.rootViewController = homeViewController
+        window!.makeKeyAndVisible()
         // Override point for customization after application launch.
+        let user = User(username: "test", email: "testemail", information: "testinfo", picture: NSData())
+//        user.
+        
+        let request : NSFetchRequest<User> = User.fetchUserRequest()
+        
+        do{
+            let users = try persistentContainer.viewContext.fetch(request)
+            for user in users {
+                print(user.username)
+                print(user.email)
+            }
+            
+        }catch{
+             print("Failed to fetch documents")
+        }
+        
+        
+        
+        
+        
+        
+        
         return true
     }
 
@@ -43,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
+    
 
     // MARK: - Core Data stack
 
