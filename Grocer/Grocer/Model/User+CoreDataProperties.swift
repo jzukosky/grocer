@@ -20,7 +20,7 @@ extension User {
     @NSManaged public var email: String?
     @NSManaged public var information: String?
     @NSManaged public var picture: NSData?
-    @NSManaged public var username: String?
+    @NSManaged public var username: String
     @NSManaged public var pastPurchases: NSSet?
 
 }

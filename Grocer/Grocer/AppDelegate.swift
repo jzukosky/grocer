@@ -25,34 +25,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = homeViewController
         window!.makeKeyAndVisible()
         // Override point for customization after application launch.
-        let user = User(username: "test", email: "testemail", information: "testinfo", picture: NSData())
         
-        let request : NSFetchRequest<User> = User.fetchUserRequest()
-        
-        do{
-            let users = try persistentContainer.viewContext.fetch(request)
-            for user in users {
-                print(user.username)
-                print(user.email)
-            }
-            
-        }catch{
-             print("Failed to fetch users")
-        }
-        
-        let item = Item(name: "testItem", price: 2.0)
-        
-        let requestItem : NSFetchRequest<Item> = Item.fetchItemRequest()
-        
-        do {
-            let items = try persistentContainer.viewContext.fetch(requestItem)
-            for item in items {
-                print(item.name)
-                print(item.price)
-            }
-        } catch {
-            print("Failed to fetch items")
-        }
+//        // Test the model: delete when implement UI
+//        let user = User(username: "test", email: "testemail", information: "testinfo", picture: NSData())
+//
+//        let requestUser : NSFetchRequest<User> = User.fetchUserRequest()
+//
+//        do{
+//            let users = try persistentContainer.viewContext.fetch(requestUser)
+//            for user in users {
+//                print(user.username)
+//                print(user.email ?? "")
+//            }
+//
+//        }catch{
+//             print("Failed to fetch users")
+//        }
+//
+//        let item = Item(name: "testItem", price: 2.0)
+//
+//        let requestItem : NSFetchRequest<Item> = Item.fetchItemRequest()
+//
+//        do {
+//            let items = try persistentContainer.viewContext.fetch(requestItem)
+//            for item in items {
+//                print(item.name)
+//                print(item.price)
+//            }
+//        } catch {
+//            print("Failed to fetch items")
+//        }
+//
+//        let purchase = Purchase(date: NSDate.init(timeIntervalSinceNow: 0), paid: [user! :true], purchaseDescription: nil, receipt: NSData(), selected: [user! :true], tax: 0.1, title: "test purchase")
+//
+//        let requestPurchase : NSFetchRequest<Purchase> = Purchase.fetchRequest()
+//
+//        do {
+//            let purchases = try persistentContainer.viewContext.fetch(requestPurchase)
+//            for purchase in purchases {
+//                print(purchase.date)
+//            }
+//        } catch {
+//            print("Fail to fetch purchases")
+//        }
+//
         
         return true
     }

@@ -12,7 +12,7 @@ import CoreData
 
 public class User: NSManagedObject {
 
-    convenience init?(context: NSManagedObjectContext = AppDelegate.main.persistentContainer.viewContext, username: String, email:String?, information:String, picture: NSData){
+    convenience init?(context: NSManagedObjectContext = AppDelegate.main.persistentContainer.viewContext, username: String, email:String?, information:String?, picture: NSData?){
         
         let appDelegate = AppDelegate.main
         
@@ -23,6 +23,4 @@ public class User: NSManagedObject {
         self.information = information
         self.picture = picture
     }
-    
-    
 }

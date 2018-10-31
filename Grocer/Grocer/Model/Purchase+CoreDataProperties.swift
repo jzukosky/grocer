@@ -17,11 +17,11 @@ extension Purchase {
         return NSFetchRequest<Purchase>(entityName: "Purchase")
     }
 
-    @NSManaged public var date: NSDate?
-    @NSManaged public var paid: NSObject?
+    @NSManaged public var date: NSDate
+    @NSManaged public var paid: [User : Bool]
     @NSManaged public var purchaseDescription: String?
     @NSManaged public var receipt: NSData?
-    @NSManaged public var selected: NSObject?
+    @NSManaged public var selected: [User : Bool]
     @NSManaged public var tax: Float
     @NSManaged public var title: String?
     @NSManaged public var items: NSSet?

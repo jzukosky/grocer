@@ -10,6 +10,7 @@
 import UIKit
 import CoreData
 
+@objc(Item)
 public class Item: NSManagedObject {
 
     convenience internal init?(context: NSManagedObjectContext = AppDelegate.main.persistentContainer.viewContext, name: String, price: Float) {
