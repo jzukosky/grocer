@@ -7,15 +7,17 @@
 //
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 @objc(Purchase)
 public class Purchase: NSManagedObject {
 
-    convenience init?(context: NSManagedObjectContext = AppDelegate.main.persistentContainer.viewContext, date: NSDate, paid: [User : Bool], purchaseDescription: String?, receipt: NSData, selected: [User : Bool], tax: Float, title: String?) {
+    convenience init?(date: NSDate, paid: [User : Bool], purchaseDescription: String?, receipt: NSData, selected: [User : Bool], tax: Float, title: String?) {
         
-        let appDelegate = AppDelegate.main
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
         
         let context = appDelegate.persistentContainer.viewContext
         self.init(entity: Purchase.entity(), insertInto: context)

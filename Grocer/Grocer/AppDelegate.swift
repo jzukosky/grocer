@@ -14,62 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    static var main: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
-    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let homeViewController = UIViewController()
-        homeViewController.view.backgroundColor = UIColor.red
-        window!.rootViewController = homeViewController
-        window!.makeKeyAndVisible()
         // Override point for customization after application launch.
-        
-//        // Test the model: delete when implement UI
-//        let user = User(username: "test", email: "testemail", information: "testinfo", picture: NSData())
-//
-//        let requestUser : NSFetchRequest<User> = User.fetchUserRequest()
-//
-//        do{
-//            let users = try persistentContainer.viewContext.fetch(requestUser)
-//            for user in users {
-//                print(user.username)
-//                print(user.email ?? "")
-//            }
-//
-//        }catch{
-//             print("Failed to fetch users")
-//        }
-//
-//        let item = Item(name: "testItem", price: 2.0)
-//
-//        let requestItem : NSFetchRequest<Item> = Item.fetchItemRequest()
-//
-//        do {
-//            let items = try persistentContainer.viewContext.fetch(requestItem)
-//            for item in items {
-//                print(item.name)
-//                print(item.price)
-//            }
-//        } catch {
-//            print("Failed to fetch items")
-//        }
-//
-//        let purchase = Purchase(date: NSDate.init(timeIntervalSinceNow: 0), paid: [user! :true], purchaseDescription: nil, receipt: NSData(), selected: [user! :true], tax: 0.1, title: "test purchase")
-//
-//        let requestPurchase : NSFetchRequest<Purchase> = Purchase.fetchRequest()
-//
-//        do {
-//            let purchases = try persistentContainer.viewContext.fetch(requestPurchase)
-//            for purchase in purchases {
-//                print(purchase.date)
-//            }
-//        } catch {
-//            print("Fail to fetch purchases")
-//        }
-//
-        
         return true
     }
 
@@ -96,8 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-    
-    
 
     // MARK: - Core Data stack
 

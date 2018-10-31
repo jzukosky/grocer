@@ -13,9 +13,11 @@ import CoreData
 @objc(Item)
 public class Item: NSManagedObject {
 
-    convenience internal init?(context: NSManagedObjectContext = AppDelegate.main.persistentContainer.viewContext, name: String, price: Float) {
+    convenience internal init?(name: String, price: Float) {
         
-        let appDelegate = AppDelegate.main
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
         
         let context = appDelegate.persistentContainer.viewContext
         self.init(entity: Item.entity(), insertInto: context)
