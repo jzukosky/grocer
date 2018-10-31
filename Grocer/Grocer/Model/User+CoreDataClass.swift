@@ -16,9 +16,6 @@ public class User: NSManagedObject {
         
         let appDelegate = AppDelegate.main
         
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-//            return nil
-//        }
         let context = appDelegate.persistentContainer.viewContext
         self.init(entity: User.entity(), insertInto: context)
         self.username = username

@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         // Override point for customization after application launch.
         let user = User(username: "test", email: "testemail", information: "testinfo", picture: NSData())
-//        user.
         
         let request : NSFetchRequest<User> = User.fetchUserRequest()
         
@@ -38,14 +37,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }catch{
-             print("Failed to fetch documents")
+             print("Failed to fetch users")
         }
         
+        let item = Item(name: "testItem", price: 2.0)
         
+        let requestItem : NSFetchRequest<Item> = Item.fetchItemRequest()
         
-        
-        
-        
+        do {
+            let items = try persistentContainer.viewContext.fetch(requestItem)
+            for item in items {
+                print(item.name)
+                print(item.price)
+            }
+        } catch {
+            print("Failed to fetch items")
+        }
         
         return true
     }
