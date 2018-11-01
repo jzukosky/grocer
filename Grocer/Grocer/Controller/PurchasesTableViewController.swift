@@ -10,14 +10,25 @@ import UIKit
 
 class PurchasesTableViewController: UITableViewController {
 
-    let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
-    let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
-    
-    let purchase = Purchase(date: NSDate(), paid: <#T##[User : Bool]#>, purchaseDescription: <#T##String?#>, receipt: <#T##NSData#>, selected: <#T##[User : Bool]#>, tax: <#T##Float#>, title: <#T##String?#>)
-    
+    var purchases: [Purchase] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
+        let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
+        
+        if let user1 = user1, let user2 = user2 {
+            let purchase1 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase")
+            let purchase2 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase")
+            let purchase3 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase")
+            let purchase4 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase")
+            purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
+        }
+        
+        for purchase in purchases {
+            print(isPurchaseActive(purchase: purchase))
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -37,15 +48,17 @@ class PurchasesTableViewController: UITableViewController {
         return 1
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "activePurchases", for: indexPath)
+//
+//        let purchase = purchases[indexPath.row]
+//
+//        cell.textLabel?.text = purchase.title
+//        // Configure the cell...
+//
+//        return cell
+//    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -92,4 +105,12 @@ class PurchasesTableViewController: UITableViewController {
     }
     */
 
+    func isPurchaseActive(purchase: Purchase) -> Bool {
+        for paid in purchase.paid.values {
+            if paid == false {
+                return false
+            }
+        }
+        return true
+    }
 }
