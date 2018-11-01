@@ -15,20 +15,25 @@ class PurchasesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /* ------ Test Data: Delete before merge ------ */
+        
         let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
         let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
         
         if let user1 = user1, let user2 = user2 {
-            let purchase1 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase")
-            let purchase2 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase")
-            let purchase3 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase")
-            let purchase4 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase")
+            let purchase1 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase1")
+            let purchase2 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase2")
+            let purchase3 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "PastTestPurchase")
+            let purchase4 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "PastTestPurchase2")
             purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
         }
         
         for purchase in purchases {
             print(isPurchaseActive(purchase: purchase))
         }
+        
+        /* ------ Test Data ------ */
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
