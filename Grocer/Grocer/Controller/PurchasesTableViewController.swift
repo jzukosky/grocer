@@ -10,6 +10,11 @@ import UIKit
 
 class PurchasesTableViewController: UITableViewController {
 
+    let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
+    let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
+    
+    let purchase = Purchase(date: NSDate(), paid: <#T##[User : Bool]#>, purchaseDescription: <#T##String?#>, receipt: <#T##NSData#>, selected: <#T##[User : Bool]#>, tax: <#T##Float#>, title: <#T##String?#>)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
