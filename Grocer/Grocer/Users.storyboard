@@ -25,17 +25,48 @@
             </objects>
             <point key="canvasLocation" x="-2161" y="-56"/>
         </scene>
-        <!--View Controller-->
+        <!--Users View Controller-->
         <scene sceneID="L4N-Gm-1uw">
             <objects>
-                <viewController id="rYD-dS-69k" sceneMemberID="viewController">
+                <viewController id="rYD-dS-69k" customClass="UsersViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TPa-e6-Iod">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3mS-D0-vTd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M85-Jh-H3I">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mzt-WJ-VQX">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="peS-57-SNK" firstAttribute="bottom" secondItem="3mS-D0-vTd" secondAttribute="bottom" id="Rd3-AH-zW8"/>
+                            <constraint firstItem="3mS-D0-vTd" firstAttribute="top" secondItem="peS-57-SNK" secondAttribute="top" id="VLf-d3-DiE"/>
+                            <constraint firstItem="peS-57-SNK" firstAttribute="trailing" secondItem="3mS-D0-vTd" secondAttribute="trailing" id="a2Q-38-e3j"/>
+                            <constraint firstItem="3mS-D0-vTd" firstAttribute="leading" secondItem="peS-57-SNK" secondAttribute="leading" id="ktz-qu-79f"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="peS-57-SNK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3f4-nc-Yh5"/>
+                    <navigationItem key="navigationItem" id="3f4-nc-Yh5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Z2o-hS-Qmd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jmk-Je-7fv"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJe-un-eTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
