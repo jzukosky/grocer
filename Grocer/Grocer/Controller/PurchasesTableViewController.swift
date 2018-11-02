@@ -8,10 +8,12 @@
 
 import UIKit
 
-class PurchasesTableViewController: UITableViewController {
+class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+
 
     var purchases: [Purchase] = []
-
+    var pastPurchases:[Purchase] = []
+    var activePurchases:[Purchase] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +31,12 @@ class PurchasesTableViewController: UITableViewController {
         }
         
         for purchase in purchases {
-            print(isPurchaseActive(purchase: purchase))
+            if (!isPurchaseActive(purchase: purchase)){
+                pastPurchases.append(purchase)
+            }
+            else{
+                activePurchases.append(purchase)
+            }
         }
         
         /* ------ Test Data ------ */
@@ -40,18 +47,67 @@ class PurchasesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return activePurchases.count
+        case 1:
+            return pastPurchases.count
+        default:
+            return purchases.count
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath)
+        if (indexPath.section == 0){
+            if let cell = cell as? PurchaseTableViewCell{
+                let purchase = activePurchases[indexPath.row]
+                if (purchase.receipt != nil){
+                    cell.purchaseImage.image = UIImage(data: purchase.receipt! as Data)
+                }
+                cell.purchaseTitleLabel.text = purchase.title
+            }
+        }
+        else if(indexPath.section == 1){
+            if let cell = cell as? PurchaseTableViewCell{
+                let purchase = pastPurchases[indexPath.row]
+                if (purchase.receipt != nil){
+                    cell.purchaseImage.image = UIImage(data: purchase.receipt! as Data)
+                }
+                cell.purchaseTitleLabel.text = purchase.title
+            }
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (section == 0){
+            return "Active Purchase"
+        }
+        if (section == 1){
+            return "Past Purchase"
+        }
+        return nil
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
+    // MARK: - Table view data source
+
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
+
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 1
+//    }
 
     
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
