@@ -53,6 +53,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1F064BF21922026008049E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A13AF3D92191F547009D305C /* Item+CoreDataClass.swift */,
+				A13AF3DA2191F547009D305C /* Item+CoreDataProperties.swift */,
+				A13AF3DE2191F547009D305C /* Purchase+CoreDataClass.swift */,
+				A13AF3DB2191F547009D305C /* Purchase+CoreDataProperties.swift */,
+				A13AF3DC2191F547009D305C /* User+CoreDataClass.swift */,
+				A13AF3DD2191F547009D305C /* User+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E256AC31218A7B580023D0CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,13 +95,8 @@
 		E2DE6AAA217E87A9006F2EA7 /* Grocer */ = {
 			isa = PBXGroup;
 			children = (
+				A1F064BF21922026008049E8 /* Model */,
 				E2DE6AAB217E87A9006F2EA7 /* AppDelegate.swift */,
-				A13AF3D92191F547009D305C /* Item+CoreDataClass.swift */,
-				A13AF3DA2191F547009D305C /* Item+CoreDataProperties.swift */,
-				A13AF3DE2191F547009D305C /* Purchase+CoreDataClass.swift */,
-				A13AF3DB2191F547009D305C /* Purchase+CoreDataProperties.swift */,
-				A13AF3DC2191F547009D305C /* User+CoreDataClass.swift */,
-				A13AF3DD2191F547009D305C /* User+CoreDataProperties.swift */,
 				E2DE6AB5217E87AA006F2EA7 /* Assets.xcassets */,
 				E2DE6AB7217E87AA006F2EA7 /* LaunchScreen.storyboard */,
 				E2DE6ABA217E87AA006F2EA7 /* Info.plist */,
