@@ -65,23 +65,29 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         if (indexPath.section == 0){
             if let cell = cell as? PurchaseTableViewCell{
                 let purchase = activePurchases[indexPath.row]
-                if (purchase.receipt != nil){
-                    cell.purchaseImage.image = UIImage(data: purchase.receipt! as Data)
-                }
+
                 cell.purchaseTitleLabel.text = purchase.title
-                if let receipt = purchase.receipt {
-                    cell.imageView?.image = UIImage(data: receipt)
+                
+                if let receipt = purchase.receipt,
+                    let receiptImage = UIImage(data: receipt) {
+                    cell.purchaseImage.image = receiptImage
                 } else {
+                    cell.purchaseImage.image = UIImage(named: "ProfileImage")
                 }
             }
         }
         else if(indexPath.section == 1){
             if let cell = cell as? PurchaseTableViewCell{
                 let purchase = pastPurchases[indexPath.row]
-                if (purchase.receipt != nil){
-                    cell.purchaseImage.image = UIImage(data: purchase.receipt! as Data)
-                }
+                
                 cell.purchaseTitleLabel.text = purchase.title
+                
+                if let receipt = purchase.receipt,
+                    let receiptImage = UIImage(data: receipt) {
+                    cell.purchaseImage.image = receiptImage
+                } else {
+                    cell.purchaseImage.image = UIImage(named: "ProfileImage")
+                }
             }
         }
         
@@ -100,6 +106,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
 
     // MARK: - Table view data source
 

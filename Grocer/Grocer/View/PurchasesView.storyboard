@@ -37,32 +37,32 @@
                                 <rect key="frame" x="0.0" y="74" width="1024" height="1272"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCell" rowHeight="122" id="k6w-h3-cJ2" customClass="PurchaseTableViewCell" customModule="Grocer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1024" height="122"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCell" rowHeight="120" id="k6w-h3-cJ2" customClass="PurchaseTableViewCell" customModule="Grocer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="1024" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k6w-h3-cJ2" id="Z3F-sB-iwP" customClass="PurchaseTableViewCell" customModule="Grocer" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="121.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mDH-SL-dig">
-                                                    <rect key="frame" x="5" y="1" width="119.5" height="119.5"/>
+                                                    <rect key="frame" x="10" y="4" width="111.5" height="111.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="mDH-SL-dig" secondAttribute="height" multiplier="1:1" id="rpo-mB-MwN"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iJ-Nv-i4s">
-                                                    <rect key="frame" x="254.5" y="42.5" width="73.5" height="37"/>
+                                                    <rect key="frame" x="251.5" y="41.5" width="73.5" height="37"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mDH-SL-dig" firstAttribute="leading" secondItem="Z3F-sB-iwP" secondAttribute="leading" constant="5" id="2xD-VT-PO1"/>
+                                                <constraint firstItem="mDH-SL-dig" firstAttribute="leading" secondItem="Z3F-sB-iwP" secondAttribute="leading" constant="10" id="2xD-VT-PO1"/>
                                                 <constraint firstItem="3iJ-Nv-i4s" firstAttribute="centerY" secondItem="Z3F-sB-iwP" secondAttribute="centerY" id="Tjv-0r-SgL"/>
                                                 <constraint firstItem="3iJ-Nv-i4s" firstAttribute="leading" secondItem="mDH-SL-dig" secondAttribute="trailing" constant="130" id="VUY-Ux-mlR"/>
-                                                <constraint firstAttribute="bottom" secondItem="mDH-SL-dig" secondAttribute="bottom" constant="1" id="tf6-sS-Co7"/>
-                                                <constraint firstItem="mDH-SL-dig" firstAttribute="top" secondItem="Z3F-sB-iwP" secondAttribute="top" constant="1" id="yGe-Ag-1xy"/>
+                                                <constraint firstAttribute="bottom" secondItem="mDH-SL-dig" secondAttribute="bottom" constant="4" id="tf6-sS-Co7"/>
+                                                <constraint firstItem="mDH-SL-dig" firstAttribute="top" secondItem="Z3F-sB-iwP" secondAttribute="top" constant="4" id="yGe-Ag-1xy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
