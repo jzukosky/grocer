@@ -23,10 +23,10 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
         
         if let user1 = user1, let user2 = user2 {
-            let purchase1 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase1")
-            let purchase2 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "ActiveTestPurchase2")
-            let purchase3 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "PastTestPurchase")
-            let purchase4 = Purchase(date: NSDate(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: NSData(), selected: [:], tax: 2.3, title: "PastTestPurchase2")
+            let purchase1 = Purchase(date: Date(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase1")
+            let purchase2 = Purchase(date: Date(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase2")
+            let purchase3 = Purchase(date: Date(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase")
+            let purchase4 = Purchase(date: Date(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase2")
             purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
         }
         
@@ -69,6 +69,10 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                     cell.purchaseImage.image = UIImage(data: purchase.receipt! as Data)
                 }
                 cell.purchaseTitleLabel.text = purchase.title
+                if let receipt = purchase.receipt {
+                    cell.imageView?.image = UIImage(data: receipt)
+                } else {
+                }
             }
         }
         else if(indexPath.section == 1){

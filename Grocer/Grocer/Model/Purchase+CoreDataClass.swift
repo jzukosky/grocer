@@ -13,7 +13,7 @@ import CoreData
 @objc(Purchase)
 public class Purchase: NSManagedObject {
 
-    convenience init?(date: NSDate, paid: [User : Bool], purchaseDescription: String?, receipt: NSData, selected: [User : Bool], tax: Float, title: String?) {
+    convenience init?(date: Date, paid: [User : Bool], purchaseDescription: String?, receipt: Data, selected: [User : Bool], tax: Float, title: String?) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil

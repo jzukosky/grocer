@@ -12,7 +12,7 @@ import CoreData
 
 public class User: NSManagedObject {
 
-    convenience init?(username: String, email:String?, information:String?, picture: NSData?){
+    convenience init?(username: String, email:String?, information:String?, picture: Data?){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
