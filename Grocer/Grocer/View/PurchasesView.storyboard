@@ -37,21 +37,21 @@
                                 <rect key="frame" x="0.0" y="74" width="1024" height="1272"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCell" rowHeight="120" id="k6w-h3-cJ2" customClass="PurchaseTableViewCell" customModule="Grocer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1024" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCell" rowHeight="150" id="k6w-h3-cJ2" customClass="PurchaseTableViewCell" customModule="Grocer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="1024" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k6w-h3-cJ2" id="Z3F-sB-iwP" customClass="PurchaseTableViewCell" customModule="Grocer" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mDH-SL-dig">
-                                                    <rect key="frame" x="10" y="4" width="111.5" height="111.5"/>
+                                                    <rect key="frame" x="10" y="4" width="141.5" height="141.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="mDH-SL-dig" secondAttribute="height" multiplier="1:1" id="rpo-mB-MwN"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iJ-Nv-i4s">
-                                                    <rect key="frame" x="251.5" y="41.5" width="73.5" height="37"/>
+                                                    <rect key="frame" x="940.5" y="56.5" width="73.5" height="37"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,8 +59,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mDH-SL-dig" firstAttribute="leading" secondItem="Z3F-sB-iwP" secondAttribute="leading" constant="10" id="2xD-VT-PO1"/>
-                                                <constraint firstItem="3iJ-Nv-i4s" firstAttribute="centerY" secondItem="Z3F-sB-iwP" secondAttribute="centerY" id="Tjv-0r-SgL"/>
-                                                <constraint firstItem="3iJ-Nv-i4s" firstAttribute="leading" secondItem="mDH-SL-dig" secondAttribute="trailing" constant="130" id="VUY-Ux-mlR"/>
+                                                <constraint firstItem="3iJ-Nv-i4s" firstAttribute="top" secondItem="Z3F-sB-iwP" secondAttribute="top" constant="56.5" id="InV-d8-IXx"/>
+                                                <constraint firstAttribute="trailing" secondItem="3iJ-Nv-i4s" secondAttribute="trailing" constant="10" id="bib-xh-kwx"/>
+                                                <constraint firstAttribute="bottom" secondItem="3iJ-Nv-i4s" secondAttribute="bottom" constant="56" id="fTl-mD-PGd"/>
                                                 <constraint firstAttribute="bottom" secondItem="mDH-SL-dig" secondAttribute="bottom" constant="4" id="tf6-sS-Co7"/>
                                                 <constraint firstItem="mDH-SL-dig" firstAttribute="top" secondItem="Z3F-sB-iwP" secondAttribute="top" constant="4" id="yGe-Ag-1xy"/>
                                             </constraints>
@@ -88,6 +89,9 @@
                         <viewLayoutGuide key="safeArea" id="Mxk-sk-Y89"/>
                     </view>
                     <navigationItem key="navigationItem" id="RTU-cY-bfX"/>
+                    <connections>
+                        <outlet property="tableView" destination="y9Z-l8-DBo" id="TTu-mp-9Uj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fh-v9-GFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
