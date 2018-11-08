@@ -23,11 +23,21 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
         let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
+        let date2 = dateFormatter.date(from: "01/08/2018") ?? Date(timeIntervalSinceNow: 0)
+        let date3 = dateFormatter.date(from: "01/07/2018") ?? Date(timeIntervalSinceNow: 0)
+        let date4 = dateFormatter.date(from: "01/19/2018") ?? Date(timeIntervalSinceNow: 0)
+
+        
         if let user1 = user1, let user2 = user2 {
-            let purchase1 = Purchase(date: Date(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase11")
-            let purchase2 = Purchase(date: Date(timeIntervalSinceNow: 0), paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase22")
-            let purchase3 = Purchase(date: Date(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase11")
-            let purchase4 = Purchase(date: Date(timeIntervalSinceNow: 0), paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase222")
+            let purchase1 = Purchase(date: date1, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase11")
+            let purchase2 = Purchase(date: date2, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase22")
+            let purchase3 = Purchase(date: date3, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase11")
+            let purchase4 = Purchase(date: date4, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase222")
             purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
         }
         
@@ -38,6 +48,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             else{
                 activePurchases.append(purchase)
             }
+            print(purchase.date)
             print(formatDate(date: purchase.date))
         }
         
@@ -126,12 +137,12 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func formatDate(date: Date) -> String {
-        let today = Date.init(timeIntervalSinceNow: 0)
-        let yesterday = Date.init(timeIntervalSinceNow: -60*60*24)
+        let today = Date(timeIntervalSinceNow: 0)
+        let yesterday = Date(timeIntervalSinceNow: -60*60*24)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM dd YYYY"
+        dateFormatter.dateFormat = "MMM d, YYYY"
         
         if date <= today{
             return "Today"
