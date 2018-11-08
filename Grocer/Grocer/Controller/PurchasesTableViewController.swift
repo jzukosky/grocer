@@ -67,7 +67,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             if let cell = cell as? PurchaseTableViewCell{
                 let purchase = activePurchases[indexPath.row]
 
-                cell.purchaseTitleLabel.text = purchase.title
+                cell.purchaseLabel.text = purchase.title
                 
                 if let receipt = purchase.receipt,
                     let receiptImage = UIImage(data: receipt) {
@@ -81,7 +81,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             if let cell = cell as? PurchaseTableViewCell{
                 let purchase = pastPurchases[indexPath.row]
                 
-                cell.purchaseTitleLabel.text = purchase.title
+                cell.purchaseLabel.text = purchase.title
                 
                 if let receipt = purchase.receipt,
                     let receiptImage = UIImage(data: receipt) {
@@ -107,9 +107,18 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
-    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = segue.destination as? SportsEventDetailViewController,
+//            let row = sportsEventsTableView.indexPathForSelectedRow?.row {
+//            destination.sportsEvent = sportsEvents[row]
+//        }
+//    }
+    
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 150
+//    }
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
