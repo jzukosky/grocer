@@ -94,10 +94,15 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         return 2
     }
     
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "purchaseDetailSegue",
             let destination = segue.destination as? PurchaseDetailViewController,
             let row = tableView.indexPathForSelectedRow?.row {
+            tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
             if (tableView.indexPathForSelectedRow?.section == 0){
                 destination.purchase = activePurchases[row]
             }
