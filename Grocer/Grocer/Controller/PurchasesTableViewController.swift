@@ -38,15 +38,10 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             else{
                 activePurchases.append(purchase)
             }
+            print(formatDate(date: purchase.date))
         }
         
         /* ------ Test Data ------ */
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,21 +89,17 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         return 2
     }
     
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "purchaseDetailSegue",
             let destination = segue.destination as? PurchaseDetailViewController,
             let row = tableView.indexPathForSelectedRow?.row {
-            tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
             if (tableView.indexPathForSelectedRow?.section == 0){
                 destination.purchase = activePurchases[row]
             }
             else if (tableView.indexPathForSelectedRow?.section == 1){
                 destination.purchase = pastPurchases[row]
             }
+            tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
         }
     }
     
@@ -132,5 +123,22 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             }
         }
         return false
+    }
+    
+    func formatDate(date: Date) -> String {
+        let today = Date.init(timeIntervalSinceNow: 0)
+        let yesterday = Date.init(timeIntervalSinceNow: -60*60*24)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM dd YYYY"
+        
+        if date <= today{
+            return "Today"
+        } else if date <= yesterday {
+            return "Yesterday"
+        } else {
+            return dateFormatter.string(from: date)
+        }
     }
 }
