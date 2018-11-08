@@ -25,12 +25,12 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/YYYY"
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         
         let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date2 = dateFormatter.date(from: "01/08/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date3 = dateFormatter.date(from: "01/07/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date4 = dateFormatter.date(from: "01/19/2018") ?? Date(timeIntervalSinceNow: 0)
+        let date2 = dateFormatter.date(from: "11/08/2018") ?? Date(timeIntervalSinceNow: 0)
+        let date3 = dateFormatter.date(from: "11/07/2018") ?? Date(timeIntervalSinceNow: 0)
+        let date4 = dateFormatter.date(from: "11/19/2018") ?? Date(timeIntervalSinceNow: 0)
 
         
         if let user1 = user1, let user2 = user2 {
@@ -139,14 +139,17 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     func formatDate(date: Date) -> String {
         let today = Date(timeIntervalSinceNow: 0)
         let yesterday = Date(timeIntervalSinceNow: -60*60*24)
+        let dayBeforeYesterday = Date(timeIntervalSinceNow: -60*60*24*2)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MMM d, YYYY"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         
-        if date <= today{
+        if date >= today {
+            return "Future"
+        } else if date >= yesterday {
             return "Today"
-        } else if date <= yesterday {
+        } else if date >= dayBeforeYesterday {
             return "Yesterday"
         } else {
             return dateFormatter.string(from: date)
