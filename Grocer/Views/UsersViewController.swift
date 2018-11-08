@@ -11,8 +11,9 @@ import UIKit
 class UsersViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
  
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var userImageView: UIImageView!
     
-    
+    var defaultUser = UIImageView(image: <#T##UIImage?#>)
 
     
 
@@ -22,12 +23,20 @@ class UsersViewController: UIViewController, UICollectionViewDelegate, UICollect
         // Do any additional setup after loading the view.
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "userCell", for: indexPath)
+        
+        let image = defaultUser
+        
+        cell.backgroundView = userImageView.
     }
     
 
