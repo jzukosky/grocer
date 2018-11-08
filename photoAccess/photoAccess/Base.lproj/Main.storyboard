@@ -32,19 +32,29 @@
                                     <action selector="requestPhotoLibraryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LSS-2S-1qK"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gK8-0t-yVK">
+                                <rect key="frame" x="0.0" y="38" width="375" height="238"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3Ws-Du-51O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerXWithinMargins" id="1Fy-Sg-DAC"/>
                             <constraint firstItem="3Ws-Du-51O" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerYWithinMargins" id="1Xa-oS-DcG"/>
                             <constraint firstItem="ppF-5c-tnz" firstAttribute="top" secondItem="3Ws-Du-51O" secondAttribute="bottom" constant="39.5" id="26u-8s-XeA"/>
+                            <constraint firstItem="gK8-0t-yVK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HYr-ra-nx4"/>
+                            <constraint firstItem="gK8-0t-yVK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JXb-Zz-aSn"/>
                             <constraint firstItem="ppF-5c-tnz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerXWithinMargins" id="QR6-Fz-jXx"/>
+                            <constraint firstItem="gK8-0t-yVK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cZN-BO-Ru1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="gK8-0t-yVK" id="nzM-Pq-8xr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
