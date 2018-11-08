@@ -68,6 +68,7 @@
                                         <connections>
                                             <outlet property="purchaseImage" destination="X5S-hj-6ZG" id="hl7-tJ-bH0"/>
                                             <outlet property="purchaseLabel" destination="t9G-Ag-aSs" id="TP7-f2-Ze7"/>
+                                            <segue destination="3yB-rE-8n0" kind="show" identifier="purchaseDetailSegue" id="JBg-5c-6h5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -94,6 +95,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDB-m2-zZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-300" y="-105.41727672035138"/>
+        </scene>
+        <!--Purchase Detail View Controller-->
+        <scene sceneID="4y6-cZ-EJk">
+            <objects>
+                <viewController id="3yB-rE-8n0" customClass="PurchaseDetailViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0eK-z1-eFI">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMc-s4-QIw">
+                                <rect key="frame" x="491" y="83" width="141" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Meb-4d-3aF">
+                                <rect key="frame" x="366" y="378" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Xj6-Ah-No5"/>
+                    </view>
+                    <connections>
+                        <outlet property="purchaseImage" destination="Meb-4d-3aF" id="fiA-cg-Nln"/>
+                        <outlet property="purchaseLabel" destination="XMc-s4-QIw" id="ddb-NJ-bNf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GQE-q9-L3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="450.58593749999994" y="-115.0805270863836"/>
         </scene>
     </scenes>
 </document>
