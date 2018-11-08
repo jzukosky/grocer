@@ -98,7 +98,12 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         if segue.identifier == "purchaseDetailSegue",
             let destination = segue.destination as? PurchaseDetailViewController,
             let row = tableView.indexPathForSelectedRow?.row {
-            destination.purchase = purchases[row]
+            if (tableView.indexPathForSelectedRow?.section == 0){
+                destination.purchase = activePurchases[row]
+            }
+            else if (tableView.indexPathForSelectedRow?.section == 1){
+                destination.purchase = pastPurchases[row]
+            }
         }
     }
     
@@ -118,9 +123,9 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     func isPurchaseActive(purchase: Purchase) -> Bool {
         for paid in purchase.paid.values {
             if paid == false {
-                return false
+                return true
             }
         }
-        return true
+        return false
     }
 }

@@ -87,7 +87,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GlP-WB-T9P"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8Eg-n8-i3b"/>
+                    <navigationItem key="navigationItem" id="8Eg-n8-i3b">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uFa-xW-hrP"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hZN-Dl-ajo" id="swY-ia-cc4"/>
                     </connections>
