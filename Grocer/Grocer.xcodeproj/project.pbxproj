@@ -14,6 +14,7 @@
 		E2DE6AB6217E87AA006F2EA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2DE6AB5217E87AA006F2EA7 /* Assets.xcassets */; };
 		E2DE6AB9217E87AA006F2EA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2DE6AB7217E87AA006F2EA7 /* LaunchScreen.storyboard */; };
 		E2DE6AC1217F8D8B006F2EA7 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2DE6AC0217F8D8B006F2EA7 /* Users.storyboard */; };
+		E2EDDDB321942BAE002CE57E /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EDDDB221942BAE002CE57E /* UserCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E2DE6AB8217E87AA006F2EA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2DE6ABA217E87AA006F2EA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2DE6AC0217F8D8B006F2EA7 /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		E2EDDDB221942BAE002CE57E /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				E256AC32218A7B6D0023D0CC /* UsersViewController.swift */,
+				E2EDDDB221942BAE002CE57E /* UserCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2DE6AB4217E87A9006F2EA7 /* Grocer.xcdatamodeld in Sources */,
+				E2EDDDB321942BAE002CE57E /* UserCollectionViewCell.swift in Sources */,
 				E256AC33218A7B6D0023D0CC /* UsersViewController.swift in Sources */,
 				E2DE6AAC217E87A9006F2EA7 /* AppDelegate.swift in Sources */,
 			);

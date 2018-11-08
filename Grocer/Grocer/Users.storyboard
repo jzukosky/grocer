@@ -40,11 +40,11 @@
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="200" minY="200" maxX="200" maxY="200"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mzt-WJ-VQX">
-                                        <rect key="frame" x="284" y="200" width="200" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -63,6 +63,10 @@
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="rYD-dS-69k" id="BzX-gE-fSp"/>
+                                    <outlet property="delegate" destination="rYD-dS-69k" id="WX5-Ks-eVr"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,6 +82,9 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Z2o-hS-Qmd"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jmk-Je-7fv"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="3mS-D0-vTd" id="S4a-n4-ykv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJe-un-eTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
