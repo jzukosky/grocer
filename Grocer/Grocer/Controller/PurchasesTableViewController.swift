@@ -117,7 +117,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     func populatePurchaseCell(purchase:Purchase, cell: PurchaseTableViewCell){
         
         cell.purchaseLabel.text = purchase.title
-        
+        cell.purchaseDateLabel.text = formatDate(date: purchase.date)
         if let receipt = purchase.receipt,
             let receiptImage = UIImage(data: receipt) {
             cell.purchaseImage.image = receiptImage

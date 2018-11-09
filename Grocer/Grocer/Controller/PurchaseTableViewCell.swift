@@ -12,6 +12,7 @@ class PurchaseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var purchaseImage: UIImageView!
     
+    @IBOutlet weak var purchaseDateLabel: UILabel!
     @IBOutlet weak var purchaseLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
