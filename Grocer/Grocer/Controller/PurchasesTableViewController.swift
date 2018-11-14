@@ -40,7 +40,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             let purchase4 = Purchase(date: date4, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase222")
             purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
         }
-        
+        /* ------ Test Data ------ */
         for purchase in purchases {
             if (!isPurchaseActive(purchase: purchase)){
                 pastPurchases.append(purchase)
@@ -48,11 +48,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             else{
                 activePurchases.append(purchase)
             }
-            print(purchase.date)
-            print(formatDate(date: purchase.date))
         }
-        
-        /* ------ Test Data ------ */
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,7 +142,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         dateFormatter.dateFormat = "MMM d, yyyy"
         
         if date >= today {
-            return "Future"
+            return "Something Went Wrong"
         } else if date >= yesterday {
             return "Today"
         } else if date >= dayBeforeYesterday {
