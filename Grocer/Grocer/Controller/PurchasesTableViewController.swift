@@ -11,7 +11,6 @@ import UIKit
 class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
     @IBOutlet weak var tableView: UITableView!
-    
     var purchases: [Purchase] = []
     var pastPurchases:[Purchase] = []
     var activePurchases:[Purchase] = []
@@ -63,6 +62,15 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return 90
+        default:
+            return 120
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath)
         if (indexPath.section == 0){
@@ -111,7 +119,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func populatePurchaseCell(purchase:Purchase, cell: PurchaseTableViewCell){
-        
         cell.purchaseLabel.text = purchase.title
         cell.purchaseDateLabel.text = formatDate(date: purchase.date)
         if let receipt = purchase.receipt,
