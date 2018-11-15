@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B5384322218B7AB5008863AC /* PurchasesView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5384321218B7AB5008863AC /* PurchasesView.storyboard */; };
-		B5384324218B7D3D008863AC /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5384323218B7D3D008863AC /* PurchasesTableViewController.swift */; };
-		B5384326218BA93E008863AC /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5384325218BA93E008863AC /* PurchaseTableViewCell.swift */; };
-		B5511D072187DB0A00FA9DBA /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D012187DB0A00FA9DBA /* User+CoreDataClass.swift */; };
-		B5511D082187DB0A00FA9DBA /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D022187DB0A00FA9DBA /* User+CoreDataProperties.swift */; };
-		B5511D092187DB0A00FA9DBA /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D032187DB0A00FA9DBA /* Item+CoreDataClass.swift */; };
-		B5511D0A2187DB0A00FA9DBA /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D042187DB0A00FA9DBA /* Item+CoreDataProperties.swift */; };
-		B5511D0B2187DB0A00FA9DBA /* Purchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D052187DB0A00FA9DBA /* Purchase+CoreDataClass.swift */; };
-		B5511D0C2187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5511D062187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift */; };
-		B5E7B6272194BE2B00B801E1 /* PurchaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7B6262194BE2B00B801E1 /* PurchaseDetailViewController.swift */; };
 		E2CF8CE1219CD7F600CBE927 /* Purchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF8CD7219CD7F400CBE927 /* Purchase+CoreDataProperties.swift */; };
 		E2CF8CE2219CD7F600CBE927 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF8CD8219CD7F500CBE927 /* Item+CoreDataClass.swift */; };
 		E2CF8CE3219CD7F600CBE927 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF8CD9219CD7F500CBE927 /* PurchaseTableViewCell.swift */; };
@@ -34,16 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B5384321218B7AB5008863AC /* PurchasesView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = PurchasesView.storyboard; path = Grocer/View/PurchasesView.storyboard; sourceTree = "<group>"; };
-		B5384323218B7D3D008863AC /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PurchasesTableViewController.swift; path = Grocer/Controller/PurchasesTableViewController.swift; sourceTree = "<group>"; };
-		B5384325218BA93E008863AC /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PurchaseTableViewCell.swift; path = Grocer/Controller/PurchaseTableViewCell.swift; sourceTree = "<group>"; };
-		B5511D012187DB0A00FA9DBA /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "Grocer/Model/User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B5511D022187DB0A00FA9DBA /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Grocer/Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B5511D032187DB0A00FA9DBA /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataClass.swift"; path = "Grocer/Model/Item+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B5511D042187DB0A00FA9DBA /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "Grocer/Model/Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B5511D052187DB0A00FA9DBA /* Purchase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Purchase+CoreDataClass.swift"; path = "Grocer/Model/Purchase+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B5511D062187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Purchase+CoreDataProperties.swift"; path = "Grocer/Model/Purchase+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B5E7B6262194BE2B00B801E1 /* PurchaseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PurchaseDetailViewController.swift; path = Grocer/Controller/PurchaseDetailViewController.swift; sourceTree = "<group>"; };
 		E2CF8CD7219CD7F400CBE927 /* Purchase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2CF8CD8219CD7F500CBE927 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2CF8CD9219CD7F500CBE927 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -108,16 +88,6 @@
 		E2DE6A9F217E87A9006F2EA7 = {
 			isa = PBXGroup;
 			children = (
-				B5E7B6262194BE2B00B801E1 /* PurchaseDetailViewController.swift */,
-				B5384325218BA93E008863AC /* PurchaseTableViewCell.swift */,
-				B5384323218B7D3D008863AC /* PurchasesTableViewController.swift */,
-				B5384321218B7AB5008863AC /* PurchasesView.storyboard */,
-				B5511D012187DB0A00FA9DBA /* User+CoreDataClass.swift */,
-				B5511D022187DB0A00FA9DBA /* User+CoreDataProperties.swift */,
-				B5511D032187DB0A00FA9DBA /* Item+CoreDataClass.swift */,
-				B5511D042187DB0A00FA9DBA /* Item+CoreDataProperties.swift */,
-				B5511D052187DB0A00FA9DBA /* Purchase+CoreDataClass.swift */,
-				B5511D062187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift */,
 				E2DE6AAA217E87A9006F2EA7 /* Grocer */,
 				E2DE6AA9217E87A9006F2EA7 /* Products */,
 			);
@@ -206,7 +176,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2DE6AC1217F8D8B006F2EA7 /* Users.storyboard in Resources */,
-				B5384322218B7AB5008863AC /* PurchasesView.storyboard in Resources */,
 				E2DE6AB9217E87AA006F2EA7 /* LaunchScreen.storyboard in Resources */,
 				E2DE6AB6217E87AA006F2EA7 /* Assets.xcassets in Resources */,
 			);
@@ -219,26 +188,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5511D0A2187DB0A00FA9DBA /* Item+CoreDataProperties.swift in Sources */,
-				B5511D092187DB0A00FA9DBA /* Item+CoreDataClass.swift in Sources */,
 				E2CF8CE1219CD7F600CBE927 /* Purchase+CoreDataProperties.swift in Sources */,
-				B5384324218B7D3D008863AC /* PurchasesTableViewController.swift in Sources */,
 				E2CF8CE6219CD7F600CBE927 /* Purchase+CoreDataClass.swift in Sources */,
 				E2CF8CE2219CD7F600CBE927 /* Item+CoreDataClass.swift in Sources */,
 				E2DE6AB4217E87A9006F2EA7 /* Grocer.xcdatamodeld in Sources */,
-				B5384326218BA93E008863AC /* PurchaseTableViewCell.swift in Sources */,
 				E2DE6AAC217E87A9006F2EA7 /* AppDelegate.swift in Sources */,
-				B5511D082187DB0A00FA9DBA /* User+CoreDataProperties.swift in Sources */,
 				E2CF8CE8219CD7F600CBE927 /* User+CoreDataProperties.swift in Sources */,
-				B5E7B6272194BE2B00B801E1 /* PurchaseDetailViewController.swift in Sources */,
 				E2CF8CE5219CD7F600CBE927 /* PurchasesTableViewController.swift in Sources */,
 				E2CF8CE4219CD7F600CBE927 /* PurchaseDetailViewController.swift in Sources */,
 				E2CF8CE9219CD7F600CBE927 /* Item+CoreDataProperties.swift in Sources */,
-				B5511D0B2187DB0A00FA9DBA /* Purchase+CoreDataClass.swift in Sources */,
 				E2CF8CE7219CD7F600CBE927 /* User+CoreDataClass.swift in Sources */,
-				B5511D0C2187DB0A00FA9DBA /* Purchase+CoreDataProperties.swift in Sources */,
 				E2CF8CE3219CD7F600CBE927 /* PurchaseTableViewCell.swift in Sources */,
-				B5511D072187DB0A00FA9DBA /* User+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
