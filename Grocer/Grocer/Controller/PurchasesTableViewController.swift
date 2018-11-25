@@ -8,12 +8,17 @@
 
 import UIKit
 
-class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
 
     @IBOutlet weak var tableView: UITableView!
     var purchases: [Purchase] = []
     var pastPurchases:[Purchase] = []
     var activePurchases:[Purchase] = []
+    var filteredPurchases = [Purchase]()
+    var filteredActive = [Purchase]()
+    var filteredPast = [Purchase]()
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,12 +45,23 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
         }
         /* ------ Test Data ------ */
-        for purchase in purchases {
+        filteredPurchases = purchases
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        /* ------ Test Data ------ */
+        for purchase in filteredPurchases {
             if (!isPurchaseActive(purchase: purchase)){
                 pastPurchases.append(purchase)
+                filteredPast.append(purchase)
             }
             else{
                 activePurchases.append(purchase)
+                filteredActive.append(purchase)
             }
         }
     }
@@ -53,21 +69,12 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return activePurchases.count
+            return filteredActive.count
         case 1:
-            return pastPurchases.count
+            return filteredPast.count
         default:
-            return purchases.count
+            return filteredPurchases.count
             
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return 90
-        default:
-            return 120
         }
     }
     
@@ -75,14 +82,14 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseCell", for: indexPath)
         if (indexPath.section == 0){
             if let cell = cell as? PurchaseTableViewCell{
-                let purchase = activePurchases[indexPath.row]
-
+                let purchase = filteredActive[indexPath.row]
+                
                 populatePurchaseCell(purchase: purchase, cell: cell)
             }
         }
         else if(indexPath.section == 1){
             if let cell = cell as? PurchaseTableViewCell{
-                let purchase = pastPurchases[indexPath.row]
+                let purchase = filteredPast[indexPath.row]
                 
                 populatePurchaseCell(purchase: purchase, cell: cell)
             }
@@ -100,6 +107,16 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
         return nil
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return 90
+        default:
+            return 120
+        }
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -109,16 +126,17 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             let destination = segue.destination as? PurchaseDetailViewController,
             let row = tableView.indexPathForSelectedRow?.row {
             if (tableView.indexPathForSelectedRow?.section == 0){
-                destination.purchase = activePurchases[row]
+                destination.purchase = filteredActive[row]
             }
             else if (tableView.indexPathForSelectedRow?.section == 1){
-                destination.purchase = pastPurchases[row]
+                destination.purchase = filteredPast[row]
             }
             tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
         }
     }
     
     func populatePurchaseCell(purchase:Purchase, cell: PurchaseTableViewCell){
+        
         cell.purchaseLabel.text = purchase.title
         cell.purchaseDateLabel.text = formatDate(date: purchase.date)
         if let receipt = purchase.receipt,
@@ -129,7 +147,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-
+    
     func isPurchaseActive(purchase: Purchase) -> Bool {
         for paid in purchase.paid.values {
             if paid == false {
@@ -157,5 +175,18 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         } else {
             return dateFormatter.string(from: date)
         }
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        // If we haven't typed anything into the search bar then do not filter the results
+        if searchController.searchBar.text! == "" {
+            filteredPurchases = purchases
+            filteredActive = activePurchases
+            filteredPast = pastPurchases
+        } else {
+            filteredActive = activePurchases.filter { $0.title!.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+            filteredPast = pastPurchases.filter { $0.title!.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+        }
+        
+        self.tableView.reloadData()
     }
 }
