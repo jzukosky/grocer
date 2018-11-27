@@ -97,7 +97,11 @@
                         <viewLayoutGuide key="safeArea" id="GlP-WB-T9P"/>
                     </view>
                     <navigationItem key="navigationItem" id="8Eg-n8-i3b">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uFa-xW-hrP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uFa-xW-hrP">
+                            <connections>
+                                <action selector="testSaveData:" destination="nYD-TJ-wjR" id="Eh1-Ja-amu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hZN-Dl-ajo" id="swY-ia-cc4"/>

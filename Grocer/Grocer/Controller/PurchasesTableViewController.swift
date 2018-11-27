@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
 
@@ -65,7 +66,46 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             }
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        
+        do{
+            purchases = try managedContext.fetch(fetchRequest)
+            tableView.reloadData()
+            
+            
+        }catch{
+            print("Fetch could not be performed")
+        }
+    }
     
+    @IBAction func testSaveData(_ sender: UIBarButtonItem) {
+        let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
+        let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
+        let dateFormatter = DateFormatter()
+        let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
+        if let user1 = user1, let user2 = user2 {
+            
+            if let purchase = Purchase(date: date1, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "test save"){
+                do{
+                    let managedContext = purchase.managedObjectContext
+                    
+                    try managedContext?.save()
+                    
+                    print("test data saved")
+                    
+                }catch{
+                    print("Conext could not be saved")
+                }
+            }
+            
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
