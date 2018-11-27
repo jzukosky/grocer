@@ -59,6 +59,13 @@ class PhotoViewController: UIViewController,UIImagePickerControllerDelegate, UIN
                 
                 self.present(self.imagePicker, animated: true, completion: nil)
             }}
+ 
+      /*  if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self;
+            myPickerController.sourceType = .photoLibrary
+            currentVC.present(myPickerController, animated: true, completion: nil)
+        }*/
         }
     func presentCamera(){
         print("camera success")
@@ -67,6 +74,7 @@ class PhotoViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
         self.dismiss(animated: true, completion: { () -> Void in
             
+            print("select inside")
         })
         print("select")
         imageView.image = image
