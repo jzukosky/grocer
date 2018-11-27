@@ -1,14 +1,14 @@
 //
-//  photoAccessUITests.swift
-//  photoAccessUITests
+//  Photo_Library_and_CameraUITests.swift
+//  Photo Library and CameraUITests
 //
-//  Created by Roger Kiew on 11/1/18.
-//  Copyright © 2018 Roger Kiew. All rights reserved.
+//  Created by Dale Musser on 11/27/18.
+//  Copyright © 2018 Tech Innovator. All rights reserved.
 //
 
 import XCTest
 
-class photoAccessUITests: XCTestCase {
+class Photo_Library_and_CameraUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

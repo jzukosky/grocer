@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  photoAccess
+//  Photo Library and Camera
 //
-//  Created by Roger Kiew on 11/1/18.
-//  Copyright © 2018 Roger Kiew. All rights reserved.
+//  Created by Dale Musser on 11/27/18.
+//  Copyright © 2018 Tech Innovator. All rights reserved.
 //
 
 import UIKit
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "photoAccess")
+        let container = NSPersistentContainer(name: "Photo_Library_and_Camera")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

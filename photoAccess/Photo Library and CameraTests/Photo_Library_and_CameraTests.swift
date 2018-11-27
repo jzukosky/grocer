@@ -1,15 +1,15 @@
 //
-//  photoAccessTests.swift
-//  photoAccessTests
+//  Photo_Library_and_CameraTests.swift
+//  Photo Library and CameraTests
 //
-//  Created by Roger Kiew on 11/1/18.
-//  Copyright © 2018 Roger Kiew. All rights reserved.
+//  Created by Dale Musser on 11/27/18.
+//  Copyright © 2018 Tech Innovator. All rights reserved.
 //
 
 import XCTest
-@testable import photoAccess
+@testable import Photo_Library_and_Camera
 
-class photoAccessTests: XCTestCase {
+class Photo_Library_and_CameraTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
