@@ -24,8 +24,8 @@ extension Purchase {
     @NSManaged public var rawSelected: NSObject?
     @NSManaged public var tax: Float
     @NSManaged public var title: String?
-    @NSManaged public var rawItems: NSSet?
-    @NSManaged public var rawPurchasees: NSSet?
+    @NSManaged public var rawItems: NSOrderedSet?
+    @NSManaged public var rawPurchasees: NSOrderedSet?
     @NSManaged public var rawPurchaser: User?
 
 }

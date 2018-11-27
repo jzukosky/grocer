@@ -49,6 +49,18 @@ public class Purchase: NSManagedObject {
         }
     }
     
+    var purchasees: [User]? {
+        return self.rawPurchasees?.array as? [User]
+    }
+    
+    var items: [Item]? {
+        return self.rawItems?.array as? [Item]
+    }
+    
+    var purchaser: User {
+        return self.rawPurchaser!
+    }
+    
     convenience init?(date: Date, paid: [User : Bool], purchaseDescription: String?, receipt: Data, selected: [User : Bool], tax: Float, title: String?) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

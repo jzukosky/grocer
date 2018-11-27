@@ -21,7 +21,7 @@ extension User {
     @NSManaged public var information: String?
     @NSManaged public var rawPicture: NSData?
     @NSManaged public var username: String?
-    @NSManaged public var rawPastPurchases: NSSet?
+    @NSManaged public var rawPastPurchases: NSOrderedSet?
 
 }
 

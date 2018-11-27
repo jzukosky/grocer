@@ -22,6 +22,10 @@ public class User: NSManagedObject {
         }
     }
     
+    var pastPurchases: [Purchase]? {
+        return self.rawPastPurchases?.array as? [Purchase]
+    }
+    
     convenience init?(username: String, email:String?, information:String?, picture: Data?){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
