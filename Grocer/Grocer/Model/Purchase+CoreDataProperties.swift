@@ -2,7 +2,7 @@
 //  Purchase+CoreDataProperties.swift
 //  Grocer
 //
-//  Created by linChunbin on 10/29/18.
+//  Created by Qiwen Guo on 11/27/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -17,49 +17,49 @@ extension Purchase {
         return NSFetchRequest<Purchase>(entityName: "Purchase")
     }
 
-    @NSManaged public var date: Date
-    @NSManaged public var paid: [User : Bool]
+    @NSManaged public var rawDate: NSDate?
+    @NSManaged public var rawPaid: NSObject?
     @NSManaged public var purchaseDescription: String?
-    @NSManaged public var receipt: Data?
-    @NSManaged public var selected: [User : Bool]
+    @NSManaged public var rawReceipt: NSData?
+    @NSManaged public var rawSelected: NSObject?
     @NSManaged public var tax: Float
     @NSManaged public var title: String?
-    @NSManaged public var items: NSSet?
-    @NSManaged public var purchaser: User?
-    @NSManaged public var purchasees: NSSet?
+    @NSManaged public var rawItems: NSSet?
+    @NSManaged public var rawPurchasees: NSSet?
+    @NSManaged public var rawPurchaser: User?
 
 }
 
-// MARK: Generated accessors for items
+// MARK: Generated accessors for rawItems
 extension Purchase {
 
-    @objc(addItemsObject:)
-    @NSManaged public func addToItems(_ value: Item)
+    @objc(addRawItemsObject:)
+    @NSManaged public func addToRawItems(_ value: Item)
 
-    @objc(removeItemsObject:)
-    @NSManaged public func removeFromItems(_ value: Item)
+    @objc(removeRawItemsObject:)
+    @NSManaged public func removeFromRawItems(_ value: Item)
 
-    @objc(addItems:)
-    @NSManaged public func addToItems(_ values: NSSet)
+    @objc(addRawItems:)
+    @NSManaged public func addToRawItems(_ values: NSSet)
 
-    @objc(removeItems:)
-    @NSManaged public func removeFromItems(_ values: NSSet)
+    @objc(removeRawItems:)
+    @NSManaged public func removeFromRawItems(_ values: NSSet)
 
 }
 
-// MARK: Generated accessors for purchasees
+// MARK: Generated accessors for rawPurchasees
 extension Purchase {
 
-    @objc(addPurchaseesObject:)
-    @NSManaged public func addToPurchasees(_ value: User)
+    @objc(addRawPurchaseesObject:)
+    @NSManaged public func addToRawPurchasees(_ value: User)
 
-    @objc(removePurchaseesObject:)
-    @NSManaged public func removeFromPurchasees(_ value: User)
+    @objc(removeRawPurchaseesObject:)
+    @NSManaged public func removeFromRawPurchasees(_ value: User)
 
-    @objc(addPurchasees:)
-    @NSManaged public func addToPurchasees(_ values: NSSet)
+    @objc(addRawPurchasees:)
+    @NSManaged public func addToRawPurchasees(_ values: NSSet)
 
-    @objc(removePurchasees:)
-    @NSManaged public func removeFromPurchasees(_ values: NSSet)
+    @objc(removeRawPurchasees:)
+    @NSManaged public func removeFromRawPurchasees(_ values: NSSet)
 
 }

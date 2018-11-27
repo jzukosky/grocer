@@ -2,7 +2,7 @@
 //  Purchase+CoreDataClass.swift
 //  Grocer
 //
-//  Created by linChunbin on 10/29/18.
+//  Created by Qiwen Guo on 11/27/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -12,7 +12,43 @@ import CoreData
 
 @objc(Purchase)
 public class Purchase: NSManagedObject {
-
+    
+    var date: Date? {
+        get {
+            return rawDate as Date?
+        }
+        set {
+            rawDate = newValue as NSDate?
+        }
+    }
+    
+    var receipt: Data? {
+        get {
+            return rawReceipt as Data?
+        }
+        set {
+            rawReceipt = newValue as NSData?
+        }
+    }
+    
+    var paid: [User : Bool] {
+        get {
+            return rawPaid as! [User : Bool] // ? how to convert nsobject to dictionary???
+        }
+        set {
+            rawPaid = newValue as NSObject
+        }
+    }
+    
+    var selected: [User : Bool] {
+        get {
+            return rawSelected as! [User : Bool] // ? how to convert nsobject to dictionary???
+        }
+        set {
+            rawSelected = newValue as NSObject
+        }
+    }
+    
     convenience init?(date: Date, paid: [User : Bool], purchaseDescription: String?, receipt: Data, selected: [User : Bool], tax: Float, title: String?) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

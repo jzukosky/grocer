@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  Grocer
 //
-//  Created by linChunbin on 10/29/18.
+//  Created by Qiwen Guo on 11/27/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -13,31 +13,31 @@ import CoreData
 
 extension User {
 
-    @nonobjc public class func fetchUserRequest() -> NSFetchRequest<User> {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
     }
 
     @NSManaged public var email: String?
     @NSManaged public var information: String?
-    @NSManaged public var picture: Data?
-    @NSManaged public var username: String
-    @NSManaged public var pastPurchases: NSSet?
+    @NSManaged public var rawPicture: NSData?
+    @NSManaged public var username: String?
+    @NSManaged public var rawPastPurchases: NSSet?
 
 }
 
-// MARK: Generated accessors for pastPurchases
+// MARK: Generated accessors for rawPastPurchases
 extension User {
 
-    @objc(addPastPurchasesObject:)
-    @NSManaged public func addToPastPurchases(_ value: Purchase)
+    @objc(addRawPastPurchasesObject:)
+    @NSManaged public func addToRawPastPurchases(_ value: Purchase)
 
-    @objc(removePastPurchasesObject:)
-    @NSManaged public func removeFromPastPurchases(_ value: Purchase)
+    @objc(removeRawPastPurchasesObject:)
+    @NSManaged public func removeFromRawPastPurchases(_ value: Purchase)
 
-    @objc(addPastPurchases:)
-    @NSManaged public func addToPastPurchases(_ values: NSSet)
+    @objc(addRawPastPurchases:)
+    @NSManaged public func addToRawPastPurchases(_ values: NSSet)
 
-    @objc(removePastPurchases:)
-    @NSManaged public func removeFromPastPurchases(_ values: NSSet)
+    @objc(removeRawPastPurchases:)
+    @NSManaged public func removeFromRawPastPurchases(_ values: NSSet)
 
 }

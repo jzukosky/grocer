@@ -78,7 +78,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
 
         do{
             purchases = try managedContext.fetch(fetchRequest)
-            //tableView.reloadData()
+            // tableView.reloadData()
             print("fetched data")
 
         }catch{
@@ -181,7 +181,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     func populatePurchaseCell(purchase:Purchase, cell: PurchaseTableViewCell){
         
         cell.purchaseLabel.text = purchase.title
-        cell.purchaseDateLabel.text = formatDate(date: purchase.date)
+        cell.purchaseDateLabel.text = formatDate(date: purchase.date ?? Date.init(timeIntervalSinceNow: 0))
         if let receipt = purchase.receipt,
             let receiptImage = UIImage(data: receipt) {
             cell.purchaseImage.image = receiptImage

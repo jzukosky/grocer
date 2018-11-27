@@ -2,7 +2,7 @@
 //  Item+CoreDataProperties.swift
 //  Grocer
 //
-//  Created by linChunbin on 10/29/18.
+//  Created by Qiwen Guo on 11/27/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -13,29 +13,29 @@ import CoreData
 
 extension Item {
 
-    @nonobjc public class func fetchItemRequest() -> NSFetchRequest<Item> {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Item> {
         return NSFetchRequest<Item>(entityName: "Item")
     }
 
-    @NSManaged public var name: String
+    @NSManaged public var name: String?
     @NSManaged public var price: Float
-    @NSManaged public var users: NSSet?
+    @NSManaged public var rawUsers: NSOrderedSet?
 
 }
 
-// MARK: Generated accessors for users
+// MARK: Generated accessors for rawUsers
 extension Item {
 
-    @objc(addUsersObject:)
-    @NSManaged public func addToUsers(_ value: User)
+    @objc(addRawUsersObject:)
+    @NSManaged public func addToRawUsers(_ value: User)
 
-    @objc(removeUsersObject:)
-    @NSManaged public func removeFromUsers(_ value: User)
+    @objc(removeRawUsersObject:)
+    @NSManaged public func removeFromRawUsers(_ value: User)
 
-    @objc(addUsers:)
-    @NSManaged public func addToUsers(_ values: NSSet)
+    @objc(addRawUsers:)
+    @NSManaged public func addToRawUsers(_ values: NSSet)
 
-    @objc(removeUsers:)
-    @NSManaged public func removeFromUsers(_ values: NSSet)
+    @objc(removeRawUsers:)
+    @NSManaged public func removeFromRawUsers(_ values: NSSet)
 
 }
