@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83D284D521ADCB0D0071294A /* AddPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */; };
 		B5568EBD219D00B9007BD7C4 /* PurchaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */; };
 		B5568EBE219D00B9007BD7C4 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */; };
 		B5568EBF219D00B9007BD7C4 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseViewController.swift; sourceTree = "<group>"; };
 		B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewController.swift; sourceTree = "<group>"; };
 		B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */,
 				B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */,
 				B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */,
+				83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				B5568EC9219D00CA007BD7C4 /* Purchase+CoreDataClass.swift in Sources */,
 				B5568ECB219D00CA007BD7C4 /* Item+CoreDataProperties.swift in Sources */,
 				B5568ECA219D00CA007BD7C4 /* User+CoreDataClass.swift in Sources */,
+				83D284D521ADCB0D0071294A /* AddPurchaseViewController.swift in Sources */,
 				B5568ECC219D00CA007BD7C4 /* User+CoreDataProperties.swift in Sources */,
 				B5568EBF219D00B9007BD7C4 /* PurchaseTableViewCell.swift in Sources */,
 			);
