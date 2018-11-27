@@ -71,11 +71,6 @@ class UserCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
         
-        #warning("Customize cell shape")
-        
-        
-        
-        
         if let image = users[indexPath.row].picture {
             cell.userImage?.image = UIImage(data: image, scale: 1.0)
         } else {
