@@ -66,24 +66,27 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             }
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
-        
+
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-        
+
         do{
             purchases = try managedContext.fetch(fetchRequest)
-            tableView.reloadData()
-            
-            
+            //tableView.reloadData()
+            print("fetched data")
+
         }catch{
             print("Fetch could not be performed")
         }
+        
     }
-    
+
     @IBAction func testSaveData(_ sender: UIBarButtonItem) {
         let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
         let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)

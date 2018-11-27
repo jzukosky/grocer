@@ -10,6 +10,7 @@
 import UIKit
 import CoreData
 
+@objc(User)
 public class User: NSManagedObject {
 
     convenience init?(username: String, email:String?, information:String?, picture: Data?){
