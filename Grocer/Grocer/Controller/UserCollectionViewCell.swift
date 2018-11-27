@@ -11,8 +11,23 @@ import UIKit
 class UserCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userImage: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        userImage.roundedImage()
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         userImage.image = nil
+    }
+}
+
+extension UIImageView {
+    func roundedImage() {
+        self.layer.cornerRadius = 20
+        self.clipsToBounds = true
+        self.layer.borderWidth = 4
+        self.layer.borderColor = UIColor.init(red:0.56, green:0.84, blue:0.54, alpha:1.0).cgColor
     }
 }

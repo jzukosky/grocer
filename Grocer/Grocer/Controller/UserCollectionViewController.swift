@@ -30,11 +30,14 @@ class UserCollectionViewController: UICollectionViewController {
             flowLayout.minimumLineSpacing = 30
             flowLayout.sectionInset.left = 30
             flowLayout.sectionInset.right = 30
+            flowLayout.sectionInset.top = 30
             let horizontalSpacing = flowLayout.minimumInteritemSpacing + flowLayout.sectionInset.right*2
             let cellWidth = (view.frame.width - (numberOfCells-1)*horizontalSpacing)/numberOfCells
             flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         }
         // Do any additional setup after loading the view.
+        
+        
         
         #warning("pull from core data")
     }
@@ -69,6 +72,9 @@ class UserCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
         
         #warning("Customize cell shape")
+        
+        
+        
         
         if let image = users[indexPath.row].picture {
             cell.userImage?.image = UIImage(data: image, scale: 1.0)
