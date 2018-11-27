@@ -93,16 +93,66 @@
             </objects>
             <point key="canvasLocation" x="-648" y="-586"/>
         </scene>
-        <!--View Controller-->
+        <!--Create New Profile-->
         <scene sceneID="l6A-y9-Kda">
             <objects>
                 <viewController id="OHx-Wr-hHn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nAz-It-rx8">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6f-zJ-Vj4">
+                                <rect key="frame" x="267" y="200" width="299" height="287"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fW5-LH-kvB">
+                                <rect key="frame" x="60" y="597" width="724" height="52"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMc-cA-QPK">
+                                <rect key="frame" x="60" y="741" width="724" height="52"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Information" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQ7-VP-Xaf">
+                                <rect key="frame" x="60" y="669" width="724" height="52"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yz5-p0-K2h">
+                                <rect key="frame" x="344.5" y="507" width="144" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wcQ-Av-RsU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Change User Image"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fW5-LH-kvB" firstAttribute="leading" secondItem="aQ7-VP-Xaf" secondAttribute="leading" id="1Je-6q-Ap3"/>
+                            <constraint firstItem="fW5-LH-kvB" firstAttribute="leading" secondItem="zxW-C5-Vyw" secondAttribute="leading" constant="60" id="CZC-S0-V3M"/>
+                            <constraint firstItem="Yz5-p0-K2h" firstAttribute="top" secondItem="g6f-zJ-Vj4" secondAttribute="bottom" constant="20" id="EbS-Wi-PE1"/>
+                            <constraint firstItem="zxW-C5-Vyw" firstAttribute="trailing" secondItem="g6f-zJ-Vj4" secondAttribute="trailing" constant="268" id="Fdt-r4-zsT"/>
+                            <constraint firstItem="iMc-cA-QPK" firstAttribute="top" secondItem="aQ7-VP-Xaf" secondAttribute="bottom" constant="20" id="HeJ-bR-mx4"/>
+                            <constraint firstItem="fW5-LH-kvB" firstAttribute="trailing" secondItem="aQ7-VP-Xaf" secondAttribute="trailing" id="NfP-Pl-E0e"/>
+                            <constraint firstItem="fW5-LH-kvB" firstAttribute="top" secondItem="Yz5-p0-K2h" secondAttribute="bottom" constant="40" id="Yu1-Yj-zhq"/>
+                            <constraint firstItem="aQ7-VP-Xaf" firstAttribute="trailing" secondItem="iMc-cA-QPK" secondAttribute="trailing" id="c6C-Zd-cUi"/>
+                            <constraint firstItem="g6f-zJ-Vj4" firstAttribute="centerX" secondItem="Yz5-p0-K2h" secondAttribute="centerX" id="eoY-Iz-zPh"/>
+                            <constraint firstItem="aQ7-VP-Xaf" firstAttribute="top" secondItem="fW5-LH-kvB" secondAttribute="bottom" constant="20" id="lWp-P5-xnX"/>
+                            <constraint firstItem="aQ7-VP-Xaf" firstAttribute="leading" secondItem="iMc-cA-QPK" secondAttribute="leading" id="mDp-MS-vRS"/>
+                            <constraint firstItem="g6f-zJ-Vj4" firstAttribute="leading" secondItem="zxW-C5-Vyw" secondAttribute="leading" constant="267" id="qlL-Jz-saT"/>
+                            <constraint firstItem="zxW-C5-Vyw" firstAttribute="trailing" secondItem="fW5-LH-kvB" secondAttribute="trailing" constant="50" id="snp-0P-LKg"/>
+                            <constraint firstItem="g6f-zJ-Vj4" firstAttribute="top" secondItem="zxW-C5-Vyw" secondAttribute="top" constant="100" id="vjD-xj-ExA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zxW-C5-Vyw"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Create New Profile" id="VnV-5x-JJT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hur-68-uNU"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXq-GT-FWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
