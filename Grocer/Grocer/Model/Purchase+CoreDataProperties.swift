@@ -2,7 +2,7 @@
 //  Purchase+CoreDataProperties.swift
 //  Grocer
 //
-//  Created by Qiwen Guo on 11/27/18.
+//  Created by Qiwen Guo on 11/28/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -17,49 +17,65 @@ extension Purchase {
         return NSFetchRequest<Purchase>(entityName: "Purchase")
     }
 
-    @NSManaged public var rawDate: NSDate?
-    @NSManaged public var rawPaid: NSObject?
     @NSManaged public var purchaseDescription: String?
+    @NSManaged public var rawDate: NSDate?
     @NSManaged public var rawReceipt: NSData?
-    @NSManaged public var rawSelected: NSObject?
     @NSManaged public var tax: Float
     @NSManaged public var title: String?
-    @NSManaged public var rawItems: NSOrderedSet?
-    @NSManaged public var rawPurchasees: NSOrderedSet?
-    @NSManaged public var rawPurchaser: User?
+    @NSManaged public var items: NSSet?
+    @NSManaged public var recipients: NSSet?
+    @NSManaged public var purchaser: User?
+    @NSManaged public var payments: NSSet?
 
 }
 
-// MARK: Generated accessors for rawItems
+// MARK: Generated accessors for items
 extension Purchase {
 
-    @objc(addRawItemsObject:)
-    @NSManaged public func addToRawItems(_ value: Item)
+    @objc(addItemsObject:)
+    @NSManaged public func addToItems(_ value: Item)
 
-    @objc(removeRawItemsObject:)
-    @NSManaged public func removeFromRawItems(_ value: Item)
+    @objc(removeItemsObject:)
+    @NSManaged public func removeFromItems(_ value: Item)
 
-    @objc(addRawItems:)
-    @NSManaged public func addToRawItems(_ values: NSSet)
+    @objc(addItems:)
+    @NSManaged public func addToItems(_ values: NSSet)
 
-    @objc(removeRawItems:)
-    @NSManaged public func removeFromRawItems(_ values: NSSet)
+    @objc(removeItems:)
+    @NSManaged public func removeFromItems(_ values: NSSet)
 
 }
 
-// MARK: Generated accessors for rawPurchasees
+// MARK: Generated accessors for recipients
 extension Purchase {
 
-    @objc(addRawPurchaseesObject:)
-    @NSManaged public func addToRawPurchasees(_ value: User)
+    @objc(addRecipientsObject:)
+    @NSManaged public func addToRecipients(_ value: User)
 
-    @objc(removeRawPurchaseesObject:)
-    @NSManaged public func removeFromRawPurchasees(_ value: User)
+    @objc(removeRecipientsObject:)
+    @NSManaged public func removeFromRecipients(_ value: User)
 
-    @objc(addRawPurchasees:)
-    @NSManaged public func addToRawPurchasees(_ values: NSSet)
+    @objc(addRecipients:)
+    @NSManaged public func addToRecipients(_ values: NSSet)
 
-    @objc(removeRawPurchasees:)
-    @NSManaged public func removeFromRawPurchasees(_ values: NSSet)
+    @objc(removeRecipients:)
+    @NSManaged public func removeFromRecipients(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for payments
+extension Purchase {
+
+    @objc(addPaymentsObject:)
+    @NSManaged public func addToPayments(_ value: Payment)
+
+    @objc(removePaymentsObject:)
+    @NSManaged public func removeFromPayments(_ value: Payment)
+
+    @objc(addPayments:)
+    @NSManaged public func addToPayments(_ values: NSSet)
+
+    @objc(removePayments:)
+    @NSManaged public func removeFromPayments(_ values: NSSet)
 
 }

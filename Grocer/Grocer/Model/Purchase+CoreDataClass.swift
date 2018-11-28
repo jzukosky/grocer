@@ -2,7 +2,7 @@
 //  Purchase+CoreDataClass.swift
 //  Grocer
 //
-//  Created by Qiwen Guo on 11/27/18.
+//  Created by Qiwen Guo on 11/28/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -12,7 +12,6 @@ import CoreData
 
 @objc(Purchase)
 public class Purchase: NSManagedObject {
-    
     var date: Date? {
         get {
             return rawDate as Date?
@@ -31,65 +30,72 @@ public class Purchase: NSManagedObject {
         }
     }
     
-    var paid: [User : Bool] {
-        get {
-            return rawPaid as! [User : Bool] // ? how to convert nsobject to dictionary???
-        }
-        set {
-            rawPaid = newValue as NSObject
-        }
-    }
-    
-    var selected: [User : Bool] {
-        get {
-            return rawSelected as! [User : Bool] // ? how to convert nsobject to dictionary???
-        }
-        set {
-            rawSelected = newValue as NSObject
-        }
-    }
-    
-    var purchasees: [User]? {
-        return self.rawPurchasees?.array as? [User]
-    }
-    
-    var items: [Item]? {
-        return self.rawItems?.array as? [Item]
-    }
-    
-    var purchaser: User {
-        return self.rawPurchaser!
-    }
-    
-    convenience init?(date: Date, paid: [User : Bool], purchaseDescription: String?, receipt: Data, selected: [User : Bool], tax: Float, title: String?) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
+    convenience init?(title: String, purchaseDescription: String?, date: Date, tax: Float, receipt: Data?, purchaser: User) {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        guard let managedContext = appDelegate?.persistentContainer.viewContext,
+            title != "" else {
+                return nil
         }
         
-        let context = appDelegate.persistentContainer.viewContext
-        self.init(entity: Purchase.entity(), insertInto: context)
-        self.date = date
-        self.paid = paid
-        self.purchaseDescription = purchaseDescription
-        self.receipt = receipt
-        self.selected = selected
-        self.tax = tax
+        self.init(entity: Purchase.entity(), insertInto: managedContext)
+        
         self.title = title
+        self.purchaseDescription = purchaseDescription
+        self.date = date
+        self.tax = tax
+        self.receipt = receipt
+        self.purchaser = purchaser
     }
     
-    convenience init?(date: Date, purchaseDescription: String?, receipt: Data, tax: Float, title: String?) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
+    func getTitle() -> String? {
+        return title
+    }
+    
+    func getPurchaseDescription() -> String? {
+        return purchaseDescription
+    }
+    
+    func getTax() -> Float? {
+        return tax
+    }
+    
+    func getReceipt() -> Data? {
+        return receipt
+    }
+    
+    func getPurchaser() -> User? {
+        return purchaser
+    }
+    
+    func getRecipients() -> [User]? {
+        return recipients?.allObjects as? [User]
+    }
+    
+    func getPayments() -> [Payment]? {
+        return payments?.allObjects as? [Payment]
+    }
+    
+    func generateString() -> String {
+        var purchaserInfo = ""
+        if let purchaser = getPurchaser() {
+            purchaserInfo = purchaser.generateString()
         }
         
-        let context = appDelegate.persistentContainer.viewContext
-        self.init(entity: Purchase.entity(), insertInto: context)
-        self.date = date
-        self.purchaseDescription = purchaseDescription
-        self.receipt = receipt
-        self.tax = tax
-        self.title = title
+        var recipientsInfo = ""
+        if let recipients = getRecipients() {
+            for recipient in recipients {
+                recipientsInfo += recipient.generateString()
+            }
+        }
+        
+        var paymentInfo = ""
+        if let payments = getPayments() {
+            for payment in payments {
+                paymentInfo += payment.generateString()
+            }
+        }
+        
+        
+        return "title: \(String(describing: title)), purchaseDescription: \(String(describing: purchaseDescription)), date: \(String(describing: date)), tax: \(tax), purchaser: \(purchaserInfo), recipients: \(recipientsInfo), payments: \(paymentInfo)"
     }
 }

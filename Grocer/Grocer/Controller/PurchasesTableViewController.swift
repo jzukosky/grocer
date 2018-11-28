@@ -39,10 +39,10 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
 
         
         if let user1 = user1, let user2 = user2 {
-            let purchase1 = Purchase(date: date1, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase11")
-            let purchase2 = Purchase(date: date2, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase22")
-            let purchase3 = Purchase(date: date3, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase11")
-            let purchase4 = Purchase(date: date4, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase222")
+            let purchase1 = Purchase(title: "Test1", purchaseDescription: "test1", date: date1, tax: 2.3, receipt: nil, purchaser: user1)
+            let purchase2 = Purchase(title: "Test2", purchaseDescription: "test1", date: date2, tax: 2.3, receipt: nil, purchaser: user2)
+            let purchase3 = Purchase(title: "Test3", purchaseDescription: "test1", date: date3, tax: 2.3, receipt: nil, purchaser: user2)
+            let purchase4 = Purchase(title: "Test4", purchaseDescription: "test1", date: date4, tax: 2.3, receipt: nil, purchaser: user1)
             purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
         }
         /* ------ Test Data ------ */
@@ -93,87 +93,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     @IBAction func testSaveData(_ sender: UIBarButtonItem) {
-        let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
-        let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
-        let dateFormatter = DateFormatter()
-        let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
-        if let user1 = user1, let user2 = user2 {
-            
-            if let item = Item(name: "a", price: 2.3){
-                do{
-//                    item.addToRawUsers(user1)
-//                    item.addToRawUsers(user2)
-                    let managedContext = item.managedObjectContext
-                    
-                    try managedContext?.save()
-                    
-                    print("test data saved")
-                    
-                }catch{
-                    print("Conext could not be saved")
-                }
-            }
-            
-        }
-        
-        if let user1 = user1, let user2 = user2 {
-            
-            if let purchase = Purchase(date: date1, purchaseDescription: "test", receipt: Data(), tax: 1.1, title: "dsf"){
-                do{
-                    
-                    let managedContext = purchase.managedObjectContext
-                    
-                    try managedContext?.save()
-                    
-                    print("test data saved")
-                    
-                }catch{
-                    print("Conext could not be saved")
-                }
-            }
-            
-        }
-        
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-        
-        do{
-            var items = try managedContext.fetch(fetchRequest)
-            // tableView.reloadData()
-            print("fetched data")
-            for item in items {
-                print(item.name)
-                print(item.price)
-            }
-            
-        }catch{
-            print("Fetch could not be performed")
-        }
-        
-        guard let appDelegate1 = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        
-        let managedContext1 = appDelegate.persistentContainer.viewContext
-        let fetchRequest1: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-        
-        do{
-            var purchases = try managedContext.fetch(fetchRequest1)
-            // tableView.reloadData()
-            print("fetched data")
-            for purchase in purchases {
-                print(purchase.title)
-                print(purchase.purchaseDescription)
-            }
-            
-        }catch{
-            print("Fetch could not be performed")
-        }
+       
         
         
     }
@@ -260,11 +180,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     
     func isPurchaseActive(purchase: Purchase) -> Bool {
-        for paid in purchase.paid.values {
-            if paid == false {
-                return true
-            }
-        }
         return false
     }
     
