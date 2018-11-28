@@ -25,35 +25,53 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
 
         /* ------ Test Data: Delete before merge ------ */
         
-        let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
-        let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        
-        let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date2 = dateFormatter.date(from: "11/08/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date3 = dateFormatter.date(from: "11/07/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date4 = dateFormatter.date(from: "11/19/2018") ?? Date(timeIntervalSinceNow: 0)
-
-        
-        if let user1 = user1, let user2 = user2 {
-            let purchase1 = Purchase(title: "Test1", purchaseDescription: "test1", date: date1, tax: 2.3, receipt: nil, purchaser: user1)
-            let purchase2 = Purchase(title: "Test2", purchaseDescription: "test1", date: date2, tax: 2.3, receipt: nil, purchaser: user2)
-            let purchase3 = Purchase(title: "Test3", purchaseDescription: "test1", date: date3, tax: 2.3, receipt: nil, purchaser: user2)
-            let purchase4 = Purchase(title: "Test4", purchaseDescription: "test1", date: date4, tax: 2.3, receipt: nil, purchaser: user1)
-            
-            purchase1?.addToItems(Item(name: "test1", price: 3.0)!)
-            purchase2?.addToItems(Item(name: "test2", price: 4.0)!)
-            purchase2?.addToPayments(Payment(date: date2, amount: 4.0)!)
-            
-            purchase3?.addToItems(Item(name: "test2", price: 5.0)!)
-            purchase3?.addToPayments(Payment(date: date2, amount: 4.0)!)
-            
-            purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
-        }
+//        let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
+//        let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.dateFormat = "MM/dd/yyyy"
+//
+//        let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
+//        let date2 = dateFormatter.date(from: "11/08/2018") ?? Date(timeIntervalSinceNow: 0)
+//        let date3 = dateFormatter.date(from: "11/07/2018") ?? Date(timeIntervalSinceNow: 0)
+//        let date4 = dateFormatter.date(from: "11/19/2018") ?? Date(timeIntervalSinceNow: 0)
+//
+//
+//        if let user1 = user1, let user2 = user2 {
+//            let purchase1 = Purchase(title: "Test1", purchaseDescription: "test1", date: date1, tax: 2.3, receipt: nil, purchaser: user1)
+//            let purchase2 = Purchase(title: "Test2", purchaseDescription: "test1", date: date2, tax: 2.3, receipt: nil, purchaser: user2)
+//            let purchase3 = Purchase(title: "Test3", purchaseDescription: "test1", date: date3, tax: 2.3, receipt: nil, purchaser: user2)
+//            let purchase4 = Purchase(title: "Test4", purchaseDescription: "test1", date: date4, tax: 2.3, receipt: nil, purchaser: user1)
+//
+//            purchase1?.addToItems(Item(name: "test1", price: 3.0)!)
+//            purchase2?.addToItems(Item(name: "test2", price: 4.0)!)
+//            purchase2?.addToPayments(Payment(date: date2, amount: 4.0)!)
+//
+//            purchase3?.addToItems(Item(name: "test2", price: 5.0)!)
+//            purchase3?.addToPayments(Payment(date: date2, amount: 4.0)!)
+//
+//            purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
+//        }
         /* ------ Test Data ------ */
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            purchases = try managedContext.fetch(fetchRequest)
+            for purchase in purchases {
+                if let title = purchase.title {
+                    print(title)
+                }
+            }
+        } catch {
+            presentMessage(message: "An error occurred fetching: \(error)")
+        }
+        
         filteredPurchases = purchases
         
         searchController.searchResultsUpdater = self
@@ -77,34 +95,83 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-//            return
-//        }
-//
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-//
-//        do{
-//            var items = try managedContext.fetch(fetchRequest)
-//            // tableView.reloadData()
-//            print("fetched data")
-//            for item in items {
-//                print(item.name)
-//                print(item.price)
-//                print(item.users)
-//            }
-//
-//        }catch{
-//            print("Fetch could not be performed")
-//        }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            purchases = try managedContext.fetch(fetchRequest)
+            for purchase in purchases {
+                if let title = purchase.title {
+                    print(title)
+                }
+            }
+        } catch {
+            presentMessage(message: "An error occurred fetching: \(error)")
+        }
         
     }
 
     @IBAction func testSaveData(_ sender: UIBarButtonItem) {
        
+        let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
+        let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
+
+        
+        
+        if let user1 = user1, let user2 = user2 {
+            let purchase = Purchase(title: "TestAdd", purchaseDescription: "test1", date: date1, tax: 2.3, receipt: nil, purchaser: user1)
+            
+            purchase?.addToItems(Item(name: "test1", price: 3.0)!)
+            purchase?.addToRecipients(user2)
+            
+            if let purchase = purchase {
+                do {
+                    let managedObjectContext = purchase.managedObjectContext
+                    try managedObjectContext?.save()
+                } catch {
+                    presentMessage(message: "An error occurred adding: \(error)")
+                    return
+                }
+            }
+        }
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            purchases = try managedContext.fetch(fetchRequest)
+            for purchase in purchases {
+                if let title = purchase.title {
+                    print(title)
+                }
+            }
+        } catch {
+            presentMessage(message: "An error occurred fetching: \(error)")
+        }
         
         
     }
+    
+    func presentMessage(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
