@@ -77,4 +77,19 @@ public class Purchase: NSManagedObject {
         self.tax = tax
         self.title = title
     }
+    
+    convenience init?(date: Date, purchaseDescription: String?, receipt: Data, tax: Float, title: String?) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        self.init(entity: Purchase.entity(), insertInto: context)
+        self.date = date
+        self.purchaseDescription = purchaseDescription
+        self.receipt = receipt
+        self.tax = tax
+        self.title = title
+    }
 }

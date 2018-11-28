@@ -69,21 +69,26 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewWillAppear(_ animated: Bool) {
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-
-        do{
-            purchases = try managedContext.fetch(fetchRequest)
-            // tableView.reloadData()
-            print("fetched data")
-
-        }catch{
-            print("Fetch could not be performed")
-        }
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+//            return
+//        }
+//
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+//
+//        do{
+//            var items = try managedContext.fetch(fetchRequest)
+//            // tableView.reloadData()
+//            print("fetched data")
+//            for item in items {
+//                print(item.name)
+//                print(item.price)
+//                print(item.users)
+//            }
+//
+//        }catch{
+//            print("Fetch could not be performed")
+//        }
         
     }
 
@@ -94,8 +99,28 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
         if let user1 = user1, let user2 = user2 {
             
-            if let purchase = Purchase(date: date1, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "test save"){
+            if let item = Item(name: "a", price: 2.3){
                 do{
+//                    item.addToRawUsers(user1)
+//                    item.addToRawUsers(user2)
+                    let managedContext = item.managedObjectContext
+                    
+                    try managedContext?.save()
+                    
+                    print("test data saved")
+                    
+                }catch{
+                    print("Conext could not be saved")
+                }
+            }
+            
+        }
+        
+        if let user1 = user1, let user2 = user2 {
+            
+            if let purchase = Purchase(date: date1, purchaseDescription: "test", receipt: Data(), tax: 1.1, title: "dsf"){
+                do{
+                    
                     let managedContext = purchase.managedObjectContext
                     
                     try managedContext?.save()
@@ -108,6 +133,49 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             }
             
         }
+        
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        do{
+            var items = try managedContext.fetch(fetchRequest)
+            // tableView.reloadData()
+            print("fetched data")
+            for item in items {
+                print(item.name)
+                print(item.price)
+            }
+            
+        }catch{
+            print("Fetch could not be performed")
+        }
+        
+        guard let appDelegate1 = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        
+        let managedContext1 = appDelegate.persistentContainer.viewContext
+        let fetchRequest1: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        
+        do{
+            var purchases = try managedContext.fetch(fetchRequest1)
+            // tableView.reloadData()
+            print("fetched data")
+            for purchase in purchases {
+                print(purchase.title)
+                print(purchase.purchaseDescription)
+            }
+            
+        }catch{
+            print("Fetch could not be performed")
+        }
+        
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
