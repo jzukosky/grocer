@@ -75,6 +75,10 @@ public class Purchase: NSManagedObject {
         return payments?.allObjects as? [Payment]
     }
     
+    func getItems() -> [Item]? {
+        return items?.allObjects as? [Item]
+    }
+    
     func generateString() -> String {
         var purchaserInfo = ""
         if let purchaser = getPurchaser() {

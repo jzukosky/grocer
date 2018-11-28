@@ -43,6 +43,14 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             let purchase2 = Purchase(title: "Test2", purchaseDescription: "test1", date: date2, tax: 2.3, receipt: nil, purchaser: user2)
             let purchase3 = Purchase(title: "Test3", purchaseDescription: "test1", date: date3, tax: 2.3, receipt: nil, purchaser: user2)
             let purchase4 = Purchase(title: "Test4", purchaseDescription: "test1", date: date4, tax: 2.3, receipt: nil, purchaser: user1)
+            
+            purchase1?.addToItems(Item(name: "test1", price: 3.0)!)
+            purchase2?.addToItems(Item(name: "test2", price: 4.0)!)
+            purchase2?.addToPayments(Payment(date: date2, amount: 4.0)!)
+            
+            purchase3?.addToItems(Item(name: "test2", price: 5.0)!)
+            purchase3?.addToPayments(Payment(date: date2, amount: 4.0)!)
+            
             purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
         }
         /* ------ Test Data ------ */
@@ -180,7 +188,21 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     
     func isPurchaseActive(purchase: Purchase) -> Bool {
-        return false
+        var totalPayments: Float = 0.0;
+        var totalPrice: Float = 0.0;
+        if let payments = purchase.getPayments() {
+            for payment in payments {
+                totalPayments = payment.amount
+            }
+        }
+        
+        if let items = purchase.getItems() {
+            for item in items {
+                totalPrice += item.price
+            }
+        }
+        
+        return totalPayments != totalPrice
     }
     
     func formatDate(date: Date) -> String {
