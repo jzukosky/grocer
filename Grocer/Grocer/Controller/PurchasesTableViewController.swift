@@ -37,13 +37,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         let date4 = dateFormatter.date(from: "11/19/2018") ?? Date(timeIntervalSinceNow: 0)
 
         
-        if let user1 = user1, let user2 = user2 {
-            let purchase1 = Purchase(date: date1, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase11")
-            let purchase2 = Purchase(date: date2, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase22")
-            let purchase3 = Purchase(date: date3, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase11")
-            let purchase4 = Purchase(date: date4, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase222")
-            purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
-        }
+        
         /* ------ Test Data ------ */
         filteredPurchases = purchases
         
@@ -138,7 +132,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     func populatePurchaseCell(purchase:Purchase, cell: PurchaseTableViewCell){
         
         cell.purchaseLabel.text = purchase.title
-        cell.purchaseDateLabel.text = formatDate(date: purchase.date)
+        cell.purchaseDateLabel.text = formatDate(date: purchase.date!)
         if let receipt = purchase.receipt,
             let receiptImage = UIImage(data: receipt) {
             cell.purchaseImage.image = receiptImage
@@ -149,12 +143,21 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     
     func isPurchaseActive(purchase: Purchase) -> Bool {
-        for paid in purchase.paid.values {
-            if paid == false {
-                return true
+        var totalPayments = 0.0;
+        var totalPrice = 0.0;
+        if let payments = purchase.getPayments() {
+            for payment in payments {
+                totalPayments = payment.amount
             }
         }
-        return false
+        
+        if let items = purchase.getItems() {
+            for item in items {
+                totalPrice += item.price
+            }
+        }
+        
+        return totalPayments != totalPrice
     }
     
     func formatDate(date: Date) -> String {

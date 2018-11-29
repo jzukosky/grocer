@@ -95,7 +95,7 @@ class AddPurchaseViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (action) in
             guard let title = alert.textFields?.first?.text,
             let priceString = alert.textFields?.last?.text,
-            let price = Float(priceString) else {
+            let price = Double(priceString) else {
                 print("title or price failed")
                 //self.present(alert, animated: true, completion: nil)
                 let noAlert = UIAlertController(title: "Incorrect Information", message: nil, preferredStyle: .alert)
