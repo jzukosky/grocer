@@ -74,13 +74,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		E2CF8CEB219CD80C00CBE927 /* Storyboards */ = {
+		E2CF8CEB219CD80C00CBE927 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B5568EC0219D00C1007BD7C4 /* PurchasesView.storyboard */,
 				E2DE6AC0217F8D8B006F2EA7 /* Users.storyboard */,
 			);
-			path = Storyboards;
+			path = View;
 			sourceTree = "<group>";
 		};
 		E2CF8CEC219CD81600CBE927 /* Controller */ = {
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				E2CF8CEC219CD81600CBE927 /* Controller */,
-				E2CF8CEB219CD80C00CBE927 /* Storyboards */,
+				E2CF8CEB219CD80C00CBE927 /* View */,
 				E2CF8CEA219CD80400CBE927 /* Model */,
 				E2DE6AAB217E87A9006F2EA7 /* AppDelegate.swift */,
 				E2DE6AB5217E87AA006F2EA7 /* Assets.xcassets */,
