@@ -11,6 +11,8 @@ import CoreData
 
 class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
 
+    let refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var tableView: UITableView!
     var purchases: [Purchase] = []
     var pastPurchases:[Purchase] = []
@@ -22,7 +24,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         /* ------ Test Data: Delete before merge ------ */
         
 //        let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
@@ -54,6 +55,41 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
 //            purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
 //        }
         /* ------ Test Data ------ */
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//            return
+//        }
+//
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+//        do {
+//            purchases = try managedContext.fetch(fetchRequest)
+//            tableView.reloadData()
+//            for purchase in purchases {
+//                if let title = purchase.title {
+//                    print(title)
+//                }
+//            }
+//        } catch {
+//            presentMessage(message: "An error occurred fetching: \(error)")
+//        }
+        
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        refreshControl.tintColor = UIColor.red
+        tableView.refreshControl = refreshControl
+
+        fetchPurchases()
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        fetchPurchases()
+        
+        refreshControl.endRefreshing()
+    }
+    
+    func fetchPurchases(){
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -63,14 +99,24 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         do {
             purchases = try managedContext.fetch(fetchRequest)
+            tableView.reloadData()
             for purchase in purchases {
                 if let title = purchase.title {
                     print(title)
                 }
             }
+            print(purchases.count)
+            print("View will appear")
         } catch {
             presentMessage(message: "An error occurred fetching: \(error)")
         }
+        
+        
+        pastPurchases.removeAll()
+        activePurchases.removeAll()
+        filteredPurchases.removeAll()
+        filteredPast.removeAll()
+        filteredActive.removeAll()
         
         filteredPurchases = purchases
         
@@ -91,27 +137,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                 filteredActive.append(purchase)
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        do {
-            purchases = try managedContext.fetch(fetchRequest)
-            for purchase in purchases {
-                if let title = purchase.title {
-                    print(title)
-                }
-            }
-        } catch {
-            presentMessage(message: "An error occurred fetching: \(error)")
-        }
         
     }
 
@@ -144,25 +170,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                 }
             }
         }
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        do {
-            purchases = try managedContext.fetch(fetchRequest)
-            for purchase in purchases {
-                if let title = purchase.title {
-                    print(title)
-                }
-            }
-        } catch {
-            presentMessage(message: "An error occurred fetching: \(error)")
-        }
-        
+
         
     }
     
