@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
 
@@ -207,5 +208,64 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         self.tableView.reloadData()
+    }
+    
+    func fetchPurchases(){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            purchases = try managedContext.fetch(fetchRequest)
+            tableView.reloadData()
+            for purchase in purchases {
+                if let title = purchase.title {
+                    print(title)
+                }
+            }
+            print(purchases.count)
+            print("View will appear")
+        } catch {
+            presentMessage(message: "An error occurred fetching: \(error)")
+        }
+        
+        
+        pastPurchases.removeAll()
+        activePurchases.removeAll()
+        filteredPurchases.removeAll()
+        filteredPast.removeAll()
+        filteredActive.removeAll()
+        
+        filteredPurchases = purchases
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        /* ------ Test Data ------ */
+        for purchase in filteredPurchases {
+            if (!isPurchaseActive(purchase: purchase)){
+                pastPurchases.append(purchase)
+                filteredPast.append(purchase)
+            }
+            else{
+                activePurchases.append(purchase)
+                filteredActive.append(purchase)
+            }
+        }
+        
+        
+    }
+    
+    func presentMessage(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
