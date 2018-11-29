@@ -23,19 +23,35 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
 
         /* ------ Test Data: Delete before merge ------ */
-        
+
         let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
         let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        
+
         let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
         let date2 = dateFormatter.date(from: "11/08/2018") ?? Date(timeIntervalSinceNow: 0)
         let date3 = dateFormatter.date(from: "11/07/2018") ?? Date(timeIntervalSinceNow: 0)
         let date4 = dateFormatter.date(from: "11/19/2018") ?? Date(timeIntervalSinceNow: 0)
 
+
+        if let user1 = user1, let user2 = user2 {
+            let purchase1 = Purchase(title: "Test1", purchaseDescription: "test1", date: date1, tax: 2.3, receipt: nil, purchaser: user1)
+            let purchase2 = Purchase(title: "Test2", purchaseDescription: "test1", date: date2, tax: 2.3, receipt: nil, purchaser: user2)
+            let purchase3 = Purchase(title: "Test3", purchaseDescription: "test1", date: date3, tax: 2.3, receipt: nil, purchaser: user2)
+            let purchase4 = Purchase(title: "Test4", purchaseDescription: "test1", date: date4, tax: 2.3, receipt: nil, purchaser: user1)
+
+            purchase1?.addToItems(Item(name: "test1", price: 3.0)!)
+            purchase2?.addToItems(Item(name: "test2", price: 4.0)!)
+            purchase2?.addToPayments(Payment(date: date2, amount: 4.0)!)
+
+            purchase3?.addToItems(Item(name: "test2", price: 5.0)!)
+            purchase3?.addToPayments(Payment(date: date2, amount: 4.0)!)
+
+            purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
+        }
         
         
         /* ------ Test Data ------ */
