@@ -11,6 +11,7 @@ import UIKit
 class UserCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var grayView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +21,9 @@ class UserCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         userImage.image = nil
+        grayView.backgroundColor = UIColor.gray
+        grayView.alpha = 0.0
+        grayView.layer.cornerRadius = 20
     }
 }
 

@@ -14,6 +14,8 @@ class UserCollectionViewController: UICollectionViewController {
     
     var users = [User]()
     var defaultImage = UIImage(named: "ProfileImage")
+    
+    var currentlyEditing = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +73,12 @@ class UserCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
         
+        if currentlyEditing {
+            cell.grayView.alpha = 0.5
+        } else {
+            cell.grayView.alpha = 0.0
+        }
+
         if let image = users[indexPath.row].picture {
             cell.userImage?.image = UIImage(data: image, scale: 1.0)
         } else {
@@ -83,6 +91,24 @@ class UserCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if currentlyEditing {
+            performSegue(withIdentifier: "editUser", sender: self)
+        } else {
+            performSegue(withIdentifier: "showPurchases", sender: self)
+        }
+    }
+    
+    
+    @IBAction func editUser(_ sender: Any) {
+        currentlyEditing = !currentlyEditing
+        collectionView.reloadData()
+
+    }
+
+
+
 
     // MARK: UICollectionViewDelegate
 

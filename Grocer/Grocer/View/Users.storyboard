@@ -53,17 +53,37 @@
                                                 <accessibilityTraits key="traits" button="YES" image="YES"/>
                                             </accessibility>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teP-ws-FDd">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztI-J0-X23">
+                                                    <rect key="frame" x="-5" y="3.5" width="60" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="ztI-J0-X23" firstAttribute="centerX" secondItem="teP-ws-FDd" secondAttribute="centerX" id="AMR-bQ-DlB"/>
+                                                <constraint firstItem="ztI-J0-X23" firstAttribute="centerY" secondItem="teP-ws-FDd" secondAttribute="centerY" id="qBE-qj-caV"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="teP-ws-FDd" firstAttribute="top" secondItem="71y-wm-UR0" secondAttribute="top" id="3fG-S6-mvV"/>
                                     <constraint firstItem="zeR-eE-6zo" firstAttribute="top" secondItem="71y-wm-UR0" secondAttribute="top" id="A0h-jW-Rra"/>
+                                    <constraint firstAttribute="bottom" secondItem="teP-ws-FDd" secondAttribute="bottom" id="Clu-3V-WG9"/>
                                     <constraint firstAttribute="bottom" secondItem="zeR-eE-6zo" secondAttribute="bottom" id="KSd-mm-UPI"/>
                                     <constraint firstItem="zeR-eE-6zo" firstAttribute="leading" secondItem="71y-wm-UR0" secondAttribute="leading" id="VRa-p6-fnl"/>
                                     <constraint firstAttribute="trailing" secondItem="zeR-eE-6zo" secondAttribute="trailing" id="kXM-lA-pz6"/>
+                                    <constraint firstItem="teP-ws-FDd" firstAttribute="leading" secondItem="71y-wm-UR0" secondAttribute="leading" id="kku-Ad-yxn"/>
+                                    <constraint firstAttribute="trailing" secondItem="teP-ws-FDd" secondAttribute="trailing" id="oyg-5W-BAE"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="grayView" destination="teP-ws-FDd" id="nOi-5K-ndr"/>
                                     <outlet property="userImage" destination="zeR-eE-6zo" id="fLh-ow-Wr1"/>
-                                    <segue destination="Ixa-VM-Uyb" kind="show" identifier="showPurchases" id="eWN-Ca-CRz"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -73,13 +93,21 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Ohd-9c-427">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="c2l-dL-OKM"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="c2l-dL-OKM">
+                            <connections>
+                                <action selector="editUser:" destination="4vR-6j-T7x" id="bJB-vt-TvU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9iy-30-Rnc">
                             <connections>
                                 <segue destination="OHx-Wr-hHn" kind="show" identifier="addUser" id="kw0-ac-v4I"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Ixa-VM-Uyb" kind="show" identifier="showPurchases" id="hXs-Ez-c91"/>
+                        <segue destination="OHx-Wr-hHn" kind="show" identifier="editUser" id="csg-XD-3gj"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHh-Yk-raH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -172,7 +200,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXq-GT-FWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-247" y="-56"/>
+            <point key="canvasLocation" x="-268" y="-294"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="csg-XD-3gj"/>
+    </inferredMetricsTieBreakers>
 </document>
