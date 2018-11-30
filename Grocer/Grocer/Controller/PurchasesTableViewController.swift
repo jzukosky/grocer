@@ -89,7 +89,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewWillAppear(_ animated: Bool) {
             fetchPurchases()
-            print("View will appear")
         self.tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -243,12 +242,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         do {
             purchases = try managedContext.fetch(fetchRequest)
             tableView.reloadData()
-            for purchase in purchases {
-                if let title = purchase.title {
-                    print(title)
-                }
-            }
-            print(purchases.count)
         } catch {
             presentMessage(message: "An error occurred fetching: \(error)")
         }
@@ -291,6 +284,8 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func addTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Add a new photo", message: "How do you want to upload the picture?", preferredStyle: .alert)
         
@@ -337,3 +332,4 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         dismiss(animated: true, completion: nil)
     }
 }
+
