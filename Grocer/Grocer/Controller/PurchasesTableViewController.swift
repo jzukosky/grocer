@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
+class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let refreshControl = UIRefreshControl()
     
@@ -21,10 +21,12 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     var filteredActive = [Purchase]()
     var filteredPast = [Purchase]()
     let searchController = UISearchController(searchResultsController: nil)
+    let imagePicker = UIImagePickerController()
+    var imageForReceipt: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        imagePicker.delegate = self
         /* ------ Test Data: Delete before merge ------ */
 
         let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
@@ -87,7 +89,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewWillAppear(_ animated: Bool) {
             fetchPurchases()
-            print("View will appear")
         self.tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,6 +157,12 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                 destination.purchase = filteredPast[row]
             }
             tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
+        }
+        if segue.identifier == "addSegue",
+            let destination = segue.destination as? AddPurchaseViewController {
+            
+            destination.receiptImage = imageForReceipt
+            
         }
     }
     
@@ -235,12 +242,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         do {
             purchases = try managedContext.fetch(fetchRequest)
             tableView.reloadData()
-            for purchase in purchases {
-                if let title = purchase.title {
-                    print(title)
-                }
-            }
-            print(purchases.count)
         } catch {
             presentMessage(message: "An error occurred fetching: \(error)")
         }
@@ -284,4 +285,51 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func addTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Add a new photo", message: "How do you want to upload the picture?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "From camra", style: .default, handler: { action in
+            self.takePhotoWithCamera()
+        }))
+                                      
+                                      
+                                      
+        alert.addAction(UIAlertAction(title: "From photo library", style: .default, handler: { action in
+            self.getPhotoFromLibrary()
+        }))
+        self.present(alert, animated: true)
+        
+    }
+    func takePhotoWithCamera() {
+        if (!UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
+            let alertController = UIAlertController(title: "No Camera", message: "The device has no camera.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        } else {
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func getPhotoFromLibrary() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageForReceipt = pickedImage
+            performSegue(withIdentifier: "addSegue", sender: self)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
+

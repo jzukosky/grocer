@@ -99,12 +99,13 @@
                     <navigationItem key="navigationItem" id="8Eg-n8-i3b">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uFa-xW-hrP">
                             <connections>
-                                <segue destination="G7e-Qt-kcm" kind="show" id="6l5-yg-lPc"/>
+                                <action selector="addTapped:" destination="nYD-TJ-wjR" id="ONe-i0-D3p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hZN-Dl-ajo" id="swY-ia-cc4"/>
+                        <segue destination="G7e-Qt-kcm" kind="show" identifier="addSegue" id="L4g-iL-roY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDB-m2-zZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -152,18 +153,18 @@
                                         <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ben-Xy-fPw" id="6kM-0S-IDF">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jmF-kq-spw">
-                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="16" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Wb-Iy-iUf">
-                                                    <rect key="frame" x="965" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="965" y="16" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
