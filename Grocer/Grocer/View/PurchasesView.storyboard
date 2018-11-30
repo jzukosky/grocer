@@ -225,7 +225,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VH7-2T-wmq">
-                                <rect key="frame" x="43" y="371" width="331" height="30"/>
+                                <rect key="frame" x="255" y="287" width="393" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -240,18 +240,18 @@
                             <constraint firstItem="bXK-a0-rWk" firstAttribute="leading" secondItem="xmq-Jw-Dnm" secondAttribute="trailing" constant="16" id="Cs1-7x-XcV"/>
                             <constraint firstItem="MDY-Zl-4Bq" firstAttribute="leading" secondItem="AWj-PZ-2d3" secondAttribute="leading" id="Cv6-zO-wlw"/>
                             <constraint firstItem="h8F-Zq-5g5" firstAttribute="leading" secondItem="TlF-dq-HZV" secondAttribute="trailing" constant="8" id="EEu-GG-mJv"/>
-                            <constraint firstItem="VH7-2T-wmq" firstAttribute="leading" secondItem="AWj-PZ-2d3" secondAttribute="leading" constant="43" id="Fdk-GZ-5WH"/>
-                            <constraint firstItem="VH7-2T-wmq" firstAttribute="top" secondItem="xmq-Jw-Dnm" secondAttribute="bottom" constant="8" id="G3E-Pm-CYI"/>
                             <constraint firstItem="Vqg-f8-154" firstAttribute="leading" secondItem="AWj-PZ-2d3" secondAttribute="leading" id="Jsq-jy-Vkp"/>
+                            <constraint firstItem="VH7-2T-wmq" firstAttribute="leading" secondItem="xmq-Jw-Dnm" secondAttribute="trailing" constant="16" id="Nsc-tM-bs0"/>
                             <constraint firstItem="ieF-ia-1hy" firstAttribute="top" secondItem="TlF-dq-HZV" secondAttribute="bottom" constant="12" id="TIa-84-nQN"/>
                             <constraint firstItem="AWj-PZ-2d3" firstAttribute="bottom" secondItem="MDY-Zl-4Bq" secondAttribute="bottom" id="XU9-jL-FXL"/>
                             <constraint firstItem="h8F-Zq-5g5" firstAttribute="bottom" secondItem="ieF-ia-1hy" secondAttribute="bottom" constant="130" id="YVb-wT-WTb"/>
                             <constraint firstItem="xmq-Jw-Dnm" firstAttribute="leading" secondItem="AWj-PZ-2d3" secondAttribute="leading" constant="43" id="Ybe-Hc-vD2"/>
                             <constraint firstItem="h8F-Zq-5g5" firstAttribute="top" secondItem="AWj-PZ-2d3" secondAttribute="top" constant="39" id="Ytc-ML-92P"/>
+                            <constraint firstItem="VH7-2T-wmq" firstAttribute="top" secondItem="ieF-ia-1hy" secondAttribute="bottom" constant="8" id="a5T-Vw-Qan"/>
                             <constraint firstItem="TlF-dq-HZV" firstAttribute="top" secondItem="bXK-a0-rWk" secondAttribute="bottom" constant="8" id="aVm-S8-LyO"/>
+                            <constraint firstItem="h8F-Zq-5g5" firstAttribute="leading" secondItem="VH7-2T-wmq" secondAttribute="trailing" constant="8" id="bza-bk-8el"/>
                             <constraint firstItem="TlF-dq-HZV" firstAttribute="width" secondItem="bXK-a0-rWk" secondAttribute="width" id="c4B-vR-gkc"/>
                             <constraint firstItem="TlF-dq-HZV" firstAttribute="leading" secondItem="bXK-a0-rWk" secondAttribute="leading" id="e7h-Lh-VJ4"/>
-                            <constraint firstItem="AWj-PZ-2d3" firstAttribute="trailing" secondItem="VH7-2T-wmq" secondAttribute="trailing" constant="650" id="f24-C7-H2k"/>
                             <constraint firstItem="h8F-Zq-5g5" firstAttribute="leading" secondItem="ieF-ia-1hy" secondAttribute="trailing" constant="315" id="ldt-FZ-fx0"/>
                             <constraint firstItem="MDY-Zl-4Bq" firstAttribute="top" secondItem="Vqg-f8-154" secondAttribute="bottom" id="mxt-24-IKm"/>
                             <constraint firstItem="xmq-Jw-Dnm" firstAttribute="top" secondItem="AWj-PZ-2d3" secondAttribute="top" constant="39" id="t3c-7w-7s4"/>
