@@ -187,6 +187,7 @@
 			files = (
 				B5568EC1219D00C1007BD7C4 /* PurchasesView.storyboard in Resources */,
 				E2DE6AC1217F8D8B006F2EA7 /* Users.storyboard in Resources */,
+				A19F9BD4219157B500BDFD75 /* EditUsers.storyboard in Resources */,
 				E2DE6AB9217E87AA006F2EA7 /* LaunchScreen.storyboard in Resources */,
 				E2DE6AB6217E87AA006F2EA7 /* Assets.xcassets in Resources */,
 			);
