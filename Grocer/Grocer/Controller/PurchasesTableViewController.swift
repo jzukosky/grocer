@@ -11,6 +11,8 @@ import CoreData
 
 class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
 
+    let refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var tableView: UITableView!
     var purchases: [Purchase] = []
     var pastPurchases:[Purchase] = []
@@ -75,8 +77,19 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                 filteredActive.append(purchase)
             }
         }
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        refreshControl.tintColor = UIColor.red
+        tableView.refreshControl = refreshControl
+        
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            fetchPurchases()
+            print("View will appear")
+        self.tableView.reloadData()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -228,7 +241,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                 }
             }
             print(purchases.count)
-            print("View will appear")
         } catch {
             presentMessage(message: "An error occurred fetching: \(error)")
         }
@@ -259,8 +271,12 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                 filteredActive.append(purchase)
             }
         }
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        fetchPurchases()
         
-        
+        refreshControl.endRefreshing()
     }
     
     func presentMessage(message: String) {

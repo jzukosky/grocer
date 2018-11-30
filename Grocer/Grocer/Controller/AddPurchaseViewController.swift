@@ -97,6 +97,7 @@ class AddPurchaseViewController: UIViewController {
         }
         
         _ = navigationController?.popViewController(animated: true)
+        
 
     }
     
