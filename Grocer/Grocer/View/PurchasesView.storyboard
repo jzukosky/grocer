@@ -268,7 +268,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateField" destination="TlF-dq-HZV" id="9yA-lq-lYo"/>
-                        <outlet property="description" destination="VH7-2T-wmq" id="qqV-1S-xQr"/>
+                        <outlet property="descriptionField" destination="VH7-2T-wmq" id="i0n-kv-Pa9"/>
                         <outlet property="itemsTableView" destination="Vqg-f8-154" id="CWH-CV-87B"/>
                         <outlet property="participantsCollectionView" destination="h8F-Zq-5g5" id="gyk-S0-Iib"/>
                         <outlet property="purchaserImageView" destination="ieF-ia-1hy" id="UQJ-Cv-lXp"/>

@@ -12,8 +12,8 @@ class AddPurchaseViewController: UIViewController {
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var dateField: UITextField!
-    @IBOutlet weak var description: UITextField!
     
+    @IBOutlet weak var descriptionField: UITextField!
     
     @IBOutlet weak var receiptImageView: UIImageView!
     @IBOutlet weak var purchaserImageView: UIImageView!
