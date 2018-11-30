@@ -2,7 +2,7 @@
 //  Purchase+CoreDataClass.swift
 //  Grocer
 //
-//  Created by linChunbin on 10/29/18.
+//  Created by Qiwen Guo on 11/29/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -12,21 +12,94 @@ import CoreData
 
 @objc(Purchase)
 public class Purchase: NSManagedObject {
-
-    convenience init?(date: Date, paid: [User : Bool], purchaseDescription: String?, receipt: Data, selected: [User : Bool], tax: Float, title: String?) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
+    var date: Date? {
+        get {
+            return rawDate as Date?
+        }
+        set {
+            rawDate = newValue as NSDate?
+        }
+    }
+    
+    var receipt: Data? {
+        get {
+            return rawReceipt as Data?
+        }
+        set {
+            rawReceipt = newValue as NSData?
+        }
+    }
+    
+    convenience init?(title: String, purchaseDescription: String?, date: Date, tax: Double, receipt: Data?, purchaser: User) {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        guard let managedContext = appDelegate?.persistentContainer.viewContext,
+            title != "" else {
+                return nil
         }
         
-        let context = appDelegate.persistentContainer.viewContext
-        self.init(entity: Purchase.entity(), insertInto: context)
-        self.date = date
-        self.paid = paid
-        self.purchaseDescription = purchaseDescription
-        self.receipt = receipt
-        self.selected = selected
-        self.tax = tax
+        self.init(entity: Purchase.entity(), insertInto: managedContext)
+        
         self.title = title
+        self.purchaseDescription = purchaseDescription
+        self.date = date
+        self.tax = tax
+        self.receipt = receipt
+        self.purchaser = purchaser
+    }
+    
+    func getTitle() -> String? {
+        return title
+    }
+    
+    func getPurchaseDescription() -> String? {
+        return purchaseDescription
+    }
+    
+    func getTax() -> Double? {
+        return tax
+    }
+    
+    func getReceipt() -> Data? {
+        return receipt
+    }
+    
+    func getPurchaser() -> User? {
+        return purchaser
+    }
+    
+    func getRecipients() -> [User]? {
+        return recipients?.allObjects as? [User]
+    }
+    
+    func getPayments() -> [Payment]? {
+        return payments?.allObjects as? [Payment]
+    }
+    
+    func getItems() -> [Item]? {
+        return items?.allObjects as? [Item]
+    }
+    
+    func generateString() -> String {
+        var purchaserInfo = ""
+        if let purchaser = getPurchaser() {
+            purchaserInfo = purchaser.generateString()
+        }
+        
+        var recipientsInfo = ""
+        if let recipients = getRecipients() {
+            for recipient in recipients {
+                recipientsInfo += recipient.generateString()
+            }
+        }
+        
+        var paymentInfo = ""
+        if let payments = getPayments() {
+            for payment in payments {
+                paymentInfo += payment.generateString()
+            }
+        }
+        
+        
+        return "title: \(String(describing: title)), purchaseDescription: \(String(describing: purchaseDescription)), date: \(String(describing: date)), tax: \(tax), purchaser: \(purchaserInfo), recipients: \(recipientsInfo), payments: \(paymentInfo)"
     }
 }

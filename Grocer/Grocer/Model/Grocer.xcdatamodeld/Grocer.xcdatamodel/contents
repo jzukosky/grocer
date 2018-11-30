@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Item" representedClassName="Item" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="purchase" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase" inverseName="items" inverseEntity="Purchase" syncable="YES"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="items" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Payment" representedClassName="Payment" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rawDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="purchase" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase" inverseName="payments" inverseEntity="Purchase" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="payments" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Purchase" representedClassName="Purchase" syncable="YES">
+        <attribute name="purchaseDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rawReceipt" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="tax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="purchase" inverseEntity="Item" syncable="YES"/>
+        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payment" inverseName="purchase" inverseEntity="Payment" syncable="YES"/>
+        <relationship name="purchaser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="purchaserPurchases" inverseEntity="User" syncable="YES"/>
+        <relationship name="recipients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="recipientPurchases" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName=".User" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="information" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rawPicture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="users" inverseEntity="Item" syncable="YES"/>
+        <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payment" inverseName="user" inverseEntity="Payment" syncable="YES"/>
+        <relationship name="purchaserPurchases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Purchase" inverseName="purchaser" inverseEntity="Purchase" syncable="YES"/>
+        <relationship name="recipientPurchases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Purchase" inverseName="recipients" inverseEntity="Purchase" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Item" positionX="-54" positionY="9" width="128" height="105"/>
+        <element name="Purchase" positionX="-63" positionY="27" width="128" height="180"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Payment" positionX="-54" positionY="90" width="128" height="105"/>
+    </elements>
+</model>
