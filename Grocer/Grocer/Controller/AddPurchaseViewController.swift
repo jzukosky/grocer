@@ -13,6 +13,7 @@ class AddPurchaseViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var dateField: UITextField!
     
+    @IBOutlet weak var descriptionField: UITextField!
     
     @IBOutlet weak var receiptImageView: UIImageView!
     @IBOutlet weak var purchaserImageView: UIImageView!
@@ -69,11 +70,36 @@ class AddPurchaseViewController: UIViewController {
     }
     
     @IBAction func handleSave(_ sender: Any) {
-        //Check that all values are correct/valid
+        let user1 = User(username: "test purchaser", email: "abc@mail.com", information: "abc", picture: nil)
+        let user2 = User(username: "test recipient", email: "efg@mail.com", information: "efg", picture: nil)
         
-        //Save to Core Data
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let date = dateFormatter.date(from: dateField.text ?? "01-01-2018")
         
-        // Unwind Segue to All Purchases
+        if let user1 = user1, let user2 = user2 {
+            let purchase = Purchase(title: titleField.text ?? "Untitled", purchaseDescription: "no description field", date: date ?? Date.init(timeIntervalSinceNow: 0), tax: 2.0, receipt: nil, purchaser: user1);
+            purchase?.addToRecipients(user2);
+            
+            for item in items {
+                purchase?.addToItems(item)
+            }
+            
+            if let purchase = purchase {
+                do {
+                    let managedObjectContext = purchase.managedObjectContext
+                    try managedObjectContext?.save()
+                } catch {
+                    presentMessage(message: "An error occurred adding: \(error)")
+                    return
+                }
+            }
+            
+        }
+        
+        _ = navigationController?.popViewController(animated: true)
+        
+
     }
     
     @IBAction func handleAddItem(_ sender: Any) {
@@ -154,5 +180,11 @@ extension AddPurchaseViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
+    func presentMessage(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
+

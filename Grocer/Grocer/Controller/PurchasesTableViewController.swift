@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
 
+    let refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var tableView: UITableView!
     var purchases: [Purchase] = []
     var pastPurchases:[Purchase] = []
@@ -74,8 +77,19 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                 filteredActive.append(purchase)
             }
         }
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        refreshControl.tintColor = UIColor.red
+        tableView.refreshControl = refreshControl
+        
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            fetchPurchases()
+            print("View will appear")
+        self.tableView.reloadData()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -207,5 +221,67 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         self.tableView.reloadData()
+    }
+    
+    func fetchPurchases(){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            purchases = try managedContext.fetch(fetchRequest)
+            tableView.reloadData()
+            for purchase in purchases {
+                if let title = purchase.title {
+                    print(title)
+                }
+            }
+            print(purchases.count)
+        } catch {
+            presentMessage(message: "An error occurred fetching: \(error)")
+        }
+        
+        
+        pastPurchases.removeAll()
+        activePurchases.removeAll()
+        filteredPurchases.removeAll()
+        filteredPast.removeAll()
+        filteredActive.removeAll()
+        
+        filteredPurchases = purchases
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        /* ------ Test Data ------ */
+        for purchase in filteredPurchases {
+            if (!isPurchaseActive(purchase: purchase)){
+                pastPurchases.append(purchase)
+                filteredPast.append(purchase)
+            }
+            else{
+                activePurchases.append(purchase)
+                filteredActive.append(purchase)
+            }
+        }
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        fetchPurchases()
+        
+        refreshControl.endRefreshing()
+    }
+    
+    func presentMessage(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
