@@ -83,12 +83,13 @@
                     <navigationItem key="navigationItem" id="8Eg-n8-i3b">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uFa-xW-hrP">
                             <connections>
-                                <segue destination="G7e-Qt-kcm" kind="show" id="6l5-yg-lPc"/>
+                                <action selector="addTapped:" destination="nYD-TJ-wjR" id="ONe-i0-D3p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="hZN-Dl-ajo" id="swY-ia-cc4"/>
+                        <segue destination="G7e-Qt-kcm" kind="show" identifier="addSegue" id="L4g-iL-roY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDB-m2-zZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,7 +130,7 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vqg-f8-154">
-                                <rect key="frame" x="0.0" y="341" width="1024" height="955"/>
+                                <rect key="frame" x="0.0" y="411" width="1024" height="885"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" textLabel="jmF-kq-spw" detailTextLabel="5Wb-Iy-iUf" style="IBUITableViewCellStyleValue1" id="ben-Xy-fPw">
@@ -163,7 +164,7 @@
                                 </connections>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h8F-Zq-5g5">
-                                <rect key="frame" x="656" y="63" width="348" height="276"/>
+                                <rect key="frame" x="656" y="113" width="348" height="296"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="diL-Ti-FLi">
                                     <size key="itemSize" width="50" height="50"/>
@@ -208,6 +209,12 @@
                                     <action selector="handleEditingBeginningDateField:" destination="G7e-Qt-kcm" eventType="editingDidBegin" id="KJD-cW-3qE"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VH7-2T-wmq">
+                                <rect key="frame" x="255" y="287" width="393" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -219,18 +226,21 @@
                             <constraint firstItem="MDY-Zl-4Bq" firstAttribute="leading" secondItem="AWj-PZ-2d3" secondAttribute="leading" id="Cv6-zO-wlw"/>
                             <constraint firstItem="h8F-Zq-5g5" firstAttribute="leading" secondItem="TlF-dq-HZV" secondAttribute="trailing" constant="8" id="EEu-GG-mJv"/>
                             <constraint firstItem="Vqg-f8-154" firstAttribute="leading" secondItem="AWj-PZ-2d3" secondAttribute="leading" id="Jsq-jy-Vkp"/>
+                            <constraint firstItem="VH7-2T-wmq" firstAttribute="leading" secondItem="xmq-Jw-Dnm" secondAttribute="trailing" constant="16" id="Nsc-tM-bs0"/>
                             <constraint firstItem="ieF-ia-1hy" firstAttribute="top" secondItem="TlF-dq-HZV" secondAttribute="bottom" constant="12" id="TIa-84-nQN"/>
                             <constraint firstItem="AWj-PZ-2d3" firstAttribute="bottom" secondItem="MDY-Zl-4Bq" secondAttribute="bottom" id="XU9-jL-FXL"/>
-                            <constraint firstItem="h8F-Zq-5g5" firstAttribute="bottom" secondItem="ieF-ia-1hy" secondAttribute="bottom" constant="110" id="YVb-wT-WTb"/>
+                            <constraint firstItem="h8F-Zq-5g5" firstAttribute="bottom" secondItem="ieF-ia-1hy" secondAttribute="bottom" constant="130" id="YVb-wT-WTb"/>
                             <constraint firstItem="xmq-Jw-Dnm" firstAttribute="leading" secondItem="AWj-PZ-2d3" secondAttribute="leading" constant="43" id="Ybe-Hc-vD2"/>
                             <constraint firstItem="h8F-Zq-5g5" firstAttribute="top" secondItem="AWj-PZ-2d3" secondAttribute="top" constant="39" id="Ytc-ML-92P"/>
+                            <constraint firstItem="VH7-2T-wmq" firstAttribute="top" secondItem="ieF-ia-1hy" secondAttribute="bottom" constant="8" id="a5T-Vw-Qan"/>
                             <constraint firstItem="TlF-dq-HZV" firstAttribute="top" secondItem="bXK-a0-rWk" secondAttribute="bottom" constant="8" id="aVm-S8-LyO"/>
+                            <constraint firstItem="h8F-Zq-5g5" firstAttribute="leading" secondItem="VH7-2T-wmq" secondAttribute="trailing" constant="8" id="bza-bk-8el"/>
                             <constraint firstItem="TlF-dq-HZV" firstAttribute="width" secondItem="bXK-a0-rWk" secondAttribute="width" id="c4B-vR-gkc"/>
                             <constraint firstItem="TlF-dq-HZV" firstAttribute="leading" secondItem="bXK-a0-rWk" secondAttribute="leading" id="e7h-Lh-VJ4"/>
                             <constraint firstItem="h8F-Zq-5g5" firstAttribute="leading" secondItem="ieF-ia-1hy" secondAttribute="trailing" constant="315" id="ldt-FZ-fx0"/>
                             <constraint firstItem="MDY-Zl-4Bq" firstAttribute="top" secondItem="Vqg-f8-154" secondAttribute="bottom" id="mxt-24-IKm"/>
                             <constraint firstItem="xmq-Jw-Dnm" firstAttribute="top" secondItem="AWj-PZ-2d3" secondAttribute="top" constant="39" id="t3c-7w-7s4"/>
-                            <constraint firstItem="Vqg-f8-154" firstAttribute="top" secondItem="ieF-ia-1hy" secondAttribute="bottom" constant="112" id="udB-EX-xQz"/>
+                            <constraint firstItem="Vqg-f8-154" firstAttribute="top" secondItem="ieF-ia-1hy" secondAttribute="bottom" constant="132" id="udB-EX-xQz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AWj-PZ-2d3"/>
                     </view>
@@ -243,6 +253,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateField" destination="TlF-dq-HZV" id="9yA-lq-lYo"/>
+                        <outlet property="descriptionField" destination="VH7-2T-wmq" id="i0n-kv-Pa9"/>
                         <outlet property="itemsTableView" destination="Vqg-f8-154" id="CWH-CV-87B"/>
                         <outlet property="participantsCollectionView" destination="h8F-Zq-5g5" id="gyk-S0-Iib"/>
                         <outlet property="purchaserImageView" destination="ieF-ia-1hy" id="UQJ-Cv-lXp"/>

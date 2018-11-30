@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
-class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating  {
+class PurchasesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    let refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var tableView: UITableView!
     var purchases: [Purchase] = []
     var pastPurchases:[Purchase] = []
@@ -18,32 +21,44 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     var filteredActive = [Purchase]()
     var filteredPast = [Purchase]()
     let searchController = UISearchController(searchResultsController: nil)
+    let imagePicker = UIImagePickerController()
+    var imageForReceipt: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        imagePicker.delegate = self
         /* ------ Test Data: Delete before merge ------ */
-        
+
         let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
         let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        
+
         let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
         let date2 = dateFormatter.date(from: "11/08/2018") ?? Date(timeIntervalSinceNow: 0)
         let date3 = dateFormatter.date(from: "11/07/2018") ?? Date(timeIntervalSinceNow: 0)
         let date4 = dateFormatter.date(from: "11/19/2018") ?? Date(timeIntervalSinceNow: 0)
 
-        
+
         if let user1 = user1, let user2 = user2 {
-            let purchase1 = Purchase(date: date1, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase11")
-            let purchase2 = Purchase(date: date2, paid: [user1: true, user2: false], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "ActiveTestPurchase22")
-            let purchase3 = Purchase(date: date3, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase11")
-            let purchase4 = Purchase(date: date4, paid: [user1: true, user2: true], purchaseDescription: nil, receipt: Data(), selected: [:], tax: 2.3, title: "PastTestPurchase222")
+            let purchase1 = Purchase(title: "Test1", purchaseDescription: "test1", date: date1, tax: 2.3, receipt: nil, purchaser: user1)
+            let purchase2 = Purchase(title: "Test2", purchaseDescription: "test1", date: date2, tax: 2.3, receipt: nil, purchaser: user2)
+            let purchase3 = Purchase(title: "Test3", purchaseDescription: "test1", date: date3, tax: 2.3, receipt: nil, purchaser: user2)
+            let purchase4 = Purchase(title: "Test4", purchaseDescription: "test1", date: date4, tax: 2.3, receipt: nil, purchaser: user1)
+
+            purchase1?.addToItems(Item(name: "test1", price: 3.0)!)
+            purchase2?.addToItems(Item(name: "test2", price: 4.0)!)
+            purchase2?.addToPayments(Payment(date: date2, amount: 4.0)!)
+
+            purchase3?.addToItems(Item(name: "test2", price: 5.0)!)
+            purchase3?.addToPayments(Payment(date: date2, amount: 4.0)!)
+
             purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
         }
+        
+        
         /* ------ Test Data ------ */
         filteredPurchases = purchases
         
@@ -64,8 +79,18 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
                 filteredActive.append(purchase)
             }
         }
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        refreshControl.tintColor = UIColor.red
+        tableView.refreshControl = refreshControl
+        
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            fetchPurchases()
+        self.tableView.reloadData()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -133,12 +158,18 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             }
             tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
         }
+        if segue.identifier == "addSegue",
+            let destination = segue.destination as? AddPurchaseViewController {
+            
+            destination.receiptImage = imageForReceipt
+            
+        }
     }
     
     func populatePurchaseCell(purchase:Purchase, cell: PurchaseTableViewCell){
         
         cell.purchaseLabel.text = purchase.title
-        cell.purchaseDateLabel.text = formatDate(date: purchase.date)
+        cell.purchaseDateLabel.text = formatDate(date: purchase.date!)
         if let receipt = purchase.receipt,
             let receiptImage = UIImage(data: receipt) {
             cell.purchaseImage.image = receiptImage
@@ -149,12 +180,21 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     
     func isPurchaseActive(purchase: Purchase) -> Bool {
-        for paid in purchase.paid.values {
-            if paid == false {
-                return true
+        var totalPayments = 0.0;
+        var totalPrice = 0.0;
+        if let payments = purchase.getPayments() {
+            for payment in payments {
+                totalPayments = payment.amount
             }
         }
-        return false
+        
+        if let items = purchase.getItems() {
+            for item in items {
+                totalPrice += item.price
+            }
+        }
+        
+        return totalPayments != totalPrice
     }
     
     func formatDate(date: Date) -> String {
@@ -189,4 +229,107 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         self.tableView.reloadData()
     }
+    
+    func fetchPurchases(){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            purchases = try managedContext.fetch(fetchRequest)
+            tableView.reloadData()
+        } catch {
+            presentMessage(message: "An error occurred fetching: \(error)")
+        }
+        
+        
+        pastPurchases.removeAll()
+        activePurchases.removeAll()
+        filteredPurchases.removeAll()
+        filteredPast.removeAll()
+        filteredActive.removeAll()
+        
+        filteredPurchases = purchases
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        /* ------ Test Data ------ */
+        for purchase in filteredPurchases {
+            if (!isPurchaseActive(purchase: purchase)){
+                pastPurchases.append(purchase)
+                filteredPast.append(purchase)
+            }
+            else{
+                activePurchases.append(purchase)
+                filteredActive.append(purchase)
+            }
+        }
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        fetchPurchases()
+        
+        refreshControl.endRefreshing()
+    }
+    
+    func presentMessage(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func addTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Add a new photo", message: "How do you want to upload the picture?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "From camra", style: .default, handler: { action in
+            self.takePhotoWithCamera()
+        }))
+                                      
+                                      
+                                      
+        alert.addAction(UIAlertAction(title: "From photo library", style: .default, handler: { action in
+            self.getPhotoFromLibrary()
+        }))
+        self.present(alert, animated: true)
+        
+    }
+    func takePhotoWithCamera() {
+        if (!UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
+            let alertController = UIAlertController(title: "No Camera", message: "The device has no camera.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        } else {
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func getPhotoFromLibrary() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageForReceipt = pickedImage
+            performSegue(withIdentifier: "addSegue", sender: self)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
+

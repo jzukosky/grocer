@@ -2,7 +2,7 @@
 //  Purchase+CoreDataProperties.swift
 //  Grocer
 //
-//  Created by linChunbin on 10/29/18.
+//  Created by Qiwen Guo on 11/29/18.
 //  Copyright © 2018 it4500. All rights reserved.
 //
 //
@@ -17,16 +17,15 @@ extension Purchase {
         return NSFetchRequest<Purchase>(entityName: "Purchase")
     }
 
-    @NSManaged public var date: Date
-    @NSManaged public var paid: [User : Bool]
+    @NSManaged public var rawDate: NSDate?
     @NSManaged public var purchaseDescription: String?
-    @NSManaged public var receipt: Data?
-    @NSManaged public var selected: [User : Bool]
-    @NSManaged public var tax: Float
+    @NSManaged public var rawReceipt: NSData?
+    @NSManaged public var tax: Double
     @NSManaged public var title: String?
     @NSManaged public var items: NSSet?
+    @NSManaged public var recipients: NSSet?
     @NSManaged public var purchaser: User?
-    @NSManaged public var purchasees: NSSet?
+    @NSManaged public var payments: NSSet?
 
 }
 
@@ -47,19 +46,36 @@ extension Purchase {
 
 }
 
-// MARK: Generated accessors for purchasees
+// MARK: Generated accessors for recipients
 extension Purchase {
 
-    @objc(addPurchaseesObject:)
-    @NSManaged public func addToPurchasees(_ value: User)
+    @objc(addRecipientsObject:)
+    @NSManaged public func addToRecipients(_ value: User)
 
-    @objc(removePurchaseesObject:)
-    @NSManaged public func removeFromPurchasees(_ value: User)
+    @objc(removeRecipientsObject:)
+    @NSManaged public func removeFromRecipients(_ value: User)
 
-    @objc(addPurchasees:)
-    @NSManaged public func addToPurchasees(_ values: NSSet)
+    @objc(addRecipients:)
+    @NSManaged public func addToRecipients(_ values: NSSet)
 
-    @objc(removePurchasees:)
-    @NSManaged public func removeFromPurchasees(_ values: NSSet)
+    @objc(removeRecipients:)
+    @NSManaged public func removeFromRecipients(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for payments
+extension Purchase {
+
+    @objc(addPaymentsObject:)
+    @NSManaged public func addToPayments(_ value: Payment)
+
+    @objc(removePaymentsObject:)
+    @NSManaged public func removeFromPayments(_ value: Payment)
+
+    @objc(addPayments:)
+    @NSManaged public func addToPayments(_ values: NSSet)
+
+    @objc(removePayments:)
+    @NSManaged public func removeFromPayments(_ values: NSSet)
 
 }

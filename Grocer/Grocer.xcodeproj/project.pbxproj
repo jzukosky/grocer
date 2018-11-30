@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		83D284D521ADCB0D0071294A /* AddPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */; };
+		83D284D721B1C3540071294A /* EditUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D284D621B1C3540071294A /* EditUsers.storyboard */; };
 		B5568EBD219D00B9007BD7C4 /* PurchaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */; };
 		B5568EBE219D00B9007BD7C4 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */; };
 		B5568EBF219D00B9007BD7C4 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */; };
@@ -26,10 +27,20 @@
 		E2DE6AC1217F8D8B006F2EA7 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2DE6AC0217F8D8B006F2EA7 /* Users.storyboard */; };
 		E2FBE2B2219DFAAD00D835FE /* UserCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBE2B1219DFAAD00D835FE /* UserCollectionViewController.swift */; };
 		E2FBE2B4219DFBB400D835FE /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBE2B3219DFBB400D835FE /* UserCollectionViewCell.swift */; };
+		E2F4A8FC21B070E700EFEB87 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4A8F421B070E700EFEB87 /* User+CoreDataClass.swift */; };
+		E2F4A8FD21B070E700EFEB87 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4A8F521B070E700EFEB87 /* User+CoreDataProperties.swift */; };
+		E2F4A8FE21B070E700EFEB87 /* Purchase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4A8F621B070E700EFEB87 /* Purchase+CoreDataClass.swift */; };
+		E2F4A8FF21B070E700EFEB87 /* Purchase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4A8F721B070E700EFEB87 /* Purchase+CoreDataProperties.swift */; };
+		E2F4A90021B070E700EFEB87 /* Payment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4A8F821B070E700EFEB87 /* Payment+CoreDataClass.swift */; };
+		E2F4A90121B070E700EFEB87 /* Payment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4A8F921B070E700EFEB87 /* Payment+CoreDataProperties.swift */; };
+		E2F4A90221B070E700EFEB87 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4A8FA21B070E700EFEB87 /* Item+CoreDataClass.swift */; };
+		E2F4A90321B070E700EFEB87 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F4A8FB21B070E700EFEB87 /* Item+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseViewController.swift; sourceTree = "<group>"; };
+		83D284D621B1C3540071294A /* EditUsers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditUsers.storyboard; path = "../../../../../../../Downloads/grocer-feature-editUsers-2/Grocer/Grocer/EditUsers.storyboard"; sourceTree = "<group>"; };
+		83D284D821B1C3710071294A /* EditUsers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditUsers.storyboard; sourceTree = "<group>"; };
 		B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewController.swift; sourceTree = "<group>"; };
 		B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -50,6 +61,14 @@
 		E2DE6AC0217F8D8B006F2EA7 /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		E2FBE2B1219DFAAD00D835FE /* UserCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewController.swift; sourceTree = "<group>"; };
 		E2FBE2B3219DFBB400D835FE /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		E2F4A8F421B070E700EFEB87 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2F4A8F521B070E700EFEB87 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2F4A8F621B070E700EFEB87 /* Purchase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2F4A8F721B070E700EFEB87 /* Purchase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2F4A8F821B070E700EFEB87 /* Payment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Payment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2F4A8F921B070E700EFEB87 /* Payment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Payment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2F4A8FA21B070E700EFEB87 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2F4A8FB21B070E700EFEB87 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +85,15 @@
 		E2CF8CEA219CD80400CBE927 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B5568EC7219D00CA007BD7C4 /* Item+CoreDataClass.swift */,
-				B5568EC5219D00C9007BD7C4 /* Item+CoreDataProperties.swift */,
-				B5568EC3219D00C9007BD7C4 /* Purchase+CoreDataClass.swift */,
-				B5568EC2219D00C9007BD7C4 /* Purchase+CoreDataProperties.swift */,
-				B5568EC4219D00C9007BD7C4 /* User+CoreDataClass.swift */,
-				B5568EC6219D00CA007BD7C4 /* User+CoreDataProperties.swift */,
+				E2F4A8F421B070E700EFEB87 /* User+CoreDataClass.swift */,
+				E2F4A8F521B070E700EFEB87 /* User+CoreDataProperties.swift */,
+				E2F4A8F621B070E700EFEB87 /* Purchase+CoreDataClass.swift */,
+				E2F4A8F721B070E700EFEB87 /* Purchase+CoreDataProperties.swift */,
+				E2F4A8F821B070E700EFEB87 /* Payment+CoreDataClass.swift */,
+				E2F4A8F921B070E700EFEB87 /* Payment+CoreDataProperties.swift */,
+				E2F4A8FA21B070E700EFEB87 /* Item+CoreDataClass.swift */,
+				E2F4A8FB21B070E700EFEB87 /* Item+CoreDataProperties.swift */,
+				E2DE6AB2217E87A9006F2EA7 /* Grocer.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -81,6 +103,7 @@
 			children = (
 				B5568EC0219D00C1007BD7C4 /* PurchasesView.storyboard */,
 				E2DE6AC0217F8D8B006F2EA7 /* Users.storyboard */,
+				83D284D821B1C3710071294A /* EditUsers.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +149,7 @@
 				E2DE6AB7217E87AA006F2EA7 /* LaunchScreen.storyboard */,
 				E2DE6ABA217E87AA006F2EA7 /* Info.plist */,
 				E2DE6AB2217E87A9006F2EA7 /* Grocer.xcdatamodeld */,
+				83D284D621B1C3540071294A /* EditUsers.storyboard */,
 			);
 			path = Grocer;
 			sourceTree = "<group>";
@@ -189,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5568EC1219D00C1007BD7C4 /* PurchasesView.storyboard in Resources */,
+				83D284D721B1C3540071294A /* EditUsers.storyboard in Resources */,
 				E2DE6AC1217F8D8B006F2EA7 /* Users.storyboard in Resources */,
 				E2DE6AB9217E87AA006F2EA7 /* LaunchScreen.storyboard in Resources */,
 				E2DE6AB6217E87AA006F2EA7 /* Assets.xcassets in Resources */,
@@ -202,21 +227,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2F4A90321B070E700EFEB87 /* Item+CoreDataProperties.swift in Sources */,
+				E2F4A8FE21B070E700EFEB87 /* Purchase+CoreDataClass.swift in Sources */,
 				E2DE6AB4217E87A9006F2EA7 /* Grocer.xcdatamodeld in Sources */,
 				B5568EBD219D00B9007BD7C4 /* PurchaseDetailViewController.swift in Sources */,
-				B5568EC8219D00CA007BD7C4 /* Purchase+CoreDataProperties.swift in Sources */,
+				E2F4A90021B070E700EFEB87 /* Payment+CoreDataClass.swift in Sources */,
+				E2F4A90221B070E700EFEB87 /* Item+CoreDataClass.swift in Sources */,
+				E2F4A90121B070E700EFEB87 /* Payment+CoreDataProperties.swift in Sources */,
+				E2F4A8FD21B070E700EFEB87 /* User+CoreDataProperties.swift in Sources */,
 				B5568EBE219D00B9007BD7C4 /* PurchasesTableViewController.swift in Sources */,
 				E2DE6AAC217E87A9006F2EA7 /* AppDelegate.swift in Sources */,
-				B5568ECD219D00CA007BD7C4 /* Item+CoreDataClass.swift in Sources */,
-				B5568EC9219D00CA007BD7C4 /* Purchase+CoreDataClass.swift in Sources */,
-				B5568ECB219D00CA007BD7C4 /* Item+CoreDataProperties.swift in Sources */,
-				B5568ECA219D00CA007BD7C4 /* User+CoreDataClass.swift in Sources */,
 				83D284D521ADCB0D0071294A /* AddPurchaseViewController.swift in Sources */,
-				B5568ECC219D00CA007BD7C4 /* User+CoreDataProperties.swift in Sources */,
 				B5568EBF219D00B9007BD7C4 /* PurchaseTableViewCell.swift in Sources */,
 				E2DA999921ADE6560021E224 /* AddUserViewController.swift in Sources */,
 				E2FBE2B2219DFAAD00D835FE /* UserCollectionViewController.swift in Sources */,
 				E2FBE2B4219DFBB400D835FE /* UserCollectionViewCell.swift in Sources */,
+				E2F4A8FF21B070E700EFEB87 /* Purchase+CoreDataProperties.swift in Sources */,
+				E2F4A8FC21B070E700EFEB87 /* User+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +382,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CY884D2HTC;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Grocer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -373,7 +400,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CY884D2HTC;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Grocer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
