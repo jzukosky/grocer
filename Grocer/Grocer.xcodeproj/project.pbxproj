@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		83D284D521ADCB0D0071294A /* AddPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */; };
+		83D284D721B1C3540071294A /* EditUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D284D621B1C3540071294A /* EditUsers.storyboard */; };
 		B5568EBD219D00B9007BD7C4 /* PurchaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */; };
 		B5568EBE219D00B9007BD7C4 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */; };
 		B5568EBF219D00B9007BD7C4 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */; };
@@ -29,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseViewController.swift; sourceTree = "<group>"; };
+		83D284D621B1C3540071294A /* EditUsers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EditUsers.storyboard; path = "../../../../../../../Downloads/grocer-feature-editUsers-2/Grocer/Grocer/EditUsers.storyboard"; sourceTree = "<group>"; };
+		83D284D821B1C3710071294A /* EditUsers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditUsers.storyboard; sourceTree = "<group>"; };
 		B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewController.swift; sourceTree = "<group>"; };
 		B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				B5568EC0219D00C1007BD7C4 /* PurchasesView.storyboard */,
+				E2DE6AC0217F8D8B006F2EA7 /* Users.storyboard */,
+				83D284D821B1C3710071294A /* EditUsers.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,7 +127,7 @@
 				E2DE6AB5217E87AA006F2EA7 /* Assets.xcassets */,
 				E2DE6AB7217E87AA006F2EA7 /* LaunchScreen.storyboard */,
 				E2DE6ABA217E87AA006F2EA7 /* Info.plist */,
-				E2DE6AC0217F8D8B006F2EA7 /* Users.storyboard */,
+				83D284D621B1C3540071294A /* EditUsers.storyboard */,
 			);
 			path = Grocer;
 			sourceTree = "<group>";
@@ -186,8 +191,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5568EC1219D00C1007BD7C4 /* PurchasesView.storyboard in Resources */,
+				83D284D721B1C3540071294A /* EditUsers.storyboard in Resources */,
 				E2DE6AC1217F8D8B006F2EA7 /* Users.storyboard in Resources */,
-				A19F9BD4219157B500BDFD75 /* EditUsers.storyboard in Resources */,
 				E2DE6AB9217E87AA006F2EA7 /* LaunchScreen.storyboard in Resources */,
 				E2DE6AB6217E87AA006F2EA7 /* Assets.xcassets in Resources */,
 			);
