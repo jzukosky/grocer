@@ -88,9 +88,10 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            fetchPurchases()
+        fetchPurchases()
         self.tableView.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:

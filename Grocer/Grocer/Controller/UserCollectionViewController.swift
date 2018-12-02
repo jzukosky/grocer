@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "userCell"
 
 class UserCollectionViewController: UICollectionViewController {
+    
+    let refreshControl = UIRefreshControl()
     
     var users = [User]()
     var defaultImage = UIImage(named: "ProfileImage")
@@ -39,9 +42,8 @@ class UserCollectionViewController: UICollectionViewController {
         }
         // Do any additional setup after loading the view.
         
+        collectionView.refreshControl = refreshControl
         
-        
-        #warning("pull from core data")
     }
     
     
@@ -107,9 +109,35 @@ class UserCollectionViewController: UICollectionViewController {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        fetchUsers()
+        self.collectionView.reloadData()
+    }
 
+    func fetchUsers(){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        var fetchedUsers: [User] = []
+        do {
+            fetchedUsers = try managedContext.fetch(fetchRequest)
+            collectionView.reloadData()
+        } catch {
+            presentMessage(message: "An error occurred fetching: \(error)")
+        }
+        users.removeAll()
+        users = fetchedUsers
+    }
 
-
+    func presentMessage(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     // MARK: UICollectionViewDelegate
 
     /*
