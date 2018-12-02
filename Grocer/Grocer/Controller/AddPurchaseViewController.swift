@@ -78,7 +78,7 @@ class AddPurchaseViewController: UIViewController {
         let date = dateFormatter.date(from: dateField.text ?? "01-01-2018")
         
         if let purchaser = purchaser, let user2 = user2 {
-            let purchase = Purchase(title: titleField.text ?? "Untitled", purchaseDescription: "no description field", date: date ?? Date.init(timeIntervalSinceNow: 0), tax: 2.0, receipt: receiptImage?.pngData(), purchaser: purchaser);
+            let purchase = Purchase(title: titleField.text ?? "Untitled", purchaseDescription: descriptionField.text ?? "no description field", date: date ?? Date.init(timeIntervalSinceNow: 0), tax: 2.0, receipt: receiptImage?.pngData(), purchaser: purchaser);
             purchase?.addToRecipients(user2);
             
             for item in items {
