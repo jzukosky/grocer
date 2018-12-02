@@ -91,8 +91,6 @@ class UserCollectionViewController: UICollectionViewController {
             cell.userImage?.image = defaultImage
         }
         
-        
-    
         // Configure the cell
     
         return cell

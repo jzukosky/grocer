@@ -50,7 +50,7 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
             user?.email = emailTextField.text
             
         } else {
-            user = User(username: username, email: emailTextField.text ?? "", information: informationTextField.text ?? "", picture: nil)
+            user = User(username: username, email: emailTextField.text ?? "", information: informationTextField.text ?? "", picture: userPictureImageView.image?.pngData())
             
         }
         
