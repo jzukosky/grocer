@@ -13,7 +13,8 @@ private let reuseIdentifier = "userCell"
 
 class UserCollectionViewController: UICollectionViewController {
     
-    let refreshControl = UIRefreshControl()
+    //let refreshControl = UIRefreshControl()
+    @IBOutlet var usersCollectionView: UICollectionView!
     
     var users = [User]()
     var defaultImage = UIImage(named: "ProfileImage")
@@ -25,8 +26,9 @@ class UserCollectionViewController: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        users.append(User(username: "okrek", email: "hi@fake.com", information: "does it matter", picture: nil)!)
-        users.append(User(username: "brendan", email: "fake@hi.com", information: "it does matter", picture: UIImage(named: "jonahiscool")?.pngData())!)
+        
+        //users.append(User(username: "okrek", email: "hi@fake.com", information: "does it matter", picture: nil)!)
+        //users.append(User(username: "brendan", email: "fake@hi.com", information: "it does matter", picture: UIImage(named: "jonahiscool")?.pngData())!)
         
 
         let numberOfCells = CGFloat(2)
@@ -42,7 +44,7 @@ class UserCollectionViewController: UICollectionViewController {
         }
         // Do any additional setup after loading the view.
         
-        collectionView.refreshControl = refreshControl
+        //collectionView.refreshControl = refreshControl
         
     }
     
@@ -81,6 +83,8 @@ class UserCollectionViewController: UICollectionViewController {
             cell.grayView.alpha = 0.0
         }
 
+        cell.user = users[indexPath.row]
+        
         if let image = users[indexPath.row].picture {
             cell.userImage?.image = UIImage(data: image, scale: 1.0)
         } else {
@@ -92,6 +96,17 @@ class UserCollectionViewController: UICollectionViewController {
         // Configure the cell
     
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPurchases",
+            let destination = segue.destination as? PurchasesTableViewController,
+            let collectionView = self.collectionView,
+            let indexPath = collectionView.indexPathsForSelectedItems?.first,
+            let cell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell{
+            destination.user = cell.user
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
