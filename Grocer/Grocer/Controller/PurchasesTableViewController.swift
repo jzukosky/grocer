@@ -14,7 +14,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
-    var user: User?
+    var purchaser: User?
     var purchases: [Purchase] = []
     var rawPurchases:[Purchase] = []
     var pastPurchases:[Purchase] = []
@@ -29,7 +29,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        if let user1 = user{
+        if let user1 = purchaser{
             print("is here")
             print(user1.getUsername())
         }
@@ -167,7 +167,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
         if segue.identifier == "addSegue",
             let destination = segue.destination as? AddPurchaseViewController {
-            
+            destination.purchaser = purchaser
             destination.receiptImage = imageForReceipt
             
         }
@@ -253,14 +253,14 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
             presentMessage(message: "An error occurred fetching: \(error)")
         }
         
-        filterPurchasesByUser()
+        purchases = filterPurchasesByUser()
         pastPurchases.removeAll()
         activePurchases.removeAll()
         filteredPurchases.removeAll()
         filteredPast.removeAll()
         filteredActive.removeAll()
         
-        filteredPurchases = rawPurchases
+        filteredPurchases = purchases
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -339,26 +339,27 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         dismiss(animated: true, completion: nil)
     }
     
-    func filterPurchasesByUser(){
-        
-        if let user = user{
+    func filterPurchasesByUser() -> [Purchase]{
+        var tempPurchase: [Purchase] = []
+        if let user = purchaser{
             
             for purchase in rawPurchases{
                 if let purchaser = purchase.getPurchaser(){
                     if purchaser.isEqual(user){
-                        purchases.append(purchase)
+                        tempPurchase.append(purchase)
                     }
                     
                 }
                 if let recipients = purchase.getRecipients(){
                     
                     if recipients.contains(user){
-                        purchases.append(purchase)
+                        tempPurchase.append(purchase)
                     }
                 }
                 
             }
         }
+        return tempPurchase
     }
 }
 

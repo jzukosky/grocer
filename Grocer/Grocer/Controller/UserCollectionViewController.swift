@@ -104,7 +104,7 @@ class UserCollectionViewController: UICollectionViewController {
             let collectionView = self.collectionView,
             let indexPath = collectionView.indexPathsForSelectedItems?.first,
             let cell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell{
-            destination.user = cell.user
+            destination.purchaser = cell.user
         }
         
     }
