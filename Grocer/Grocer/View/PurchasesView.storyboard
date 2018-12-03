@@ -280,7 +280,7 @@
                                     <constraint firstAttribute="width" constant="196" id="Gtg-Zz-2ZA"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-e7-bba">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-e7-bba">
                                 <rect key="frame" x="255" y="143" width="86" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="Jjv-K1-WkN"/>
@@ -327,26 +327,6 @@
                                     <outlet property="delegate" destination="3Hw-96-0aX" id="TSy-eL-apF"/>
                                 </connections>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="st1-dR-jCj">
-                                <rect key="frame" x="656" y="63" width="348" height="296"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AXK-Ga-nXG">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCell" id="JV3-ui-83m">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cEM-zO-Mbq">
                                 <rect key="frame" x="255" y="63" width="393" height="30"/>
                                 <constraints>
@@ -363,7 +343,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AR5-Wy-ypP">
-                                <rect key="frame" x="255" y="237" width="393" height="30"/>
+                                <rect key="frame" x="255" y="237" width="25" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -371,17 +351,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="st1-dR-jCj" firstAttribute="leading" secondItem="BvZ-Qr-ZZh" secondAttribute="trailing" constant="8" id="36b-8N-zl3"/>
-                            <constraint firstItem="st1-dR-jCj" firstAttribute="leading" secondItem="cMU-e7-bba" secondAttribute="trailing" constant="315" id="4kK-D4-5AB"/>
                             <constraint firstItem="pBr-ac-t5u" firstAttribute="leading" secondItem="1r0-r8-E3n" secondAttribute="leading" constant="43" id="5og-MM-m5t"/>
                             <constraint firstItem="kuN-D9-KyU" firstAttribute="trailing" secondItem="1r0-r8-E3n" secondAttribute="trailing" id="6zX-rp-xRN"/>
                             <constraint firstItem="BvZ-Qr-ZZh" firstAttribute="leading" secondItem="cEM-zO-Mbq" secondAttribute="leading" id="97S-6q-IXO"/>
-                            <constraint firstItem="st1-dR-jCj" firstAttribute="top" secondItem="1r0-r8-E3n" secondAttribute="top" constant="39" id="Lz0-0X-aoj"/>
                             <constraint firstItem="AR5-Wy-ypP" firstAttribute="top" secondItem="cMU-e7-bba" secondAttribute="bottom" constant="8" id="P0D-7P-XzE"/>
                             <constraint firstItem="BvZ-Qr-ZZh" firstAttribute="top" secondItem="cEM-zO-Mbq" secondAttribute="bottom" constant="8" id="R4J-Lv-2MI"/>
                             <constraint firstItem="cEM-zO-Mbq" firstAttribute="leading" secondItem="pBr-ac-t5u" secondAttribute="trailing" constant="16" id="TsH-aA-wno"/>
-                            <constraint firstItem="st1-dR-jCj" firstAttribute="leading" secondItem="AR5-Wy-ypP" secondAttribute="trailing" constant="8" id="UAR-fr-j5Z"/>
-                            <constraint firstItem="st1-dR-jCj" firstAttribute="bottom" secondItem="cMU-e7-bba" secondAttribute="bottom" constant="130" id="Wl1-d2-5aH"/>
                             <constraint firstItem="1r0-r8-E3n" firstAttribute="trailing" secondItem="0mi-sS-3IT" secondAttribute="trailing" id="YKo-aD-umX"/>
                             <constraint firstItem="1r0-r8-E3n" firstAttribute="bottom" secondItem="kuN-D9-KyU" secondAttribute="bottom" id="eRQ-Nm-vzz"/>
                             <constraint firstItem="AR5-Wy-ypP" firstAttribute="leading" secondItem="pBr-ac-t5u" secondAttribute="trailing" constant="16" id="gQ2-ay-tBa"/>
@@ -393,14 +368,13 @@
                             <constraint firstItem="kuN-D9-KyU" firstAttribute="top" secondItem="0mi-sS-3IT" secondAttribute="bottom" id="omO-A9-cd6"/>
                             <constraint firstItem="BvZ-Qr-ZZh" firstAttribute="width" secondItem="cEM-zO-Mbq" secondAttribute="width" id="uJg-F9-Vvm"/>
                             <constraint firstItem="pBr-ac-t5u" firstAttribute="top" secondItem="1r0-r8-E3n" secondAttribute="top" constant="39" id="vHH-tE-0Q7"/>
-                            <constraint firstItem="1r0-r8-E3n" firstAttribute="trailing" secondItem="st1-dR-jCj" secondAttribute="trailing" constant="20" id="vY2-sc-kkP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1r0-r8-E3n"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Item" id="Yd7-ma-Gl3">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="6zn-vF-TKc">
                             <connections>
-                                <action selector="handleSave:" destination="3Hw-96-0aX" id="bza-5d-XB1"/>
+                                <action selector="saveTapped:" destination="3Hw-96-0aX" id="26H-RX-dht"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

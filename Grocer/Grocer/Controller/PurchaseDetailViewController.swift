@@ -45,6 +45,11 @@ class PurchaseDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func saveTapped(_ sender: Any) {
+        print("save tapped")
+        _ = navigationController?.popViewController(animated: true)
+
+    }
 }
 extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
