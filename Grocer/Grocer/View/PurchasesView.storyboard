@@ -280,7 +280,7 @@
                                     <constraint firstAttribute="width" constant="196" id="Gtg-Zz-2ZA"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-e7-bba">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-e7-bba">
                                 <rect key="frame" x="255" y="143" width="86" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="Jjv-K1-WkN"/>
@@ -354,6 +354,7 @@
                             <constraint firstItem="pBr-ac-t5u" firstAttribute="leading" secondItem="1r0-r8-E3n" secondAttribute="leading" constant="43" id="5og-MM-m5t"/>
                             <constraint firstItem="kuN-D9-KyU" firstAttribute="trailing" secondItem="1r0-r8-E3n" secondAttribute="trailing" id="6zX-rp-xRN"/>
                             <constraint firstItem="BvZ-Qr-ZZh" firstAttribute="leading" secondItem="cEM-zO-Mbq" secondAttribute="leading" id="97S-6q-IXO"/>
+                            <constraint firstItem="cMU-e7-bba" firstAttribute="leading" secondItem="BvZ-Qr-ZZh" secondAttribute="leading" id="Bgv-Ub-SZ3"/>
                             <constraint firstItem="AR5-Wy-ypP" firstAttribute="top" secondItem="cMU-e7-bba" secondAttribute="bottom" constant="8" id="P0D-7P-XzE"/>
                             <constraint firstItem="BvZ-Qr-ZZh" firstAttribute="top" secondItem="cEM-zO-Mbq" secondAttribute="bottom" constant="8" id="R4J-Lv-2MI"/>
                             <constraint firstItem="cEM-zO-Mbq" firstAttribute="leading" secondItem="pBr-ac-t5u" secondAttribute="trailing" constant="16" id="TsH-aA-wno"/>
