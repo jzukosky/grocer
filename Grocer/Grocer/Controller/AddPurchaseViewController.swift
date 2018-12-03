@@ -70,7 +70,6 @@ class AddPurchaseViewController: UIViewController {
     }
     
     @IBAction func handleSave(_ sender: Any) {
-        //let user1 = User(username: "test purchaser", email: "abc@mail.com", information: "abc", picture: nil)
         let user2 = User(username: "test recipient", email: "efg@mail.com", information: "efg", picture: nil)
         
         let dateFormatter = DateFormatter()
