@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -49,16 +50,22 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
             user?.email = emailTextField.text
             
         } else {
-            //user = User(username: username, email: emailTextField.text, information: informationTextField.text, picture: userPictureImageView)
+            user = User(username: username, email: emailTextField.text ?? "", information: informationTextField.text ?? "", picture: userPictureImageView.image?.pngData())
             
         }
-        do {
-            try user?.managedObjectContext?.save()
-            navigationController?.popViewController(animated: true)
-        } catch {
-            print("Failed to save user")
+        
+        if let user = user {
+            do {
+                let managedObjectContext = user.managedObjectContext
+                try managedObjectContext?.save()
+            } catch {
+                print("unable to save")
+                return
+            }
         }
         
+        _ = navigationController?.popViewController(animated: true)
+
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

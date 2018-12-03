@@ -12,7 +12,7 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var grayView: UIView!
-    
+    var user:User?
     override func awakeFromNib() {
         super.awakeFromNib()
         userImage.roundedImage()

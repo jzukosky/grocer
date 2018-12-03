@@ -105,6 +105,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="usersCollectionView" destination="Tt0-7I-A1R" id="eqj-az-iMS"/>
                         <segue destination="Ixa-VM-Uyb" kind="show" identifier="showPurchases" id="hXs-Ez-c91"/>
                         <segue destination="OHx-Wr-hHn" kind="show" identifier="editUser" id="csg-XD-3gj"/>
                     </connections>

@@ -70,15 +70,14 @@ class AddPurchaseViewController: UIViewController {
     }
     
     @IBAction func handleSave(_ sender: Any) {
-        let user1 = User(username: "test purchaser", email: "abc@mail.com", information: "abc", picture: nil)
         let user2 = User(username: "test recipient", email: "efg@mail.com", information: "efg", picture: nil)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         let date = dateFormatter.date(from: dateField.text ?? "01-01-2018")
         
-        if let user1 = user1, let user2 = user2 {
-            let purchase = Purchase(title: titleField.text ?? "Untitled", purchaseDescription: "no description field", date: date ?? Date.init(timeIntervalSinceNow: 0), tax: 2.0, receipt: nil, purchaser: user1);
+        if let purchaser = purchaser, let user2 = user2 {
+            let purchase = Purchase(title: titleField.text ?? "Untitled", purchaseDescription: descriptionField.text ?? "no description field", date: date ?? Date.init(timeIntervalSinceNow: 0), tax: 2.0, receipt: receiptImage?.pngData(), purchaser: purchaser);
             purchase?.addToRecipients(user2);
             
             for item in items {

@@ -14,7 +14,9 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
+    var purchaser: User?
     var purchases: [Purchase] = []
+    var rawPurchases:[Purchase] = []
     var pastPurchases:[Purchase] = []
     var activePurchases:[Purchase] = []
     var filteredPurchases = [Purchase]()
@@ -27,39 +29,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        /* ------ Test Data: Delete before merge ------ */
-
-        let user1 = User(username: "abc", email: "abc@mail.com", information: "abc", picture: nil)
-        let user2 = User(username: "efg", email: "efg@mail.com", information: "efg", picture: nil)
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-
-        let date1 = dateFormatter.date(from: "01/12/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date2 = dateFormatter.date(from: "11/08/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date3 = dateFormatter.date(from: "11/07/2018") ?? Date(timeIntervalSinceNow: 0)
-        let date4 = dateFormatter.date(from: "11/19/2018") ?? Date(timeIntervalSinceNow: 0)
-
-
-        if let user1 = user1, let user2 = user2 {
-            let purchase1 = Purchase(title: "Test1", purchaseDescription: "test1", date: date1, tax: 2.3, receipt: nil, purchaser: user1)
-            let purchase2 = Purchase(title: "Test2", purchaseDescription: "test1", date: date2, tax: 2.3, receipt: nil, purchaser: user2)
-            let purchase3 = Purchase(title: "Test3", purchaseDescription: "test1", date: date3, tax: 2.3, receipt: nil, purchaser: user2)
-            let purchase4 = Purchase(title: "Test4", purchaseDescription: "test1", date: date4, tax: 2.3, receipt: nil, purchaser: user1)
-
-            purchase1?.addToItems(Item(name: "test1", price: 3.0)!)
-            purchase2?.addToItems(Item(name: "test2", price: 4.0)!)
-            purchase2?.addToPayments(Payment(date: date2, amount: 4.0)!)
-
-            purchase3?.addToItems(Item(name: "test2", price: 5.0)!)
-            purchase3?.addToPayments(Payment(date: date2, amount: 4.0)!)
-
-            purchases = [purchase1!, purchase2!, purchase3!, purchase4!]
-        }
-        
-        
-        /* ------ Test Data ------ */
         filteredPurchases = purchases
         
         searchController.searchResultsUpdater = self
@@ -68,7 +37,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.tableHeaderView = searchController.searchBar
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        /* ------ Test Data ------ */
         for purchase in filteredPurchases {
             if (!isPurchaseActive(purchase: purchase)){
                 pastPurchases.append(purchase)
@@ -88,9 +56,10 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            fetchPurchases()
+        fetchPurchases()
         self.tableView.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -160,7 +129,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
         if segue.identifier == "addSegue",
             let destination = segue.destination as? AddPurchaseViewController {
-            
+            destination.purchaser = purchaser
             destination.receiptImage = imageForReceipt
             
         }
@@ -240,13 +209,13 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         do {
-            purchases = try managedContext.fetch(fetchRequest)
+            rawPurchases = try managedContext.fetch(fetchRequest)
             tableView.reloadData()
         } catch {
             presentMessage(message: "An error occurred fetching: \(error)")
         }
         
-        
+        purchases = filterPurchasesByUser()
         pastPurchases.removeAll()
         activePurchases.removeAll()
         filteredPurchases.removeAll()
@@ -261,7 +230,6 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.tableHeaderView = searchController.searchBar
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        /* ------ Test Data ------ */
         for purchase in filteredPurchases {
             if (!isPurchaseActive(purchase: purchase)){
                 pastPurchases.append(purchase)
@@ -330,6 +298,29 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func filterPurchasesByUser() -> [Purchase]{
+        var tempPurchase: [Purchase] = []
+        if let user = purchaser{
+            
+            for purchase in rawPurchases{
+                if let purchaser = purchase.getPurchaser(){
+                    if purchaser.isEqual(user){
+                        tempPurchase.append(purchase)
+                    }
+                    
+                }
+                if let recipients = purchase.getRecipients(){
+                    
+                    if recipients.contains(user){
+                        tempPurchase.append(purchase)
+                    }
+                }
+                
+            }
+        }
+        return tempPurchase
     }
 }
 
