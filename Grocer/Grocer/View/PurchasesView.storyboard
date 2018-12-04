@@ -375,7 +375,7 @@
                     <navigationItem key="navigationItem" title="New Item" id="Yd7-ma-Gl3">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="6zn-vF-TKc">
                             <connections>
-                                <segue destination="PNa-jX-Vst" kind="show" id="8sx-ne-awI"/>
+                                <segue destination="PNa-jX-Vst" kind="show" identifier="detailToMyPurchase" id="8sx-ne-awI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

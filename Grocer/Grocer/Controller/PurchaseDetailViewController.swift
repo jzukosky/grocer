@@ -47,21 +47,35 @@ class PurchaseDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        <#code#>
-//    }
-    @IBAction func saveTapped(_ sender: Any) {
-        print("save tapped")
-        _ = navigationController?.popViewController(animated: true)
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectedIndexes = itemsTableView.indexPathsForSelectedRows{
             for index in selectedIndexes{
                 print(index.row)
                 selectedItems.append(items[index.row])
             }
         }
+        
+        if segue.identifier == "detailToMyPurchase",
+            let destination = segue.destination as? MyPurchaseViewController{
+            destination.myItems = selectedItems
+        }
+        
     }
+
+//        
+//    @IBAction func saveTapped(_ sender: Any) {
+//        print("save tapped")
+//        _ = navigationController?.popViewController(animated: true)
+//
+//        if let selectedIndexes = itemsTableView.indexPathsForSelectedRows{
+//            for index in selectedIndexes{
+//                print(index.row)
+//                selectedItems.append(items[index.row])
+//            }
+//        }
+//    }
 }
+
 extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(items.count)

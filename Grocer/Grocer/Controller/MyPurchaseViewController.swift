@@ -9,10 +9,16 @@
 import UIKit
 
 class MyPurchaseViewController: UIViewController {
-
+    
+    var myItems: [Item] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        for item in myItems{
+            print(item.getName())
+            print(item.getPrice())
+        }
         // Do any additional setup after loading the view.
     }
     
