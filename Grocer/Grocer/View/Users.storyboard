@@ -124,37 +124,40 @@
         <!--Create New Profile-->
         <scene sceneID="l6A-y9-Kda">
             <objects>
-                <viewController id="OHx-Wr-hHn" customClass="AddUserViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OHx-Wr-hHn" customClass="EditUsersViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nAz-It-rx8">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6f-zJ-Vj4">
-                                <rect key="frame" x="267" y="200" width="299" height="287"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g6f-zJ-Vj4">
+                                <rect key="frame" x="267" y="170" width="299" height="287"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="287" id="Be5-XA-7Lk"/>
+                                </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fW5-LH-kvB">
-                                <rect key="frame" x="60" y="597" width="724" height="52"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fW5-LH-kvB">
+                                <rect key="frame" x="60" y="567" width="724" height="52"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMc-cA-QPK">
-                                <rect key="frame" x="60" y="741" width="724" height="52"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMc-cA-QPK">
+                                <rect key="frame" x="60" y="711" width="724" height="52"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Information" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQ7-VP-Xaf">
-                                <rect key="frame" x="60" y="669" width="724" height="52"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Information" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQ7-VP-Xaf">
+                                <rect key="frame" x="60" y="639" width="724" height="52"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yz5-p0-K2h">
-                                <rect key="frame" x="344.5" y="507" width="144" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yz5-p0-K2h">
+                                <rect key="frame" x="344.5" y="477" width="144" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wcQ-Av-RsU"/>
                                 </constraints>
@@ -176,6 +179,7 @@
                             <constraint firstItem="fW5-LH-kvB" firstAttribute="top" secondItem="Yz5-p0-K2h" secondAttribute="bottom" constant="40" id="Yu1-Yj-zhq"/>
                             <constraint firstItem="aQ7-VP-Xaf" firstAttribute="trailing" secondItem="iMc-cA-QPK" secondAttribute="trailing" id="c6C-Zd-cUi"/>
                             <constraint firstItem="g6f-zJ-Vj4" firstAttribute="centerX" secondItem="Yz5-p0-K2h" secondAttribute="centerX" id="eoY-Iz-zPh"/>
+                            <constraint firstItem="zxW-C5-Vyw" firstAttribute="bottom" secondItem="iMc-cA-QPK" secondAttribute="bottom" constant="349" id="fLi-t2-bkq"/>
                             <constraint firstItem="aQ7-VP-Xaf" firstAttribute="top" secondItem="fW5-LH-kvB" secondAttribute="bottom" constant="20" id="lWp-P5-xnX"/>
                             <constraint firstItem="aQ7-VP-Xaf" firstAttribute="leading" secondItem="iMc-cA-QPK" secondAttribute="leading" id="mDp-MS-vRS"/>
                             <constraint firstItem="g6f-zJ-Vj4" firstAttribute="leading" secondItem="zxW-C5-Vyw" secondAttribute="leading" constant="267" id="qlL-Jz-saT"/>
@@ -200,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXq-GT-FWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-268" y="-294"/>
+            <point key="canvasLocation" x="-159" y="-168"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

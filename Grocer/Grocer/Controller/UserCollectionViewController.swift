@@ -37,10 +37,10 @@ class UserCollectionViewController: UICollectionViewController {
             let cellWidth = (view.frame.width - (numberOfCells-1)*horizontalSpacing)/numberOfCells
             flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         }
-        // Do any additional setup after loading the view.
-        
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         #warning("pull from core data")
     }
     
