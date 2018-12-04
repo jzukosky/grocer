@@ -373,9 +373,9 @@
                         <viewLayoutGuide key="safeArea" id="1r0-r8-E3n"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Item" id="Yd7-ma-Gl3">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="6zn-vF-TKc">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="6zn-vF-TKc">
                             <connections>
-                                <action selector="saveTapped:" destination="3Hw-96-0aX" id="26H-RX-dht"/>
+                                <segue destination="PNa-jX-Vst" kind="show" id="8sx-ne-awI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -391,6 +391,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LU1-K3-EWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="482" y="407"/>
+        </scene>
+        <!--My Purchase View Controller-->
+        <scene sceneID="lkx-g3-mVd">
+            <objects>
+                <viewController id="PNa-jX-Vst" customClass="MyPurchaseViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZcY-ab-hzZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fd3-Jp-cil"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HCh-US-chE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1156" y="407"/>
         </scene>
     </scenes>
 </document>

@@ -20,9 +20,11 @@ class PurchaseDetailViewController: UIViewController {
     @IBOutlet weak var purchaserImage: UIImageView!
     @IBOutlet weak var itemsTableView: UITableView!
     
+    var selectedItems = [Item]()
     var items = [Item]()
     override func viewDidLoad() {
-
+        
+        itemsTableView?.allowsMultipleSelection = true
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         dateField.text = dateFormatter.string(from: (purchase?.date)!)
@@ -45,10 +47,19 @@ class PurchaseDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        <#code#>
+//    }
     @IBAction func saveTapped(_ sender: Any) {
         print("save tapped")
         _ = navigationController?.popViewController(animated: true)
 
+        if let selectedIndexes = itemsTableView.indexPathsForSelectedRows{
+            for index in selectedIndexes{
+                print(index.row)
+                selectedItems.append(items[index.row])
+            }
+        }
     }
 }
 extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSource {
