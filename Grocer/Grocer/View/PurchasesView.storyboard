@@ -265,10 +265,10 @@
             </objects>
             <point key="canvasLocation" x="523.828125" y="-274.08491947291361"/>
         </scene>
-        <!--New Item-->
+        <!--Purchase Detail-->
         <scene sceneID="acm-MH-osO">
             <objects>
-                <viewController id="3Hw-96-0aX" customClass="PurchaseDetailViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Purchase Detail" id="3Hw-96-0aX" customClass="PurchaseDetailViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k4J-0z-Fgc">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -372,7 +372,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1r0-r8-E3n"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Item" id="Yd7-ma-Gl3">
+                    <navigationItem key="navigationItem" title="Purchase Detail" id="Yd7-ma-Gl3">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="6zn-vF-TKc">
                             <connections>
                                 <segue destination="PNa-jX-Vst" kind="show" identifier="detailToMyPurchase" id="8sx-ne-awI"/>
