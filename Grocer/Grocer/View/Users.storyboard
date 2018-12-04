@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-1874" y="-56"/>
         </scene>
-        <!--User Collection View Controller-->
+        <!--Users-->
         <scene sceneID="bdw-jP-xsI">
             <objects>
                 <collectionViewController id="4vR-6j-T7x" customClass="UserCollectionViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,39 +34,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BgO-xx-AIH">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="156" height="110"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCell" id="71y-wm-UR0" customClass="UserCollectionViewCell" customModule="Grocer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="156" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="156" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zeR-eE-6zo">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="110"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" button="YES" image="YES"/>
                                             </accessibility>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teP-ws-FDd">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="110"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztI-J0-X23">
-                                                    <rect key="frame" x="-5" y="3.5" width="60" height="43"/>
+                                                    <rect key="frame" x="48" y="34" width="60" height="42"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-TQ-afZ">
+                                                    <rect key="frame" x="8" y="8" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="eYh-c9-EQa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWR-6Z-5YC">
+                                                                <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" image="icon-close"/>
+                                                                <connections>
+                                                                    <action selector="deleteButtonDidTap:" destination="71y-wm-UR0" eventType="touchUpInside" id="6OL-JS-w3z"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </view>
+                                                    <blurEffect style="prominent"/>
+                                                </visualEffectView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.96470588239999999" green="0.59607843140000005" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="ztI-J0-X23" firstAttribute="centerX" secondItem="teP-ws-FDd" secondAttribute="centerX" id="AMR-bQ-DlB"/>
-                                                <constraint firstItem="ztI-J0-X23" firstAttribute="centerY" secondItem="teP-ws-FDd" secondAttribute="centerY" id="qBE-qj-caV"/>
+                                                <constraint firstItem="ztI-J0-X23" firstAttribute="centerX" secondItem="teP-ws-FDd" secondAttribute="centerX" id="N4N-kF-0VN"/>
+                                                <constraint firstItem="ztI-J0-X23" firstAttribute="centerY" secondItem="teP-ws-FDd" secondAttribute="centerY" id="RkD-cK-dhb"/>
+                                                <constraint firstItem="ztI-J0-X23" firstAttribute="top" secondItem="teP-ws-FDd" secondAttribute="top" constant="34" id="j02-7M-sLY"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -82,6 +102,7 @@
                                     <constraint firstAttribute="trailing" secondItem="teP-ws-FDd" secondAttribute="trailing" id="oyg-5W-BAE"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="deleteButtonBackgroundView" destination="tjQ-TQ-afZ" id="ZmQ-3w-tZ5"/>
                                     <outlet property="grayView" destination="teP-ws-FDd" id="nOi-5K-ndr"/>
                                     <outlet property="userImage" destination="zeR-eE-6zo" id="fLh-ow-Wr1"/>
                                 </connections>
@@ -92,8 +113,8 @@
                             <outlet property="delegate" destination="4vR-6j-T7x" id="vs5-wl-fvV"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Ohd-9c-427">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="c2l-dL-OKM">
+                    <navigationItem key="navigationItem" title="Users" id="Ohd-9c-427">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="c2l-dL-OKM">
                             <connections>
                                 <action selector="editUser:" destination="4vR-6j-T7x" id="bJB-vt-TvU"/>
                             </connections>
@@ -105,6 +126,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBarButtonItem" destination="9iy-30-Rnc" id="LWr-Pf-jfi"/>
+                        <outlet property="editButton" destination="c2l-dL-OKM" id="Reu-bo-cGT"/>
                         <outlet property="usersCollectionView" destination="Tt0-7I-A1R" id="eqj-az-iMS"/>
                         <segue destination="Ixa-VM-Uyb" kind="show" identifier="showPurchases" id="hXs-Ez-c91"/>
                         <segue destination="OHx-Wr-hHn" kind="show" identifier="editUser" id="csg-XD-3gj"/>
@@ -112,7 +135,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHh-Yk-raH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1079" y="-56"/>
+            <point key="canvasLocation" x="-1079.1366906474821" y="-56.115107913669064"/>
         </scene>
         <!--PurchasesView-->
         <scene sceneID="avq-5N-mfW">
@@ -204,6 +227,9 @@
             <point key="canvasLocation" x="-268" y="-294"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-close" width="48" height="48"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="csg-XD-3gj"/>
     </inferredMetricsTieBreakers>

@@ -15,6 +15,8 @@ class UserCollectionViewController: UICollectionViewController {
     
     //let refreshControl = UIRefreshControl()
     @IBOutlet var usersCollectionView: UICollectionView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
     
     var users = [User]()
     var defaultImage = UIImage(named: "ProfileImage")
@@ -27,8 +29,8 @@ class UserCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-        users.append(User(username: "okrek", email: "hi@fake.com", information: "does it matter", picture: nil)!)
-        users.append(User(username: "brendan", email: "fake@hi.com", information: "it does matter", picture: UIImage(named: "jonahiscool")?.pngData())!)
+        //users.append(User(username: "okrek", email: "hi@fake.com", information: "does it matter", picture: nil)!)
+        //users.append(User(username: "brendan", email: "fake@hi.com", information: "it does matter", picture: UIImage(named: "jonahiscool")?.pngData())!)
         
 
         let numberOfCells = CGFloat(2)
@@ -79,6 +81,7 @@ class UserCollectionViewController: UICollectionViewController {
         
         if currentlyEditing {
             cell.grayView.alpha = 0.5
+            cell.deleteButtonBackgroundView.backgroundColor = UIColor.blue
         } else {
             cell.grayView.alpha = 0.0
         }
@@ -118,9 +121,22 @@ class UserCollectionViewController: UICollectionViewController {
     
     @IBAction func editUser(_ sender: Any) {
         currentlyEditing = !currentlyEditing
+        if !currentlyEditing {
+            editButton.title = "Edit"
+            addBarButtonItem.isEnabled = true
+        } else {
+            editButton.title = "Done"
+            addBarButtonItem.isEnabled = false
+        }
         collectionView.reloadData()
 
     }
+    
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: animated)
+//        
+//        addBarButtonItem.isEnabled = !editing
+//    }
 
     override func viewWillAppear(_ animated: Bool) {
         fetchUsers()
