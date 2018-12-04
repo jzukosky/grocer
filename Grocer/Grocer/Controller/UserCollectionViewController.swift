@@ -94,6 +94,10 @@ class UserCollectionViewController: UICollectionViewController {
             cell.userImage?.image = defaultImage
         }
         
+        
+        cell.set(deleteHandler: delete)
+        cell.set(reloadHandler: collectionView.reloadData)
+        
         // Configure the cell
     
         return cell
@@ -166,6 +170,31 @@ class UserCollectionViewController: UICollectionViewController {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func delete(user: User){
+        do {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            let managedContext = appDelegate?.persistentContainer.viewContext
+           
+            managedContext?.delete(user)
+            
+            try managedContext?.save()
+            
+            
+            let newListOfUsers = users.filter({ userInArray in
+                return userInArray.objectID != user.objectID
+            })
+            
+            users = newListOfUsers
+            
+            //users = users.filter({ $0.objectID != user.objectID })
+            #warning("closures/higherorderfucntions/ do not delete this group ^")
+            
+        }
+        catch {
+            print("Failed to delete User from Core Data \(error)")
+        }
     }
     // MARK: UICollectionViewDelegate
 

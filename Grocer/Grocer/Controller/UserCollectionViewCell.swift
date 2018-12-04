@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import CoreData
+
+typealias DeleteHandler = (User) -> Void
+typealias Reloader = () -> Void
 
 class UserCollectionViewCell: UICollectionViewCell {
+    
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var grayView: UIView!
     @IBOutlet weak var deleteButtonBackgroundView: UIVisualEffectView!
-    var user:User?
-    
+    var user: User?
+    var deletionHandler: DeleteHandler!
+    var reload: Reloader!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,12 +36,22 @@ class UserCollectionViewCell: UICollectionViewCell {
         grayView.layer.cornerRadius = 20
     }
     
-    @IBAction func deleteButtonDidTap(_ sender: Any) {
-        
+    func set(deleteHandler: @escaping DeleteHandler) {
+        self.deletionHandler = deleteHandler
     }
     
+    func set(reloadHandler: @escaping Reloader) {
+        self.reload = reloadHandler
+    }
     
+    @IBAction func deleteButtonDidTap(_ sender: Any) {
+        if let user = user {
+            self.deletionHandler(user)
+            self.reload()
+        }
+    }
 }
+
 
 
 protocol Roundable: class {
