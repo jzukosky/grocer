@@ -26,12 +26,7 @@ class UserCollectionViewController: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
-        users.append(User(username: "okrek", email: "hi@fake.com", information: "does it matter", picture: nil)!)
-        users.append(User(username: "brendan", email: "fake@hi.com", information: "it does matter", picture: UIImage(named: "jonahiscool")?.pngData())!)
-        
-        
-        
+
 
         let numberOfCells = CGFloat(2)
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
