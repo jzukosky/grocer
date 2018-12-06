@@ -54,12 +54,15 @@ class UserCollectionViewController: UICollectionViewController {
     /*
     // MARK: - Navigation
 
+     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
     */
+
 
     // MARK: UICollectionViewDataSource
 
@@ -103,6 +106,13 @@ class UserCollectionViewController: UICollectionViewController {
             let indexPath = collectionView.indexPathsForSelectedItems?.first,
             let cell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell{
             destination.purchaser = cell.user
+        }
+         if segue.identifier == "EditUser",
+            let destination = segue.destination as? EditUsersViewController,
+            let collectionView = self.collectionView,
+            let indexPath = collectionView.indexPathsForSelectedItems?.first,
+            let selectedCell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell{
+            destination.existingUser = cell.user
         }
         
     }

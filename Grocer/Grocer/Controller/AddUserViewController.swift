@@ -19,12 +19,13 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
     var newUser: User?
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+
     
     @IBAction func chooseUserPictureButtonTapped(_ sender: Any) {
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class EditUsersViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -22,6 +23,11 @@ class EditUsersViewController: UIViewController, UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let existingUser = existingUser {
+            userNameTextField.text = existingUser.username
+            informationTextField.text = existingUser.information
+        }
 
         // Do any additional setup after loading the view.
     }
