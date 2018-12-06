@@ -23,8 +23,10 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Add User"
         if let existingUser = existingUser
         {
+            self.title = "Edit User"
             userNameTextField.text = existingUser.username
             informationTextField.text = existingUser.information
             emailTextField.text = existingUser.email
