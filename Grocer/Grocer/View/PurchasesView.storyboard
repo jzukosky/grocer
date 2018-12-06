@@ -265,10 +265,10 @@
             </objects>
             <point key="canvasLocation" x="523.828125" y="-274.08491947291361"/>
         </scene>
-        <!--New Item-->
+        <!--Purchase Detail-->
         <scene sceneID="acm-MH-osO">
             <objects>
-                <viewController id="3Hw-96-0aX" customClass="PurchaseDetailViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Purchase Detail" id="3Hw-96-0aX" customClass="PurchaseDetailViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k4J-0z-Fgc">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -372,10 +372,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1r0-r8-E3n"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Item" id="Yd7-ma-Gl3">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="6zn-vF-TKc">
+                    <navigationItem key="navigationItem" title="Purchase Detail" id="Yd7-ma-Gl3">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="6zn-vF-TKc">
                             <connections>
-                                <action selector="saveTapped:" destination="3Hw-96-0aX" id="26H-RX-dht"/>
+                                <segue destination="PNa-jX-Vst" kind="show" identifier="detailToMyPurchase" id="8sx-ne-awI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -391,6 +391,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LU1-K3-EWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="482" y="407"/>
+        </scene>
+        <!--My Purchase View Controller-->
+        <scene sceneID="lkx-g3-mVd">
+            <objects>
+                <viewController id="PNa-jX-Vst" customClass="MyPurchaseViewController" customModule="Grocer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZcY-ab-hzZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amout you need to Pay:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apg-vF-r6x">
+                                <rect key="frame" x="200" y="664" width="353" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9H-di-tNV">
+                                <rect key="frame" x="583" y="664" width="82.5" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJH-7i-7eK">
+                                <rect key="frame" x="440" y="806" width="144" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Send Email"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iJH-7i-7eK" firstAttribute="centerX" secondItem="fd3-Jp-cil" secondAttribute="centerX" id="UFf-1Q-Yss"/>
+                            <constraint firstItem="iJH-7i-7eK" firstAttribute="top" secondItem="Apg-vF-r6x" secondAttribute="bottom" constant="100" id="Ux8-Ha-MDT"/>
+                            <constraint firstItem="Apg-vF-r6x" firstAttribute="centerY" secondItem="fd3-Jp-cil" secondAttribute="centerY" id="Yu6-Dy-2Ib"/>
+                            <constraint firstItem="Apg-vF-r6x" firstAttribute="leading" secondItem="fd3-Jp-cil" secondAttribute="leading" constant="200" id="aZe-nw-rc8"/>
+                            <constraint firstItem="a9H-di-tNV" firstAttribute="leading" secondItem="Apg-vF-r6x" secondAttribute="trailing" constant="30" id="eoB-Vg-GFP"/>
+                            <constraint firstItem="a9H-di-tNV" firstAttribute="centerY" secondItem="fd3-Jp-cil" secondAttribute="centerY" id="vRa-IG-Nxj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fd3-Jp-cil"/>
+                    </view>
+                    <connections>
+                        <outlet property="priceLabel" destination="a9H-di-tNV" id="rZn-kE-Wr3"/>
+                        <outlet property="sendEmailButton" destination="iJH-7i-7eK" id="4DM-vB-9Vm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HCh-US-chE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1155.46875" y="406.73499267935574"/>
         </scene>
     </scenes>
 </document>

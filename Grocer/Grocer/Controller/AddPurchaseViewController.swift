@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddPurchaseViewController: UIViewController {
 
@@ -76,15 +77,17 @@ class AddPurchaseViewController: UIViewController {
     }
     
     @IBAction func handleSave(_ sender: Any) {
-        let user2 = User(username: "test recipient", email: "efg@mail.com", information: "efg", picture: nil)
-        
+        //let user2 = User(username: "test recipient", email: "efg@mail.com", information: "efg", picture: nil)
+        fetchUsers()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         let date = dateFormatter.date(from: dateField.text ?? "01-01-2018")
         
-        if let purchaser = purchaser, let user2 = user2 {
+        if let purchaser = purchaser {
             let purchase = Purchase(title: titleField.text ?? "Untitled", purchaseDescription: descriptionField.text ?? "no description field", date: date ?? Date.init(timeIntervalSinceNow: 0), tax: 2.0, receipt: receiptImage?.pngData(), purchaser: purchaser);
-            purchase?.addToRecipients(user2);
+            for user in allUsers{
+                    purchase?.addToRecipients(user);
+            }
             
             for item in items {
                 purchase?.addToItems(item)
@@ -190,6 +193,25 @@ extension AddPurchaseViewController: UICollectionViewDelegate, UICollectionViewD
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func fetchUsers(){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        var fetchedUsers: [User] = []
+        do {
+            fetchedUsers = try managedContext.fetch(fetchRequest)
+        } catch {
+            presentMessage(message: "An error occurred fetching: \(error)")
+        }
+        allUsers.removeAll()
+        allUsers = fetchedUsers
+    }
+
     
 }
 
