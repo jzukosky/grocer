@@ -195,7 +195,7 @@ class UserCollectionViewController: UICollectionViewController {
             fetchedUsers = try managedContext.fetch(fetchRequest)
             collectionView.reloadData()
         } catch {
-            presentMessage(message: "An error occurred fetching: \(error)")
+            print("An error occurred fetching: \(error)")
         }
     
         users.removeAll()
@@ -220,12 +220,6 @@ class UserCollectionViewController: UICollectionViewController {
             
             //users = users.filter({ $0.objectID != user.objectID })
             #warning("closures/higherorderfucntions/ do not delete this group ^")
-            
-        }
-        catch {
-            print("Failed to delete User from Core Data \(error)")
-        }
-    }
             
         }
         catch {
