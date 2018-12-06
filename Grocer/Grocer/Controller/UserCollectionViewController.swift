@@ -15,6 +15,8 @@ class UserCollectionViewController: UICollectionViewController {
     
     //let refreshControl = UIRefreshControl()
     @IBOutlet var usersCollectionView: UICollectionView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
     
     var users = [User]()
     var defaultImage = UIImage(named: "ProfileImage")
@@ -77,6 +79,7 @@ class UserCollectionViewController: UICollectionViewController {
         
         if currentlyEditing {
             cell.grayView.alpha = 0.5
+            cell.deleteButtonBackgroundView.backgroundColor = UIColor.blue
         } else {
             cell.grayView.alpha = 0.0
         }
@@ -100,6 +103,12 @@ class UserCollectionViewController: UICollectionViewController {
         title.text = cell.user?.getUsername()
         title.textAlignment = .center
         cell.addSubview(title)
+        
+        cell.set(deleteHandler: delete)
+        cell.set(reloadHandler: collectionView.reloadData)
+        
+        // Configure the cell
+    
         return cell
     }
     
@@ -149,9 +158,22 @@ class UserCollectionViewController: UICollectionViewController {
     
     @IBAction func editUser(_ sender: Any) {
         currentlyEditing = !currentlyEditing
+        if !currentlyEditing {
+            editButton.title = "Edit"
+            addBarButtonItem.isEnabled = true
+        } else {
+            editButton.title = "Done"
+            addBarButtonItem.isEnabled = false
+        }
         collectionView.reloadData()
 
     }
+    
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: animated)
+//        
+//        addBarButtonItem.isEnabled = !editing
+//    }
 
     override func viewWillAppear(_ animated: Bool) {
         fetchUsers()
@@ -171,7 +193,7 @@ class UserCollectionViewController: UICollectionViewController {
             fetchedUsers = try managedContext.fetch(fetchRequest)
             collectionView.reloadData()
         } catch {
-            presentMessage(message: "An error occurred fetching: \(error)")
+            print("An error occurred fetching: \(error)")
         }
     
         users.removeAll()
@@ -179,13 +201,30 @@ class UserCollectionViewController: UICollectionViewController {
         users.sort { $0.username! < $1.username! }
     }
 
-    func presentMessage(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    func delete(user: User){
+        do {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            let managedContext = appDelegate?.persistentContainer.viewContext
+           
+            managedContext?.delete(user)
+            
+            try managedContext?.save()
+            
+            
+            let newListOfUsers = users.filter({ userInArray in
+                return userInArray.objectID != user.objectID
+            })
+            
+            users = newListOfUsers
+            
+            //users = users.filter({ $0.objectID != user.objectID })
+            #warning("closures/higherorderfucntions/ do not delete this group ^")
+            
+        }
+        catch {
+            print("Failed to delete User from Core Data \(error)")
+        }
     }
-    
-
     // MARK: UICollectionViewDelegate
 
     /*
