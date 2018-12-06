@@ -17,15 +17,31 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var emailTextField: UITextField!
     
     var newUser: User?
+    var existingUser: User?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Add User"
+        if let existingUser = existingUser
+        {
+            self.title = "Edit User"
+            userNameTextField.text = existingUser.username
+            informationTextField.text = existingUser.information
+            emailTextField.text = existingUser.email
+            //need to fix image constraints
+        /*    if let image = existingUser.picture {
+                userPictureImageView.image = UIImage(data: image)
+            }*/
+       
+        }
 
         // Do any additional setup after loading the view.
     }
     
     
+
     @IBAction func chooseUserPictureButtonTapped(_ sender: Any) {
         
         let image = UIImagePickerController()
@@ -79,4 +95,7 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         self.dismiss(animated: true, completion: nil)
     }
+    
+   
+    
 }

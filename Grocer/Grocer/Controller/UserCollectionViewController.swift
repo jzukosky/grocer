@@ -24,7 +24,7 @@ class UserCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
+        // Uncomment the following line to preserve selection between presentations ok
         // self.clearsSelectionOnViewWillAppear = false
         
         users.append(User(username: "okrek", email: "hi@fake.com", information: "does it matter", picture: nil)!)
@@ -105,6 +105,8 @@ class UserCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPurchases",
             let destination = segue.destination as? PurchasesTableViewController,
@@ -114,7 +116,29 @@ class UserCollectionViewController: UICollectionViewController {
             destination.purchaser = cell.user
         }
         
+        else if segue.identifier == "editUser",
+           let destination = segue.destination as? AddUserViewController,
+            let collectionView = self.collectionView,
+            let indexPath = collectionView.indexPathsForSelectedItems?.first,
+            let cell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell {
+                destination.existingUser = cell.user
+            }
+            
+        
+        if segue.identifier == "addUser",
+            let destination = segue.destination as? AddUserViewController,
+            let collectionView = self.collectionView,
+            let indexPath = collectionView.indexPathsForSelectedItems?.first,
+            let cell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell {
+            destination.newUser = cell.user
+        
+        }
+        
     }
+    
+    
+    
+    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if currentlyEditing {
@@ -151,6 +175,7 @@ class UserCollectionViewController: UICollectionViewController {
         } catch {
             presentMessage(message: "An error occurred fetching: \(error)")
         }
+    
         users.removeAll()
         users = fetchedUsers
     }
@@ -160,6 +185,8 @@ class UserCollectionViewController: UICollectionViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+
     // MARK: UICollectionViewDelegate
 
     /*
