@@ -24,11 +24,13 @@ class UserCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations ok
+        // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         users.append(User(username: "okrek", email: "hi@fake.com", information: "does it matter", picture: nil)!)
         users.append(User(username: "brendan", email: "fake@hi.com", information: "it does matter", picture: UIImage(named: "jonahiscool")?.pngData())!)
+        
+        
         
 
         let numberOfCells = CGFloat(2)
@@ -73,6 +75,7 @@ class UserCollectionViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of items
         return users.count
     }
+  
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserCollectionViewCell
@@ -102,6 +105,7 @@ class UserCollectionViewController: UICollectionViewController {
         title.text = cell.user?.getUsername()
         title.textAlignment = .center
         cell.addSubview(title)
+        
         return cell
     }
     
@@ -178,6 +182,7 @@ class UserCollectionViewController: UICollectionViewController {
     
         users.removeAll()
         users = fetchedUsers
+        users.sort { $0.username! < $1.username! }
     }
 
     func presentMessage(message: String) {
