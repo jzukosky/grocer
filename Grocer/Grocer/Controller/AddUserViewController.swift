@@ -31,9 +31,9 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
             informationTextField.text = existingUser.information
             emailTextField.text = existingUser.email
             //need to fix image constraints
-        /*    if let image = existingUser.picture {
+            if let image = existingUser.picture {
                 userPictureImageView.image = UIImage(data: image)
-            }*/
+            }
        
         }
 
