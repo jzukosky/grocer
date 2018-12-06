@@ -57,9 +57,15 @@ class AddPurchaseViewController: UIViewController {
     @IBAction func handleEditingBeginningDateField(_ sender: Any) {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date.init()
+       
         
         dateField.inputView = datePicker
+       
         datePicker.addTarget(self, action: #selector(AddPurchaseViewController.datePickerValueChanged), for: .valueChanged)
+    
+        
+        
     }
     
     

@@ -26,7 +26,7 @@ class UserCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
+        // Uncomment the following line to preserve selection between presentations ok
         // self.clearsSelectionOnViewWillAppear = false
         
         //users.append(User(username: "okrek", email: "hi@fake.com", information: "does it matter", picture: nil)!)
@@ -94,6 +94,17 @@ class UserCollectionViewController: UICollectionViewController {
             cell.userImage?.image = defaultImage
         }
         
+        let title = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: 40))
+        let strokeTextAttributes = [
+            NSAttributedString.Key.strokeColor : UIColor.init(red:0.56, green:0.84, blue:0.54, alpha:1.0),
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.strokeWidth : -4.0,
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)]
+            as [NSAttributedString.Key : Any]
+        title.attributedText = NSMutableAttributedString(string: cell.user?.getUsername() ?? "Username", attributes: strokeTextAttributes)
+        title.text = cell.user?.getUsername()
+        title.textAlignment = .center
+        cell.addSubview(title)
         
         cell.set(deleteHandler: delete)
         cell.set(reloadHandler: collectionView.reloadData)
@@ -102,6 +113,8 @@ class UserCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPurchases",
@@ -112,7 +125,29 @@ class UserCollectionViewController: UICollectionViewController {
             destination.purchaser = cell.user
         }
         
+        else if segue.identifier == "editUser",
+           let destination = segue.destination as? AddUserViewController,
+            let collectionView = self.collectionView,
+            let indexPath = collectionView.indexPathsForSelectedItems?.first,
+            let cell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell {
+                destination.existingUser = cell.user
+            }
+            
+        
+        if segue.identifier == "addUser",
+            let destination = segue.destination as? AddUserViewController,
+            let collectionView = self.collectionView,
+            let indexPath = collectionView.indexPathsForSelectedItems?.first,
+            let cell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell {
+            destination.newUser = cell.user
+        
+        }
+        
     }
+    
+    
+    
+    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if currentlyEditing {
@@ -162,16 +197,11 @@ class UserCollectionViewController: UICollectionViewController {
         } catch {
             presentMessage(message: "An error occurred fetching: \(error)")
         }
+    
         users.removeAll()
         users = fetchedUsers
     }
 
-    func presentMessage(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func delete(user: User){
         do {
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -190,6 +220,12 @@ class UserCollectionViewController: UICollectionViewController {
             
             //users = users.filter({ $0.objectID != user.objectID })
             #warning("closures/higherorderfucntions/ do not delete this group ^")
+            
+        }
+        catch {
+            print("Failed to delete User from Core Data \(error)")
+        }
+    }
             
         }
         catch {
