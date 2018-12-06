@@ -105,7 +105,6 @@ class UserCollectionViewController: UICollectionViewController {
         title.text = cell.user?.getUsername()
         title.textAlignment = .center
         cell.addSubview(title)
-        
         return cell
     }
     
