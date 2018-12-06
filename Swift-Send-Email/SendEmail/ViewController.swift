@@ -36,7 +36,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         
         mailComposerVC.setToRecipients(["user@email.com"])
         mailComposerVC.setSubject("Pay your stuff")
-        mailComposerVC.setMessageBody("Gimme da money or I'm gonna kick ya ass", isHTML: false)
+        mailComposerVC.setMessageBody("Please pay the amount: $", isHTML: false)
         
         return mailComposerVC
     }
