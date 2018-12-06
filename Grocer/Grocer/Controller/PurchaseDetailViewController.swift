@@ -10,7 +10,8 @@ import UIKit
 
 class PurchaseDetailViewController: UIViewController {
     var purchase:Purchase?
-
+    var user:User?
+    
     @IBOutlet weak var receiptImage: UIImageView!
     
     @IBOutlet weak var titleField: UITextField!
@@ -58,6 +59,7 @@ class PurchaseDetailViewController: UIViewController {
         if segue.identifier == "detailToMyPurchase",
             let destination = segue.destination as? MyPurchaseViewController{
             destination.myItems = selectedItems
+            destination.user = user
         }
         
     }

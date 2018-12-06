@@ -11,18 +11,41 @@ import UIKit
 class MyPurchaseViewController: UIViewController {
     
     var myItems: [Item] = []
+    var user: User?
+    @IBOutlet weak var priceLabel: UILabel!
     
+    @IBOutlet weak var sendEmailButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        for item in myItems{
-            print(item.getName())
-            print(item.getPrice())
+        if let user = user{
+            for item in myItems{
+                print(item.getName())
+                print(item.getPrice())
+                print(user.getUsername())
+                item.addToUsers(user)
+            }
+            
+            do{
+                let managedObjectContext = user.managedObjectContext
+                try managedObjectContext?.save()
+            }catch{
+                print("there is an error during save data\(error)")
+                return
+            }
+            
+            print("Items saved to user")
         }
+        
+        
         // Do any additional setup after loading the view.
     }
     
 
+    func calculatePayment(){
+        
+        
+    }
     /*
     // MARK: - Navigation
 
