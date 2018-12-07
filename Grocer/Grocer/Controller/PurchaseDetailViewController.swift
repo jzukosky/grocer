@@ -10,7 +10,8 @@ import UIKit
 
 class PurchaseDetailViewController: UIViewController {
     var purchase:Purchase?
-
+    var user:User?
+    
     @IBOutlet weak var receiptImage: UIImageView!
     
     @IBOutlet weak var titleField: UITextField!
@@ -20,9 +21,11 @@ class PurchaseDetailViewController: UIViewController {
     @IBOutlet weak var purchaserImage: UIImageView!
     @IBOutlet weak var itemsTableView: UITableView!
     
+    var selectedItems = [Item]()
     var items = [Item]()
     override func viewDidLoad() {
-
+        
+        itemsTableView?.allowsMultipleSelection = true
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         dateField.text = dateFormatter.string(from: (purchase?.date)!)
@@ -35,32 +38,66 @@ class PurchaseDetailViewController: UIViewController {
             purchaserImage.image = UIImage(named: "ProfileImage")
         }
         descriptionField.text = purchase?.getPurchaseDescription() ?? ""
+        
         if let tempItems = purchase?.getItems(){
             items = tempItems
         }
-        
+        getItems()
+        for item in items {
+            if selectedItems.contains(item) {
+                let index = items.firstIndex(of: item)
+                if let index = index {
+                    itemsTableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition.none)
+                }
+            }
+        }
 
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func saveTapped(_ sender: Any) {
-        print("save tapped")
-        _ = navigationController?.popViewController(animated: true)
-
+    func getItems(){
+        if let selectedItems = purchase?.getItems(){
+            self.selectedItems = selectedItems
+        }
+        
+        for item in selectedItems{
+            if let user = user{
+                if !item.getUsers()!.contains(user){
+                    selectedItems.remove(at: selectedItems.firstIndex(of: item)!)
+                }
+            }
+        }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let selectedIndexes = itemsTableView.indexPathsForSelectedRows{
+            for index in selectedIndexes{
+                if (!selectedItems.contains(items[index.row])) {
+                    selectedItems.append(items[index.row])
+                }
+            }
+        }
+        
+        if segue.identifier == "detailToMyPurchase",
+            let destination = segue.destination as? MyPurchaseViewController{
+            destination.myItems = selectedItems
+            destination.user = user
+            destination.purchase = purchase
+        }
+        
+    }
+
 }
+
 extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(items.count)
         return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell")!
-        print("CELL FOR ROW AT")
-        print(items)
         cell.textLabel?.text = items[indexPath.row].name
         cell.detailTextLabel?.text = String(items[indexPath.row].price)
         return cell

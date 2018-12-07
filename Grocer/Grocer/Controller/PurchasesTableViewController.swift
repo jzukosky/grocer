@@ -14,7 +14,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
-    var purchaser: User?
+    var user: User?
     var purchases: [Purchase] = []
     var rawPurchases:[Purchase] = []
     var pastPurchases:[Purchase] = []
@@ -119,6 +119,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         if segue.identifier == "purchaseDetailSegue",
             let destination = segue.destination as? PurchaseDetailViewController,
             let row = tableView.indexPathForSelectedRow?.row {
+            destination.user = user
             if (tableView.indexPathForSelectedRow?.section == 0){
                 destination.purchase = filteredActive[row]
             }
@@ -129,7 +130,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
         if segue.identifier == "addSegue",
             let destination = segue.destination as? AddPurchaseViewController {
-            destination.purchaser = purchaser
+            destination.purchaser = user
             destination.receiptImage = imageForReceipt
             
         }
@@ -302,7 +303,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func filterPurchasesByUser() -> [Purchase]{
         var tempPurchase: [Purchase] = []
-        if let user = purchaser{
+        if let user = user{
             
             for purchase in rawPurchases{
                 if let purchaser = purchase.getPurchaser(){
