@@ -42,7 +42,15 @@ class PurchaseDetailViewController: UIViewController {
         if let tempItems = purchase?.getItems(){
             items = tempItems
         }
-        
+        getItems()
+        for item in items {
+            if selectedItems.contains(item) {
+                let index = items.firstIndex(of: item)
+                if let index = index {
+                    itemsTableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition.none)
+                }
+            }
+        }
 
         super.viewDidLoad()
         
@@ -57,6 +65,7 @@ class PurchaseDetailViewController: UIViewController {
         for item in selectedItems{
             if let user = user{
                 if !item.getUsers()!.contains(user){
+                    selectedItems.remove(at: selectedItems.firstIndex(of: item)!)
                 }
             }
         }
@@ -93,9 +102,6 @@ extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSour
         getItems()
         cell.textLabel?.text = items[indexPath.row].name
         cell.detailTextLabel?.text = String(items[indexPath.row].price)
-        if selectedItems.contains(items[indexPath.row]){
-            cell.isSelected = true
-        }
         return cell
     }
     
