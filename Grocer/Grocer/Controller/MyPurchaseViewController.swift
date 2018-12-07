@@ -14,7 +14,8 @@ class MyPurchaseViewController: UIViewController {
     var payment: Double?
     var myItems: [Item] = []
     var user: User?
-    var itemCount : Int?
+    var purchase: Purchase?
+    var itemCount : Int = 0
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var sendEmailButton: UIButton!
@@ -24,19 +25,27 @@ class MyPurchaseViewController: UIViewController {
         if let fetchedUsers = fetchUsers(){
             for tempUser in fetchedUsers{
                 if tempUser.isEqual(user){
+                    itemCount = 0
                     if let fetchedItems = tempUser.getItems(){
-                        itemCount = fetchedItems.count
+                        for item in fetchedItems {
+                            if let purchase = purchase {
+                                if item.getPurchase()?.isEqual(purchase) ?? false {
+                                    itemCount = itemCount + 1
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
+        print("======")
+        print(itemCount)
+        print(myItems.count)
         
         if itemCount != myItems.count{
+
             if let user = user{
                 for item in myItems{
-                    print(item.getName())
-                    print(item.getPrice())
-                    print(user.getUsername())
                     item.addToUsers(user)
                 }
                 
@@ -47,8 +56,6 @@ class MyPurchaseViewController: UIViewController {
                     print("there is an error during save data\(error)")
                     return
                 }
-                
-                print("Items saved to user")
             }
         }
         

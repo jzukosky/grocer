@@ -75,7 +75,9 @@ class PurchaseDetailViewController: UIViewController {
         if let selectedIndexes = itemsTableView.indexPathsForSelectedRows{
             for index in selectedIndexes{
                 print(index.row)
-                selectedItems.append(items[index.row])
+                if (!selectedItems.contains(items[index.row])) {
+                    selectedItems.append(items[index.row])
+                }
             }
         }
         
@@ -83,6 +85,7 @@ class PurchaseDetailViewController: UIViewController {
             let destination = segue.destination as? MyPurchaseViewController{
             destination.myItems = selectedItems
             destination.user = user
+            destination.purchase = purchase
         }
         
     }
@@ -91,15 +94,11 @@ class PurchaseDetailViewController: UIViewController {
 
 extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(items.count)
         return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell")!
-        print("CELL FOR ROW AT")
-        print(items)
-        getItems()
         cell.textLabel?.text = items[indexPath.row].name
         cell.detailTextLabel?.text = String(items[indexPath.row].price)
         return cell
