@@ -19,10 +19,7 @@ class AddPurchaseViewController: UIViewController {
     @IBOutlet weak var receiptImageView: UIImageView!
     @IBOutlet weak var purchaserImageView: UIImageView!
     
-    @IBOutlet weak var participantsCollectionView: UICollectionView!
     @IBOutlet weak var itemsTableView: UITableView!
-    
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var allUsers = [User]()
     var participants = [User]()
@@ -168,6 +165,8 @@ extension AddPurchaseViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
 }
+
+
 
 extension AddPurchaseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     

@@ -34,9 +34,6 @@ class MyPurchaseViewController: UIViewController {
         if itemCount != myItems.count{
             if let user = user{
                 for item in myItems{
-                    print(item.getName())
-                    print(item.getPrice())
-                    print(user.getUsername())
                     item.addToUsers(user)
                 }
                 
