@@ -74,7 +74,6 @@ class PurchaseDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectedIndexes = itemsTableView.indexPathsForSelectedRows{
             for index in selectedIndexes{
-                print(index.row)
                 if (!selectedItems.contains(items[index.row])) {
                     selectedItems.append(items[index.row])
                 }

@@ -38,9 +38,6 @@ class MyPurchaseViewController: UIViewController {
                 }
             }
         }
-        print("======")
-        print(itemCount)
-        print(myItems.count)
         
         if itemCount != myItems.count{
 
