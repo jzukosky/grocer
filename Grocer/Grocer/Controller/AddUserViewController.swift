@@ -18,11 +18,11 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var newUser: User?
     var existingUser: User?
-    
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        imagePicker.delegate = self
         self.title = "Add User"
         if let existingUser = existingUser
         {
@@ -44,14 +44,39 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     @IBAction func chooseUserPictureButtonTapped(_ sender: Any) {
         
-        let image = UIImagePickerController()
-        image.delegate = self
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        image.allowsEditing = true
-        self.present(image, animated: true)
-        {
-            
+        let alert = UIAlertController(title: "Add a new photo", message: "How do you want to upload the picture?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "From camra", style: .default, handler: { action in
+            self.takePhotoWithCamera()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "From photo library", style: .default, handler: { action in
+            self.getPhotoFromLibrary()
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    func takePhotoWithCamera() {
+        if (!UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
+            let alertController = UIAlertController(title: "No Camera", message: "The device has no camera.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        } else {
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true, completion: nil)
         }
+    }
+    
+    func getPhotoFromLibrary() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -59,15 +84,15 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         var user: User?
-        if let existingUser = newUser {
+        if existingUser != nil {
             user = existingUser
             user?.username = username
             user?.information = informationTextField.text
             user?.email = emailTextField.text
+            user?.picture = userPictureImageView.image?.pngData()
             
         } else {
             user = User(username: username, email: emailTextField.text ?? "", information: informationTextField.text ?? "", picture: userPictureImageView.image?.pngData())
-            
         }
         
         if let user = user {
