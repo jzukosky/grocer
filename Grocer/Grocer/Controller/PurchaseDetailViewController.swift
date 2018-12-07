@@ -38,6 +38,7 @@ class PurchaseDetailViewController: UIViewController {
             purchaserImage.image = UIImage(named: "ProfileImage")
         }
         descriptionField.text = purchase?.getPurchaseDescription() ?? ""
+        
         if let tempItems = purchase?.getItems(){
             items = tempItems
         }
@@ -48,6 +49,19 @@ class PurchaseDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    func getItems(){
+        if let selectedItems = purchase?.getItems(){
+            self.selectedItems = selectedItems
+        }
+        
+        for item in selectedItems{
+            if let user = user{
+                if !item.getUsers()!.contains(user){
+                }
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectedIndexes = itemsTableView.indexPathsForSelectedRows{
             for index in selectedIndexes{
@@ -64,18 +78,6 @@ class PurchaseDetailViewController: UIViewController {
         
     }
 
-//        
-//    @IBAction func saveTapped(_ sender: Any) {
-//        print("save tapped")
-//        _ = navigationController?.popViewController(animated: true)
-//
-//        if let selectedIndexes = itemsTableView.indexPathsForSelectedRows{
-//            for index in selectedIndexes{
-//                print(index.row)
-//                selectedItems.append(items[index.row])
-//            }
-//        }
-//    }
 }
 
 extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -88,8 +90,12 @@ extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell")!
         print("CELL FOR ROW AT")
         print(items)
+        getItems()
         cell.textLabel?.text = items[indexPath.row].name
         cell.detailTextLabel?.text = String(items[indexPath.row].price)
+        if selectedItems.contains(items[indexPath.row]){
+            cell.isSelected = true
+        }
         return cell
     }
     

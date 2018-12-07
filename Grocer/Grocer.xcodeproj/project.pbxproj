@@ -10,6 +10,7 @@
 		83D284D521ADCB0D0071294A /* AddPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */; };
 		83D284E021B1C7290071294A /* Grocer.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 83D284DF21B1C7290071294A /* Grocer.xcdatamodel */; };
 		B53F72DA21B70AA10069B577 /* MyPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F72D921B70AA10069B577 /* MyPurchaseViewController.swift */; };
+		B553F72A21BAC9E70093F14D /* SelectUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B553F72921BAC9E70093F14D /* SelectUserCollectionViewCell.swift */; };
 		B5568EBD219D00B9007BD7C4 /* PurchaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */; };
 		B5568EBE219D00B9007BD7C4 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */; };
 		B5568EBF219D00B9007BD7C4 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */; };
@@ -35,6 +36,7 @@
 		83D284D421ADCB0D0071294A /* AddPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseViewController.swift; sourceTree = "<group>"; };
 		83D284DF21B1C7290071294A /* Grocer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Grocer.xcdatamodel; sourceTree = "<group>"; };
 		B53F72D921B70AA10069B577 /* MyPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPurchaseViewController.swift; sourceTree = "<group>"; };
+		B553F72921BAC9E70093F14D /* SelectUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5568EBA219D00B9007BD7C4 /* PurchaseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewController.swift; sourceTree = "<group>"; };
 		B5568EBB219D00B9007BD7C4 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		B5568EBC219D00B9007BD7C4 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		E2CF8CEC219CD81600CBE927 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B553F72921BAC9E70093F14D /* SelectUserCollectionViewCell.swift */,
 				B53F72D921B70AA10069B577 /* MyPurchaseViewController.swift */,
 				E2DA999821ADE6560021E224 /* AddUserViewController.swift */,
 				E2FBE2B3219DFBB400D835FE /* UserCollectionViewCell.swift */,
@@ -232,6 +235,7 @@
 				83D284D521ADCB0D0071294A /* AddPurchaseViewController.swift in Sources */,
 				B5568EBF219D00B9007BD7C4 /* PurchaseTableViewCell.swift in Sources */,
 				E2DA999921ADE6560021E224 /* AddUserViewController.swift in Sources */,
+				B553F72A21BAC9E70093F14D /* SelectUserCollectionViewCell.swift in Sources */,
 				B53F72DA21B70AA10069B577 /* MyPurchaseViewController.swift in Sources */,
 				E2FBE2B2219DFAAD00D835FE /* UserCollectionViewController.swift in Sources */,
 				E2FBE2B4219DFBB400D835FE /* UserCollectionViewCell.swift in Sources */,
