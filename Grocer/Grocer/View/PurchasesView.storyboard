@@ -436,6 +436,9 @@
                                 <rect key="frame" x="440" y="806" width="144" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Send Email"/>
+                                <connections>
+                                    <action selector="sendEmail:" destination="PNa-jX-Vst" eventType="touchUpInside" id="uyl-mO-Ef8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

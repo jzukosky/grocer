@@ -59,15 +59,15 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         var user: User?
-        if let existingUser = newUser {
+        if existingUser != nil {
             user = existingUser
             user?.username = username
             user?.information = informationTextField.text
             user?.email = emailTextField.text
+            user?.picture = userPictureImageView.image?.pngData()
             
         } else {
             user = User(username: username, email: emailTextField.text ?? "", information: informationTextField.text ?? "", picture: userPictureImageView.image?.pngData())
-            
         }
         
         if let user = user {
