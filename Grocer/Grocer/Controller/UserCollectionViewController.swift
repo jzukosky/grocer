@@ -130,9 +130,7 @@ class UserCollectionViewController: UICollectionViewController {
             let cell = collectionView.cellForItem(at: indexPath) as?  UserCollectionViewCell {
                 destination.existingUser = cell.user
             }
-            
-        
-        if segue.identifier == "addUser",
+        else if segue.identifier == "addUser",
             let destination = segue.destination as? AddUserViewController,
             let collectionView = self.collectionView,
             let indexPath = collectionView.indexPathsForSelectedItems?.first,

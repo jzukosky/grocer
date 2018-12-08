@@ -436,6 +436,9 @@
                                 <rect key="frame" x="440" y="806" width="144" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Send Email"/>
+                                <connections>
+                                    <action selector="sendEmail:" destination="PNa-jX-Vst" eventType="touchUpInside" id="uyl-mO-Ef8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPc-X8-yYY">
                                 <rect key="frame" x="400.5" y="979" width="223" height="48"/>
