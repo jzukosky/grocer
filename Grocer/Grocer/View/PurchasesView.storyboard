@@ -440,9 +440,19 @@
                                     <action selector="sendEmail:" destination="PNa-jX-Vst" eventType="touchUpInside" id="uyl-mO-Ef8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPc-X8-yYY">
+                                <rect key="frame" x="400.5" y="979" width="223" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Confirm Payment"/>
+                                <connections>
+                                    <action selector="confirmPaymentTapped:" destination="PNa-jX-Vst" eventType="touchUpInside" id="EOb-Lk-BeG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="XPc-X8-yYY" firstAttribute="centerX" secondItem="iJH-7i-7eK" secondAttribute="centerX" id="FPd-RL-SOL"/>
+                            <constraint firstItem="XPc-X8-yYY" firstAttribute="top" secondItem="iJH-7i-7eK" secondAttribute="bottom" constant="125" id="KCf-kp-TzX"/>
                             <constraint firstItem="iJH-7i-7eK" firstAttribute="centerX" secondItem="fd3-Jp-cil" secondAttribute="centerX" id="UFf-1Q-Yss"/>
                             <constraint firstItem="iJH-7i-7eK" firstAttribute="top" secondItem="Apg-vF-r6x" secondAttribute="bottom" constant="100" id="Ux8-Ha-MDT"/>
                             <constraint firstItem="Apg-vF-r6x" firstAttribute="centerY" secondItem="fd3-Jp-cil" secondAttribute="centerY" id="Yu6-Dy-2Ib"/>
@@ -453,6 +463,7 @@
                         <viewLayoutGuide key="safeArea" id="fd3-Jp-cil"/>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="XPc-X8-yYY" id="CoG-Kb-xal"/>
                         <outlet property="priceLabel" destination="a9H-di-tNV" id="rZn-kE-Wr3"/>
                         <outlet property="sendEmailButton" destination="iJH-7i-7eK" id="4DM-vB-9Vm"/>
                     </connections>
