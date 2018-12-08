@@ -154,7 +154,7 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
         var totalPrice = 0.0;
         if let payments = purchase.getPayments() {
             for payment in payments {
-                totalPayments = payment.amount
+                totalPayments += payment.amount
             }
         }
         

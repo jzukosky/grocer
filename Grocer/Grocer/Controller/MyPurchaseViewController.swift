@@ -18,11 +18,13 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
     var purchase: Purchase?
     var itemCount : Int = 0
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
     
     @IBOutlet weak var sendEmailButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         if let fetchedUsers = fetchUsers(){
             for tempUser in fetchedUsers{
                 if tempUser.isEqual(user){
@@ -41,7 +43,7 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
         }
         
         if itemCount != myItems.count{
-
+            
             if let user = user{
                 for item in myItems{
                     item.addToUsers(user)
@@ -58,6 +60,35 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
         }
         
         calculatePayment()
+        
+        var currentSelectedUser: Set<User> = []
+        if let items = purchase?.getItems() {
+            for item in items {
+                if let users = item.getUsers() {
+                    for user in users {
+                        currentSelectedUser.insert(user)
+                    }
+                }
+            }
+        }
+
+        if let recipientsCount = purchase?.getRecipients()?.count {
+            if (recipientsCount + 1) != currentSelectedUser.count {
+                confirmButton.isEnabled = false
+                sendEmailButton.isEnabled = false
+            }
+        }
+        
+        if let payments = user?.getPayments() {
+            for payment in payments {
+                if (payment.getPurchase()?.isEqual(purchase))! {
+                    confirmButton.isEnabled = false
+                    sendEmailButton.isEnabled = false
+                }
+            }
+        }
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -126,6 +157,27 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func confirmPaymentTapped(_ sender: Any) {
+
+        let tempPayment = Payment(date: Date(timeIntervalSinceNow: 0), amount: payment)
+        if let user = user, let tempPayment = tempPayment {
+            tempPayment.user = user
+            tempPayment.purchase = purchase
+        }
+        
+        if let tempPayment = tempPayment {
+            do {
+                let managedObjectContext = tempPayment.managedObjectContext
+                try managedObjectContext?.save()
+            } catch {
+                print("unable to save")
+                return
+            }
+        }
+        
+        _ = navigationController?.popToRootViewController(animated: true)
+
     }
     /*
     // MARK: - Navigation
