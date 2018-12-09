@@ -68,9 +68,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-TQ-afZ">
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-TQ-afZ">
                                                     <rect key="frame" x="8" y="8" width="30" height="30"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="eYh-c9-EQa">
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eYh-c9-EQa">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
@@ -85,6 +85,7 @@
                                                         </subviews>
                                                     </view>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="LWs-tr-wGa"/>
                                                         <constraint firstAttribute="width" constant="30" id="zNl-TA-AF0"/>
                                                     </constraints>
                                                     <blurEffect style="prominent"/>
@@ -96,6 +97,7 @@
                                                 <constraint firstItem="ztI-J0-X23" firstAttribute="centerY" secondItem="teP-ws-FDd" secondAttribute="centerY" id="RkD-cK-dhb"/>
                                                 <constraint firstItem="tjQ-TQ-afZ" firstAttribute="leading" secondItem="teP-ws-FDd" secondAttribute="leading" constant="8" id="bJm-8b-xgE"/>
                                                 <constraint firstItem="ztI-J0-X23" firstAttribute="top" secondItem="teP-ws-FDd" secondAttribute="top" constant="34" id="j02-7M-sLY"/>
+                                                <constraint firstItem="tjQ-TQ-afZ" firstAttribute="top" secondItem="teP-ws-FDd" secondAttribute="top" constant="8" id="sdL-HA-M7K"/>
                                             </constraints>
                                         </view>
                                     </subviews>
