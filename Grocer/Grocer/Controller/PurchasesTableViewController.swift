@@ -256,15 +256,15 @@ class PurchasesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Add a new photo", message: "How do you want to upload the picture?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add a Receipt Photo", message: "How do you want to upload the picture?", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "From camra", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { action in
             self.takePhotoWithCamera()
         }))
                                       
                                       
                                       
-        alert.addAction(UIAlertAction(title: "From photo library", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Use Existing Photo", style: .default, handler: { action in
             self.getPhotoFromLibrary()
         }))
         self.present(alert, animated: true)
