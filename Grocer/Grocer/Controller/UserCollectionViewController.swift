@@ -79,7 +79,6 @@ class UserCollectionViewController: UICollectionViewController {
         
         if currentlyEditing {
             cell.grayView.alpha = 0.5
-            cell.deleteButtonBackgroundView.backgroundColor = UIColor.blue
         } else {
             cell.grayView.alpha = 0.0
         }
