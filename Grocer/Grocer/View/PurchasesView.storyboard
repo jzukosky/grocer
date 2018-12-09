@@ -180,9 +180,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FpJ-gF-8QN">
-                                                    <rect key="frame" x="-181" y="-53" width="240" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FpJ-gF-8QN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g6b-lN-Va4">
                                                     <rect key="frame" x="31" y="0.0" width="19" height="15"/>
@@ -190,10 +189,14 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="FpJ-gF-8QN" firstAttribute="top" secondItem="C2f-qN-V1h" secondAttribute="top" id="57i-2M-Cfo"/>
+                                            <constraint firstAttribute="trailing" secondItem="FpJ-gF-8QN" secondAttribute="trailing" id="6sQ-sa-skd"/>
+                                            <constraint firstAttribute="bottom" secondItem="FpJ-gF-8QN" secondAttribute="bottom" id="Pwv-GD-Ng0"/>
                                             <constraint firstAttribute="bottom" secondItem="g6b-lN-Va4" secondAttribute="bottom" constant="35" id="VaX-II-SEt"/>
                                             <constraint firstItem="g6b-lN-Va4" firstAttribute="top" secondItem="C2f-qN-V1h" secondAttribute="top" id="XqX-Qg-iyi"/>
                                             <constraint firstAttribute="trailing" secondItem="g6b-lN-Va4" secondAttribute="trailing" id="YVg-SN-A55"/>
                                             <constraint firstItem="g6b-lN-Va4" firstAttribute="leading" secondItem="C2f-qN-V1h" secondAttribute="leading" constant="31" id="fdN-lm-ghF"/>
+                                            <constraint firstItem="FpJ-gF-8QN" firstAttribute="leading" secondItem="C2f-qN-V1h" secondAttribute="leading" id="pkx-ox-VfC"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="checkMarkImage" destination="g6b-lN-Va4" id="e9z-uf-AV4"/>
