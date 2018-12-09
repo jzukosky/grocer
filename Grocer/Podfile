@@ -1,0 +1,5 @@
+platform :ios, '12.0'
+target "Grocer" do
+  pod 'GoogleMobileVision/TextDetector'
+  project 'Grocer/Grocer.xcodeproj'
+end 
