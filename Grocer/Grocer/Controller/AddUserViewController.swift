@@ -23,6 +23,7 @@ class AddUserViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        emailTextField.keyboardType = .emailAddress
         self.title = "Add User"
         if let existingUser = existingUser
         {

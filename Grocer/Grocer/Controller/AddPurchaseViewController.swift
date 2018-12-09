@@ -133,6 +133,7 @@ class AddPurchaseViewController: UIViewController {
         
         alert.addTextField { (priceField) in
             priceField.placeholder = "Price"
+            priceField.keyboardType = UIKeyboardType.decimalPad
         }
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
