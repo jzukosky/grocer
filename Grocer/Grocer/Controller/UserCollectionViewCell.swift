@@ -27,6 +27,7 @@ class UserCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         userImage.roundedImage()
         deleteButtonBackgroundView.circleImage()
+        self.bringSubviewToFront(deleteButtonBackgroundView)
     }
     
     override func prepareForReuse() {
