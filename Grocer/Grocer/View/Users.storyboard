@@ -53,6 +53,12 @@
                                                 <accessibilityTraits key="traits" button="YES" image="YES"/>
                                             </accessibility>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xx-7w-qJY">
+                                            <rect key="frame" x="57" y="19.5" width="42" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teP-ws-FDd">
                                             <rect key="frame" x="0.0" y="0.0" width="156" height="110"/>
                                             <subviews>
@@ -62,9 +68,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-TQ-afZ">
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-TQ-afZ">
                                                     <rect key="frame" x="8" y="8" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="eYh-c9-EQa">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,6 +84,9 @@
                                                             </button>
                                                         </subviews>
                                                     </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="zNl-TA-AF0"/>
+                                                    </constraints>
                                                     <blurEffect style="prominent"/>
                                                 </visualEffectView>
                                             </subviews>
@@ -86,6 +94,7 @@
                                             <constraints>
                                                 <constraint firstItem="ztI-J0-X23" firstAttribute="centerX" secondItem="teP-ws-FDd" secondAttribute="centerX" id="N4N-kF-0VN"/>
                                                 <constraint firstItem="ztI-J0-X23" firstAttribute="centerY" secondItem="teP-ws-FDd" secondAttribute="centerY" id="RkD-cK-dhb"/>
+                                                <constraint firstItem="tjQ-TQ-afZ" firstAttribute="leading" secondItem="teP-ws-FDd" secondAttribute="leading" constant="8" id="bJm-8b-xgE"/>
                                                 <constraint firstItem="ztI-J0-X23" firstAttribute="top" secondItem="teP-ws-FDd" secondAttribute="top" constant="34" id="j02-7M-sLY"/>
                                             </constraints>
                                         </view>
@@ -95,15 +104,19 @@
                                     <constraint firstItem="teP-ws-FDd" firstAttribute="top" secondItem="71y-wm-UR0" secondAttribute="top" id="3fG-S6-mvV"/>
                                     <constraint firstItem="zeR-eE-6zo" firstAttribute="top" secondItem="71y-wm-UR0" secondAttribute="top" id="A0h-jW-Rra"/>
                                     <constraint firstAttribute="bottom" secondItem="teP-ws-FDd" secondAttribute="bottom" id="Clu-3V-WG9"/>
+                                    <constraint firstItem="teP-ws-FDd" firstAttribute="top" secondItem="7xx-7w-qJY" secondAttribute="bottom" constant="-40" id="JO9-nI-Ntc"/>
                                     <constraint firstAttribute="bottom" secondItem="zeR-eE-6zo" secondAttribute="bottom" id="KSd-mm-UPI"/>
+                                    <constraint firstItem="7xx-7w-qJY" firstAttribute="leading" secondItem="tjQ-TQ-afZ" secondAttribute="trailing" constant="19" id="OGm-GH-ohi"/>
                                     <constraint firstItem="zeR-eE-6zo" firstAttribute="leading" secondItem="71y-wm-UR0" secondAttribute="leading" id="VRa-p6-fnl"/>
                                     <constraint firstAttribute="trailing" secondItem="zeR-eE-6zo" secondAttribute="trailing" id="kXM-lA-pz6"/>
                                     <constraint firstItem="teP-ws-FDd" firstAttribute="leading" secondItem="71y-wm-UR0" secondAttribute="leading" id="kku-Ad-yxn"/>
+                                    <constraint firstItem="7xx-7w-qJY" firstAttribute="centerX" secondItem="71y-wm-UR0" secondAttribute="centerX" id="n3l-HN-4ib"/>
                                     <constraint firstAttribute="trailing" secondItem="teP-ws-FDd" secondAttribute="trailing" id="oyg-5W-BAE"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="deleteButtonBackgroundView" destination="tjQ-TQ-afZ" id="ZmQ-3w-tZ5"/>
                                     <outlet property="grayView" destination="teP-ws-FDd" id="nOi-5K-ndr"/>
+                                    <outlet property="titleLabel" destination="7xx-7w-qJY" id="55y-AM-TQN"/>
                                     <outlet property="userImage" destination="zeR-eE-6zo" id="fLh-ow-Wr1"/>
                                 </connections>
                             </collectionViewCell>

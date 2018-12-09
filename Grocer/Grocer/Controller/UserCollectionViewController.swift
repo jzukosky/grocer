@@ -99,10 +99,12 @@ class UserCollectionViewController: UICollectionViewController {
             NSAttributedString.Key.strokeWidth : -4.0,
             NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)]
             as [NSAttributedString.Key : Any]
-        title.attributedText = NSMutableAttributedString(string: cell.user?.getUsername() ?? "Username", attributes: strokeTextAttributes)
-        title.text = cell.user?.getUsername()
-        title.textAlignment = .center
-        cell.addSubview(title)
+        cell.titleLabel.attributedText = NSMutableAttributedString(string: users[indexPath.row].username ?? "Username", attributes: strokeTextAttributes)
+        cell.titleLabel.textAlignment = .center
+        //title.attributedText = NSMutableAttributedString(string: users[indexPath.row].username ?? "Username", attributes: strokeTextAttributes)
+        //title.text = users[indexPath.row].username ?? "Username"
+//        title.textAlignment = .center
+//        cell.addSubview(title)
         
         cell.set(deleteHandler: delete)
         cell.set(reloadHandler: collectionView.reloadData)
