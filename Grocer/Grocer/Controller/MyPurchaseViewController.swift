@@ -109,7 +109,7 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
             }
         }
         
-        priceLabel.text = String(format: "$ %.2f", payment)
+        priceLabel.text = String(format: "Amount to Pay: $ %.2f", payment)
     }
     
     func fetchUsers()->[User]?{
