@@ -108,7 +108,8 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
                 payment += (item.price) / Double(userCount)
             }
         }
-        priceLabel.text = "$ \(payment)"
+        
+        priceLabel.text = String(format: "Amount to Pay: $ %.2f", payment)
     }
     
     func fetchUsers()->[User]?{
@@ -139,12 +140,14 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
     func configureMailController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        
-        if let email = user?.getEmail() {
-            mailComposerVC.setToRecipients([email])
+        var users = fetchUsers()
+        var emails: [String] = []
+        for user in users!{
+            emails.append(user.getEmail()!)
         }
+        mailComposerVC.setToRecipients(emails)
         mailComposerVC.setSubject("Pay your stuff")
-        mailComposerVC.setMessageBody("Please pay the amount: $\(payment)", isHTML: false)
+        mailComposerVC.setMessageBody(String(format: "Please pay the amount: %.2f", payment), isHTML: false)
         
         return mailComposerVC
     }

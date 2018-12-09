@@ -90,18 +90,15 @@ class UserCollectionViewController: UICollectionViewController {
         } else {
             cell.userImage?.image = defaultImage
         }
-        
-        let title = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: 40))
+
         let strokeTextAttributes = [
             NSAttributedString.Key.strokeColor : UIColor.init(red:0.56, green:0.84, blue:0.54, alpha:1.0),
             NSAttributedString.Key.foregroundColor : UIColor.white,
             NSAttributedString.Key.strokeWidth : -4.0,
             NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)]
             as [NSAttributedString.Key : Any]
-        title.attributedText = NSMutableAttributedString(string: cell.user?.getUsername() ?? "Username", attributes: strokeTextAttributes)
-        title.text = cell.user?.getUsername()
-        title.textAlignment = .center
-        cell.addSubview(title)
+        cell.titleLabel.attributedText = NSMutableAttributedString(string: users[indexPath.row].username ?? "Username", attributes: strokeTextAttributes)
+        cell.titleLabel.textAlignment = .center
         
         cell.set(deleteHandler: delete)
         cell.set(reloadHandler: collectionView.reloadData)

@@ -17,6 +17,7 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var grayView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var deleteButtonBackgroundView: UIVisualEffectView!
     var user: User?
     var deletionHandler: DeleteHandler!
@@ -26,6 +27,7 @@ class UserCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         userImage.roundedImage()
         deleteButtonBackgroundView.circleImage()
+        self.bringSubviewToFront(deleteButtonBackgroundView)
     }
     
     override func prepareForReuse() {
