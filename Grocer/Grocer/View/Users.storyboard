@@ -65,19 +65,24 @@
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-TQ-afZ">
                                                     <rect key="frame" x="8" y="8" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="eYh-c9-EQa">
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eYh-c9-EQa">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWR-6Z-5YC">
-                                                                <rect key="frame" x="5" y="5" width="20" height="20"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWR-6Z-5YC">
+                                                                <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                                                                 <state key="normal" image="icon-close"/>
                                                                 <connections>
                                                                     <action selector="deleteButtonDidTap:" destination="71y-wm-UR0" eventType="touchUpInside" id="6OL-JS-w3z"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="NWR-6Z-5YC" secondAttribute="trailing" id="24b-CD-Lvu"/>
+                                                            <constraint firstAttribute="bottom" secondItem="NWR-6Z-5YC" secondAttribute="bottom" id="E26-6a-rsg"/>
+                                                            <constraint firstItem="NWR-6Z-5YC" firstAttribute="leading" secondItem="eYh-c9-EQa" secondAttribute="leading" id="cXY-xW-g4G"/>
+                                                            <constraint firstItem="NWR-6Z-5YC" firstAttribute="top" secondItem="eYh-c9-EQa" secondAttribute="top" id="otO-4i-1St"/>
+                                                        </constraints>
                                                     </view>
                                                     <blurEffect style="prominent"/>
                                                 </visualEffectView>
@@ -243,7 +248,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-close" width="48" height="48"/>
+        <image name="icon-close" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="csg-XD-3gj"/>
