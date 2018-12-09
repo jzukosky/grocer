@@ -145,7 +145,7 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
             mailComposerVC.setToRecipients([email])
         }
         mailComposerVC.setSubject("Pay your stuff")
-        mailComposerVC.setMessageBody(String(format: "Please pay the amount: %.2f", payment) isHTML: false)
+        mailComposerVC.setMessageBody(String(format: "Please pay the amount: %.2f", payment), isHTML: false)
         
         return mailComposerVC
     }
