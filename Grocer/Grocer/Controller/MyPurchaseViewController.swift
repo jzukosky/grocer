@@ -140,10 +140,12 @@ class MyPurchaseViewController: UIViewController, MFMailComposeViewControllerDel
     func configureMailController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        
-        if let email = user?.getEmail() {
-            mailComposerVC.setToRecipients([email])
+        var users = fetchUsers()
+        var emails: [String] = []
+        for user in users!{
+            emails.append(user.getEmail()!)
         }
+        mailComposerVC.setToRecipients(emails)
         mailComposerVC.setSubject("Pay your stuff")
         mailComposerVC.setMessageBody(String(format: "Please pay the amount: %.2f", payment), isHTML: false)
         
