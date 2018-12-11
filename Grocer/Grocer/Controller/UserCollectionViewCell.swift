@@ -33,9 +33,10 @@ class UserCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         userImage.image = nil
-        grayView.backgroundColor = UIColor.gray
+        grayView.backgroundColor = UIColor.lightGray
         grayView.alpha = 0.0
         grayView.layer.cornerRadius = 20
+        deleteButtonBackgroundView.alpha = 1
     }
     
     func set(deleteHandler: @escaping DeleteHandler) {
