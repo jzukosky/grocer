@@ -91,17 +91,17 @@ class UserCollectionViewController: UICollectionViewController {
             cell.userImage?.image = defaultImage
         }
 
-        let strokeTextAttributes = [
-            NSAttributedString.Key.strokeColor : UIColor.init(red:0.56, green:0.84, blue:0.54, alpha:1.0),
-            NSAttributedString.Key.foregroundColor : UIColor.white,
-            NSAttributedString.Key.strokeWidth : -4.0,
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)]
-            as [NSAttributedString.Key : Any]
-        cell.titleLabel.attributedText = NSMutableAttributedString(string: users[indexPath.row].username ?? "Username", attributes: strokeTextAttributes)
-        cell.titleLabel.textAlignment = .center
-        
-        cell.set(deleteHandler: delete)
-        cell.set(reloadHandler: collectionView.reloadData)
+//        let strokeTextAttributes = [
+//            NSAttributedString.Key.strokeColor : UIColor.init(red:0.56, green:0.84, blue:0.54, alpha:1.0),
+//            NSAttributedString.Key.foregroundColor : UIColor.white,
+//            NSAttributedString.Key.strokeWidth : -4.0,
+//            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)]
+//            as [NSAttributedString.Key : Any]
+//        cell.titleLabel.attributedText = NSMutableAttributedString(string: users[indexPath.row].username ?? "Username", attributes: strokeTextAttributes)
+//        cell.titleLabel.textAlignment = .center
+//        
+//        cell.set(deleteHandler: delete)
+//        cell.set(reloadHandler: collectionView.reloadData)
         
         // Configure the cell
     
